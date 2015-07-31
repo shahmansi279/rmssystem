@@ -28,7 +28,7 @@ public class PrivateTaxi implements ServiceType
 	public PrivateTaxi(){
 		super();
 		
-		System.out.println("Testing Github Commit");
+		System.out.println("Testing Github Commit Again");
 		
 	}
 
@@ -43,5 +43,10 @@ public class PrivateTaxi implements ServiceType
 		// TODO implement me	
 	}
 	
+	
+	public static void main(String args[]){
+		
+		System.out.println("Hello");
+	}
 }
 

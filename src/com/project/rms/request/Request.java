@@ -24,7 +24,7 @@ public class Request
 	 * @generated
 	 * @ordered
 	 */
-	
+
 	public String rId;
 	
 	/**
