@@ -27,6 +27,9 @@ public class PrivateTaxi implements ServiceType
 	 */
 	public PrivateTaxi(){
 		super();
+		
+		System.out.println("Testing Github Commit");
+		
 	}
 
 	/**
