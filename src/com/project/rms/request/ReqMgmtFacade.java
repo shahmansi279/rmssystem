@@ -1,7 +1,7 @@
 package com.project.rms.request;
 import java.util.Set;
 
-import com.project.utils.GPSHelper;
+import com.project.rms.utils.GPSHelper;
 
 import java.sql.Timestamp;
 import java.util.HashSet;

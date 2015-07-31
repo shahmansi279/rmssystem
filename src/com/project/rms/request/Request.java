@@ -2,7 +2,7 @@ package com.project.rms.request;
 
 import java.sql.Timestamp;
 
-import com.project.utils.GPSLocation;
+import com.project.rms.utils.GPSLocation;
 
 /**
  * <!-- begin-user-doc -->
