@@ -1,5 +1,9 @@
 package com.project.rms.request;
 import java.util.Set;
+
+import com.project.utils.GPSHelper;
+
+import java.sql.Timestamp;
 import java.util.HashSet;
 
 
@@ -36,14 +40,24 @@ public class ReqMgmtFacade
 	 * @ordered
 	 */
 	
-	public void createRequest()
-	
-			
-		
+	public void createRequest(String rPickLocAddr, String rDestLoc, Timestamp rPickUpTime, String rServiceType, String rVehicle, String rFeature)
 
-			
-			
-			 {
+	{
+		
+		
+		GPSHelper g= new GPSHelper();
+		Request r = new Request();
+		
+		r.setrPickLoc(g.getGPSLocation(rPickLocAddr));
+		r.setrDestLoc(g.getGPSLocation(rDestLoc));		
+		r.setrPickupDateTime(rPickUpTime);
+		r.setrServiceType(rServiceType);
+		r.setrFeature(rFeature);
+		r.setrStatus("Created");
+
+		System.out.println("Request Created with ID : " );
+	
+
 		// TODO implement me	
 	}
 	
@@ -53,28 +67,27 @@ public class ReqMgmtFacade
 	 * @generated
 	 * @ordered
 	 */
+	public void updateRequestState() {
+		
+		
+		
+		// TODO implement me	
+	}
 	
 	public void updateRequest() {
+		
+		
+		
 		// TODO implement me	
 	}
 	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
+	
 	
 	public void processRequest() {
 		// TODO implement me	
 	}
 	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
+	
 	
 	public void sendNotifications() {
 		// TODO implement me	
