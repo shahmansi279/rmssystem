@@ -37,9 +37,13 @@ public class CashPaymentStrategy implements PaymentStrategy
 	}
 
 	@Override
-	public void processPayment() {
+	public void processPayment(String amount) {
 		// TODO Auto-generated method stub
-		
+		System.out.println("[______________________________________________________________]");
+		System.out.println("[ ** Pattern ----> Strategy pattern ** ] used to determine payment method. ");
+		System.out.println("[______________________________________________________________]");
+		System.out.println("Payment method is  Cash ");
+		System.out.println("Payment amount = "+amount);
 	}
 
 	/**

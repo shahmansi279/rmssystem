@@ -9,29 +9,21 @@ package com.project.rms.payments;
 
 public class PaymentContext
 {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
 	
-	public PaymentStrategy payStrategy;
+	//public PaymentStrategy payStrategy;
 	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
+ public PaymentStrategy paymentStrategy;
 	
-	public PaymentStrategy paymentStrategy;
+	public void setPaymentStrategy(PaymentStrategy strategy)
+	{
+		this.paymentStrategy = strategy;
+	}
+
+	public PaymentStrategy getPaymentStrategy()
+	{
+		return paymentStrategy  ;
+	}
 	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 */
 	public PaymentContext(){
 		super();
 	}
@@ -45,7 +37,13 @@ public class PaymentContext
 	
 	public void performProcessPayment() {
 		// TODO implement me	
+		
+		System.out.println("We are processing your payment... Thank you for your business");
 	}
 	
+	public void processPayment(String amount)
+	{
+		paymentStrategy.processPayment(amount);
+	}
 }
 
