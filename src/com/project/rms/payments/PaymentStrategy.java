@@ -3,7 +3,7 @@ package com.project.rms.payments;
 
 
 /**
- * <!-- begin-user-doc -->
+ * <!-- Payment Strategy interface->
  * <!--  end-user-doc  -->
  * @generated
  */
@@ -16,7 +16,7 @@ public  interface PaymentStrategy
 	 * @ordered
 	 */
 	
-	public void processPayment() ;
+	public void processPayment(String amount) ;
 	
 	
 }

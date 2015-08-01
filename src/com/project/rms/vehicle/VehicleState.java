@@ -2,22 +2,12 @@ package com.project.rms.vehicle;
 
 
 
-/**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
- * @generated
- */
 public  interface VehicleState 
 {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
+	public String receiveRequest();
+	public String addVehicle();
+	public String activeVehicle();
 	public void updateVehicleState() ;
 	
 	
 }
-

@@ -1,32 +1,16 @@
 package com.project.rms.vehicle;
 
 
-/**
- * <br>
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
- * @generated
- */
-
 public abstract class VehicleDecorator extends Vehicle
 {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 */
-	public VehicleDecorator(){
-		super();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
+	protected Vehicle vDec;
 	
-	public abstract void getFeatureDescription() ;
+	public VehicleDecorator(Vehicle vDec){
+		this.vDec = vDec;
+	}
+	
+	public abstract Sting getFeatureDescription() {
+		return vDec.getFeatureDescription();
+	}
 	
 }
-

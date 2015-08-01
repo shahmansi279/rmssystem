@@ -3,38 +3,25 @@ import java.util.Set;
 import java.util.HashSet;
 
 
-/**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
- * @generated
- */
-
 public class VPending implements VehicleState
 {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
 	
 	public Set<Vehicle> vehicle;
 	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 */
 	public VPending(){
 		super();
 	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
+	
+	public String receiveRequest(){
+		vehicle.setVehicleState(new VPending(vehicle));
+		return "Request received";
+	}
+	public String addVehicle(){
+		return "Must receive a request first";
+	}
+	public String activeVehicle() {
+		return "Must receive a request first";
+	}
 	
 	public void updateVehicleState() {
 		// TODO implement me	
