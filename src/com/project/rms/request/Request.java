@@ -1,6 +1,7 @@
 package com.project.rms.request;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 import com.project.rms.utils.GPSLocation;
 
@@ -36,8 +37,25 @@ public class Request
 
 	public GPSLocation rDestLoc;
 
-	public Timestamp rCreationDateTime;
-	public Timestamp rPickupDateTime;
+	public Date getrCreationDateTime() {
+		return rCreationDateTime;
+	}
+
+	public void setrCreationDateTime(Date rCreationDateTime) {
+		this.rCreationDateTime = rCreationDateTime;
+	}
+
+	public Date getrPickupDateTime() {
+		return rPickupDateTime;
+	}
+
+	public void setrPickupDateTime(Date rPickupDateTime) {
+		this.rPickupDateTime = rPickupDateTime;
+	}
+
+
+	public Date rCreationDateTime;
+	public Date rPickupDateTime;
 
 	public String rStatus;
 
@@ -48,7 +66,16 @@ public class Request
 
 
 	public String rId;
+	public int rCount;
 
+
+	public int getrCount() {
+		return rCount;
+	}
+
+	public void setrCount(int rCount) {
+		this.rCount = rCount;
+	}
 
 
 	public String rState;
@@ -71,21 +98,15 @@ public class Request
 
 	
 
-	public Timestamp getrCreationDateTime() {
-		return rCreationDateTime;
-	}
+	
 
 	public void setrCreationDateTime(Timestamp rCreationDateTime) {
 		this.rCreationDateTime = rCreationDateTime;
 	}
 
-	public Timestamp getrPickupDateTime() {
-		return rPickupDateTime;
-	}
+	
 
-	public void setrPickupDateTime(Timestamp rPickupDateTime) {
-		this.rPickupDateTime = rPickupDateTime;
-	}
+
 
 	public String getrServiceType() {
 		return rServiceType;
