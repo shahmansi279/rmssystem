@@ -1,44 +1,19 @@
 package com.project.rms.vehicle;
 
 
-/**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
- * @generated
- */
-
 public class Seats extends VehicleDecorator
 {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 */
-	public Seats(){
-		super();
+	public Seats(Vehicle vDec){
+		super(vDec);
 	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
 	
 	public void cost() {
 		// TODO implement me	
 	}
 	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
-	public void getFeatureDescription() {
-		// TODO implement me	
+	public String getFeatureDescription() {
+		// TODO implement me
+		return vDec.getFeatureDescription() + "+ 5 seats";
 	}
 	
 }
-

@@ -1,44 +1,19 @@
 package com.project.rms.vehicle;
 
 
-/**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
- * @generated
- */
-
 public class InfantSeat extends VehicleDecorator
 {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 */
-	public InfantSeat(){
-		super();
+	public InfantSeat(Vehicle vDec){
+		super(vDec);
 	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
 	
 	public void cost() {
 		// TODO implement me	
 	}
 	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
-	public void getFeatureDescription() {
+	public String getFeatureDescription() {
 		// TODO implement me	
+		return vDec.getFeatureDescription() + "+ Infant Car Seat";
 	}
 	
 }
-
