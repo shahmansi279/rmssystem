@@ -83,8 +83,30 @@ public  void addMembers(Member m,  List<Member> members1)
 	 * @ordered
 	 */
 	
-	public void removeCustomer() {
+public static void removeCustomer(String CustFName) {
 		// TODO implement me	
+		// This method is used to delete a member from the array
+        {
+        	
+       
+        	System.out.println("Printing after deletion..");
+             
+               for (int i = 0; i < AccountClient.members1.size(); i++) 
+               {
+            	        
+                        if (AccountClient.members1.get(i).getMemFname().equalsIgnoreCase(CustFName))
+                        {
+                        	System.out.println("Member First name in delete "+AccountClient.members1.get(i).memFname);
+                        	AccountClient.members1.remove(i);
+                        }
+
+
+                }
+               System.out.println("Member has been deleted successfully!");
+                System.out.println("Size of the list after delete operation is "
+                                + AccountClient.members1.size());
+        }
+
 	}
 	
 	/**

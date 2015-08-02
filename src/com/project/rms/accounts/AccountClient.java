@@ -171,10 +171,25 @@ public static void main(String[] args) {
 				}
 				if (choice == 4)	
 				{
-					System.out.println("Deleting Member ");
+					System.out.println("Removing Member ");
+					System.out.println("Enter Member First Name");
+					console1 = new Scanner(System.in);
+					strmFName = (console1.nextLine());
+				   mops.removeCustomer(strmFName);
+				   //print after deletion
+				   System.out.println("Members list after removing a member ");
+				   for (int j=0; j< members1.size();j++)
+				   {
+					  System.out.println("First Name = "+members1.get(j).memFname);
+					   
+				   }
 					//mops.addMembers(member);
 					//	member.addMembers(member);				
 				}			
+				
+				
+				
+				
 				if (choice == 5)	
 				{
 					System.out.println("Searching Member Member ");
