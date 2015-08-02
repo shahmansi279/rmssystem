@@ -25,8 +25,14 @@ public class AccountManager
 	 * @ordered
 	 */
 	
-	public void addCustomer() {
+	public void addCustomer(String name, String phone...) {
+		
+		Account a = new Account();
+				a.setAcctUsername(name);
 		// TODO implement me	
+		
+		
+		//
 	}
 	
 	/**
