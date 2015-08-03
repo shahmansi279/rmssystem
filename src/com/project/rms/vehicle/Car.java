@@ -6,8 +6,9 @@ public class Car extends Vehicle
 		super();
 	}
 	
-	public void cost() {
-		// TODO implement me	
+	public int cost() {
+		// TODO implement me
+		return 5;
 	}
 	
 	public String getFeatureDescription() {

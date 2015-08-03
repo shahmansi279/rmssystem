@@ -6,7 +6,7 @@ import java.util.HashSet;
 public class VVerified implements VehicleState
 {
 	
-	public Set<Vehicle> vehicle;
+	public Vehicle vehicle;
 	
 	public VVerified(){
 		super();
@@ -17,15 +17,15 @@ public class VVerified implements VehicleState
 		return "Already received request";
 	}
 	public String addVehicle(){
-		if ((request == "add") && (vHealth == "good")){
+		if ((vRequest == "add") && (vHealth == "good")){
 			return "The vehicle is verified";
 			vehicle.setVehicleState(new VVerified(vehicle));
 		}
-		else if ((request == "add") && (vHealth == "bad")){
+		else if ((vRequest == "add") && (vHealth == "bad")){
 			return "The vehicle is rejected";
 			vehicle.setVehicleState(new VRejected(vehicle));
 		}
-		else if (request == "remove"){
+		else if (vRequest == "remove"){
 			return "The vehicle is removed";
 			vehicle.setVehicleState(new VRemoved(vehicle));
 		}

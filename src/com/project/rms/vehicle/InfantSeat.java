@@ -1,14 +1,14 @@
 package com.project.rms.vehicle;
 
-
 public class InfantSeat extends VehicleDecorator
 {
 	public InfantSeat(Vehicle vDec){
 		super(vDec);
 	}
 	
-	public void cost() {
-		// TODO implement me	
+	public int cost() {
+		// TODO implement me
+		return 5;
 	}
 	
 	public String getFeatureDescription() {

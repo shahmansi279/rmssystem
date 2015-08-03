@@ -7,8 +7,9 @@ public class Seats extends VehicleDecorator
 		super(vDec);
 	}
 	
-	public void cost() {
-		// TODO implement me	
+	public int cost() {
+		// TODO implement me
+		return 5;
 	}
 	
 	public String getFeatureDescription() {
