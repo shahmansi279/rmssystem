@@ -20,7 +20,7 @@ public static void main(String[] args) {
 
 			//Scanner s = new Scanner(System.in);
 			Scanner console1;
-			long i=0; 
+			long i=0, custID=1;
 			String strmFName = null; 
 			String strmLName = null; 
 			String strmEmail = null; 
@@ -77,8 +77,8 @@ public static void main(String[] args) {
 				System.out.println("2. Retrieve Member");
 				System.out.println("3. Update Member");
 				System.out.println("4. Delete Members");
-				System.out.println("5. Search Members");
-				System.out.println("6. Select Members");
+				System.out.println("5. Select Members");
+				System.out.println("6. Search Members");
 				System.out.println("7. Sort Members");
 				System.out.println("8. Back");
 				System.out.println("9. Exit");
@@ -135,7 +135,8 @@ public static void main(String[] args) {
 					strmPrimeflag = (console1.nextLine());
 					
 					/* passing the values from the scanner */
-					
+					// insert memberId based on the current array size
+					member.nMemberID = members1.size()+1;
 					member.setMemFname(strmFName);
 					member.setMemLname(strmLName);
 					member.setMemEmail(strmEmail);
@@ -159,16 +160,26 @@ public static void main(String[] args) {
 				if (choice == 2)	
 				{
 					System.out.println("Retrieving Member ");
-					//mops.addMembers(member);
-					//	member.addMembers(member);				
+					System.out.println("Enter Member First Name");
+					console1 = new Scanner(System.in);
+					strmFName = (console1.nextLine());
+				   mops.retrieveCustomer(strmFName);
+				  			
 				}
 
 				if (choice == 3)	
 				{
 					System.out.println("Updating Member ");
-					//mops.addMembers(member);
-					//	member.addMembers(member);				
+					System.out.println("Enter Member First Name");
+					console1 = new Scanner(System.in);
+					strmFName = (console1.nextLine());
+					System.out.println("Enter new email address");
+					console1 = new Scanner(System.in);
+					strmEmail = (console1.nextLine());
+				   mops.updateCustomer(strmFName,strmEmail);
+				  			
 				}
+				
 				if (choice == 4)	
 				{
 					System.out.println("Removing Member ");
@@ -185,22 +196,33 @@ public static void main(String[] args) {
 				   }
 					//mops.addMembers(member);
 					//	member.addMembers(member);				
-				}			
-				
-				
-				
+				}						
 				
 				if (choice == 5)	
 				{
-					System.out.println("Searching Member Member ");
-					//mops.addMembers(member);
-					//	member.addMembers(member);				
+					System.out.println("Select Member - Enter Member First Name ");
+					console1 = new Scanner(System.in);
+					strmFName = (console1.nextLine());
+					System.out.println("Displaying Selected Member email information ");
+					mops.selectCustomer(strmFName);
+					
+									
 				}	
+				
 				if (choice == 6)	
 				{
+					System.out.println("Search Member based on MemberId ");
+					console1 = new Scanner(System.in);
+					custID=console1.nextLong();
+					mops.SearchCustomer(custID);
+					
+						
+				}	
+				
+				if (choice == 7)	
+				{
 					System.out.println("Sorting Member ");
-				//	mops.addMembers(member);
-					//	member.addMembers(member);				
+							
 				}	
 
 
