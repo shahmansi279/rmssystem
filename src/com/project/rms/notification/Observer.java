@@ -9,6 +9,7 @@ package com.project.rms.notification;
  */
 public  interface Observer 
 {
-	
+	public void update();
+	public void setSubject(Subject sub);
 }
 
