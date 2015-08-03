@@ -165,7 +165,7 @@ public static void main(String[] args) {
 					strmFName = (console1.nextLine());
 				   mops.retrieveCustomer(strmFName);
 				  			
-				}
+				} 
 
 				if (choice == 3)	
 				{

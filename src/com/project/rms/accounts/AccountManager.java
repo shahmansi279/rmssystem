@@ -176,7 +176,7 @@ public static void updateCustomer(String CustFName, String CEmail) {
 	// TODO implement me	
 	// This method is used to retrieve a member from the array
     {	
-
+ 
     	boolean updtflag=false;	
     	
     	for (int i = 0; i < AccountClient.members1.size() && !updtflag; i++) 

@@ -14,8 +14,9 @@ public class Customer extends Member
 	 * <!--  end-user-doc  -->
 	 * @generated
 	 */
-	public Customer(){
-		super();
+	public Customer()
+	{
+		//super();
 	}
 
 }
