@@ -9,6 +9,8 @@ package com.project.rms.accounts;
  */
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -205,30 +207,34 @@ public static void updateCustomer(String CustFName, String CEmail) {
 	 * @ordered
 	 */
 	
-	public void sortCustomer() {
-		// TODO implement me	
-	}
-	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
-	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
+	public static void sortCustomers() 
+
+	{
+		boolean retflag=false;
+	    	
+	    	Collections.sort(AccountClient.members1, new SortComparator());
+
+			System.out.println("Sorted list ");
+			for (Member e : AccountClient.members1) {
+				System.out.println("Member ID "+e.getnMemberID());
+				System.out.println("Member First Name "+e.getMemFname());
+			    System.out.println("Member Email "+e.getMemEmail());
+			    
+			}
+	    	
+	    	
+	                 
+	                // System.out.println("Size of the list after retrieve operation is "+ AccountClient.members1.size());
+
+	     
+	    	
+}
 	
 
 public static void selectCustomer(String CustFName)
 
 {
-boolean selectflag=false;
+			boolean selectflag=false;
 		    	System.out.println("Printing after selecting ..");	
 		    	
 		    	for (int i = 0; i < AccountClient.members1.size() && !selectflag; i++) 

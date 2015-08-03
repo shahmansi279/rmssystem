@@ -1,6 +1,8 @@
 package com.project.rms.accounts;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+
 /*
  * Author:  Thiagarajan Natarajan
  * Purpose: Client code to show the menu option and get customer information
@@ -41,7 +43,8 @@ public static void main(String[] args) {
 			member = new Member(1, "Thiagu", "Natar", null, null, null, null, null, null, null, null, null, null, null);
 			//  mops.addMembers(member);
 			//Initialize member array 
-
+			 smem1 = new Member(10,"Cust10Fname","Cust10Lname","Cust10@yahoo.com","4085550010","Cust10 Address1","Cust10 Address2","Cust10 City","Cust10 State","90010","Email","Cash","1234567890120010","N");
+			    members1.add(smem1);
 			smem1 = new Member(1,"Cust1Fname","Cust1Lname","Cust01@yahoo.com","4085550001","Cust1 Address1","Cust1 Address2","Cust1 City","Cust1 State","90001","Email","Cash","1234567890120001","Y");
 		//members1.add(smem1,members1);
 			members1.add(smem1);
@@ -65,8 +68,7 @@ public static void main(String[] args) {
 		    members1.add(smem1);
 		    smem1 = new Member(9,"Cust9Fname","Cust9Lname","Cust09@yahoo.com","4085550009","Cust9 Address1","Cust9 Address2","Cust9 City","Cust9 State","90009","Email","Cash","1234567890120009","Y");
 		    members1.add(smem1);
-		    smem1 = new Member(10,"Cust10Fname","Cust10Lname","Cust10@yahoo.com","4085550010","Cust10 Address1","Cust10 Address2","Cust10 City","Cust10 State","90010","Email","Cash","1234567890120010","N");
-		    members1.add(smem1);
+		   
 
 		   
 			do {
@@ -221,11 +223,16 @@ public static void main(String[] args) {
 				
 				if (choice == 7)	
 				{
-					System.out.println("Sorting Member ");
-							
-				}	
+					System.out.println("Sorting Members ");
+				
 
+						// Sort members based on their name
+					
+						//Collections.sort(members1, new SortComparator());
+				     	mops.sortCustomers();
+						
 
+				}
 
 			} while (choice != 9);
 			
