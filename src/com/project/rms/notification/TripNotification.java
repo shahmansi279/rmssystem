@@ -26,7 +26,9 @@ public class TripNotification extends Notification
 	 */
 	
 	public void appendMessage() {
-		// TODO implement me	
+		// TODO implement me
+		System.out.println("Trip Notification Sent");
+
 	}
 	
 }

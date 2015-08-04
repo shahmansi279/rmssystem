@@ -1,6 +1,5 @@
 package com.project.rms.vehicle;
 
-
 public abstract class VehicleDecorator extends Vehicle
 {
 	protected Vehicle vDec;
@@ -9,7 +8,7 @@ public abstract class VehicleDecorator extends Vehicle
 		this.vDec = vDec;
 	}
 	
-	public abstract Sting getFeatureDescription() {
+	public String getFeatureDescription() {
 		return vDec.getFeatureDescription();
 	}
 	

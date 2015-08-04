@@ -1,6 +1,5 @@
 package com.project.rms.vehicle;
 
-
 public abstract class Vehicle
 {
 	
@@ -18,18 +17,18 @@ public abstract class Vehicle
 	}
 	
 	public void addVehicle(){
-		System.out.println(vehicleState.addVehicle())
+		System.out.println(vehicleState.addVehicle());
 	}
 	
 	public void activeVehicle() {
-		System.out.println(vehicleState.activeVehicle())
+		System.out.println(vehicleState.activeVehicle());
 	}
 	
-	public void setVehicleState(vehicleState vs) {
+	public void setVehicleState(VehicleState vs) {
 		vehicleState = vs;	
 	}
 	
-	public vehicleState getVehicleState() {
+	public VehicleState getVehicleState() {
 		return vehicleState;	
 	}
 	
@@ -41,10 +40,7 @@ public abstract class Vehicle
 		// TODO implement me	
 	}
 	
-	public abstract void cost() {
-	
-	}
-	
-	public String getFeatureDescription();
+	public abstract int cost();
+	public abstract String getFeatureDescription();
 	
 }

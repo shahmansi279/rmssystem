@@ -6,9 +6,9 @@ import java.util.HashSet;
 public class VPending implements VehicleState
 {
 	
-	public Set<Vehicle> vehicle;
+	public Vehicle vehicle;
 	
-	public VPending(){
+	public VPending(Vehicle vehicle){
 		super();
 	}
 	
@@ -28,4 +28,5 @@ public class VPending implements VehicleState
 	}
 	
 }
+
 
