@@ -4,8 +4,8 @@ import java.util.Set;
 
 import com.project.rms.service.ServiceType;
 import com.project.rms.utils.GPSHelper;
-import com.project.rms.vehicle.Vehicle;
-import com.project.rms.vehicle.VehicleManager;
+//import com.project.rms.vehicle.Vehicle;
+//import com.project.rms.vehicle.VehicleManager;
 
 import java.sql.Timestamp;
 import java.text.DateFormat;
@@ -32,12 +32,12 @@ public class ReqMgmtFacade {
 	 * @ordered
 	 */
 	RequestComparator comparator;
-	VehicleManager vmgr;
+//	VehicleManager vmgr;
 	QueueManager q;
 	static PriorityQueue<Request> pQueue;
 	Request request;
 	public Set<Request> requests;
-	Vehicle vehicle;
+	//Vehicle vehicle;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -50,7 +50,7 @@ public class ReqMgmtFacade {
 
 		this.pQueue = new PriorityQueue<Request>(comparator);
 		this.q = new QueueManager(pQueue);
-		this.vmgr = new VehicleManager();
+	//	this.vmgr = new VehicleManager();
 
 	}
 
@@ -116,13 +116,13 @@ public class ReqMgmtFacade {
 		allocateResources(r);
 		
 		
-		Trip trip = generateTrip(request, vehicle);
+		//Trip trip = generateTrip(request, vehicle);
 
-		if (trip != null) {
+	//	if (trip != null) {
 
 			System.out.println("Generated Trip for Customer Request");
 
-		}
+	//	}
 
 	}
 
@@ -139,7 +139,7 @@ public class ReqMgmtFacade {
 
 	}
 
-	Vehicle fetchResource(Request r) {
+	void fetchResource(Request r) {
 		
 		System.out.println("Checking Resource Pool for the Request");
 
@@ -147,16 +147,16 @@ public class ReqMgmtFacade {
 		// Retrieving Contractor Owned or Company Owned Vehicle based on Request
 
 		
-		Vehicle v=null;
+	//	String v=null;
 		
 		//Vehicle v=vmgr.retrieveVehicle(r.getServiceType());
 		
-		if(v!=null)
+	//	if(v!=null)
 			
 		System.out.println("Acquired Resources for the Request");
 
 		
-		return v;
+		//return v;
 
 	}
 
@@ -208,7 +208,7 @@ public class ReqMgmtFacade {
 		return this.q.retrieveRequestFromQueue();
 	}
 
-	Trip generateTrip(Request r, Vehicle v) {
+	/*Trip generateTrip(Request r, Vehicle v) {
 
 		Trip t = new Trip();
 		t.setTripPickUpTime(r.getrPickupDateTime());
@@ -220,5 +220,5 @@ public class ReqMgmtFacade {
 
 		return t;
 
-	}
+	}*/
 }
