@@ -1,6 +1,8 @@
 package com.project.rms.service;
 import java.util.Set;
 
+import com.project.rms.request.Trip;
+
 import java.util.HashSet;
 
 
@@ -91,7 +93,14 @@ public abstract class Service
 	 * @ordered
 	 */
 	
-	public void computeFare() {
+	final void computeFare(Trip trip) {
+		
+		System.out.println("Calculating Trip Fare");
+		
+		computeDistance(trip);
+		
+		calculateBaseFare();
+		
 		// TODO implement me	
 	}
 	
@@ -102,8 +111,22 @@ public abstract class Service
 	 * @ordered
 	 */
 	
-	public void calculateBaseFare() {
+	abstract void calculateBaseFare() ;
 		// TODO implement me	
+	
+	abstract void calculateAdditionalCharge();
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!--  end-user-doc  -->
+	 * @generated
+	 * @ordered
+	 */
+	
+	public void computeDistance(Trip trip) {
+		// TODO implement me	
+		
+		System.out.println("Calculating Trip Miles");
+		
 	}
 	
 	/**
@@ -113,18 +136,7 @@ public abstract class Service
 	 * @ordered
 	 */
 	
-	public void computeDistance() {
-		// TODO implement me	
-	}
 	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
-	public abstract void computeAdditionalCharge() ;
 	
 }
 

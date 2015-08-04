@@ -10,5 +10,10 @@ package com.project.rms.service;
 public  interface ServiceType 
 {
 	
+	
+	
+	public double calculateBaseFare(Service service);
+	
+	
 }
 

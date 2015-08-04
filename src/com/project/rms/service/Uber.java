@@ -36,8 +36,18 @@ public class Uber extends Service
 	 * @ordered
 	 */
 	
-	public void computeAdditionalCharge() {
-		// TODO implement me	
+	
+
+	@Override
+	void calculateBaseFare() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	void calculateAdditionalCharge() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

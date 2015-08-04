@@ -27,17 +27,18 @@ public class SharedTaxi implements ServiceType
 	 */
 	public SharedTaxi(){
 		super();
+		
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
-	public void computeBaseFare() {
+	public void computeBaseFare(Service service) {
 		// TODO implement me	
+	}
+
+
+	@Override
+	public double calculateBaseFare(Service service) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 }

@@ -2,7 +2,10 @@ package com.project.rms.request;
 
 import java.util.Set;
 
+import com.project.rms.service.ServiceType;
 import com.project.rms.utils.GPSHelper;
+import com.project.rms.vehicle.Vehicle;
+import com.project.rms.vehicle.VehicleManager;
 
 import java.sql.Timestamp;
 import java.text.DateFormat;
@@ -21,6 +24,7 @@ import java.util.PriorityQueue;
  */
 
 public class ReqMgmtFacade {
+
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -28,10 +32,12 @@ public class ReqMgmtFacade {
 	 * @ordered
 	 */
 	RequestComparator comparator;
+	VehicleManager vmgr;
 	QueueManager q;
 	static PriorityQueue<Request> pQueue;
-	Request r;
-	public Set<Request> request;
+	Request request;
+	public Set<Request> requests;
+	Vehicle vehicle;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -44,6 +50,7 @@ public class ReqMgmtFacade {
 
 		this.pQueue = new PriorityQueue<Request>(comparator);
 		this.q = new QueueManager(pQueue);
+		this.vmgr = new VehicleManager();
 
 	}
 
@@ -54,45 +61,69 @@ public class ReqMgmtFacade {
 	 * @ordered
 	 */
 
-	public Request createRequest(String rPickLocAddr, String rDestLoc, Date rPickUpTime, String rServiceType,
+	public Request createRequest(String rPickLocAddr, String rDestLoc, Date rPickUpTime, ServiceType rServiceType,
 			String rVehicle, String rFeature)
 
 	{
 
-		GPSHelper g = new GPSHelper();
-		Request r = new Request();
+		this.request = new Request();
 
-		r.setrPickLoc(g.getGPSLocation(rPickLocAddr));
-		r.setrDestLoc(g.getGPSLocation(rDestLoc));
-		r.setrPickupDateTime(rPickUpTime);
-		r.setrServiceType(rServiceType);
-		r.setrFeature(rFeature);
-		r.setrStatus("Created");
+		request.setrPickUpAddr(rPickLocAddr);
+		request.setrDestAddr(rDestLoc);
+		request.setrPickupDateTime(rPickUpTime);
+		request.setrServiceType(rServiceType);
+		request.setrFeature(rFeature);
+		request.setrStatus("Created");
+		request.setrState(new ProcessingState());
+		request.executeAction(this);
 
 		System.out.println("Request Created with ID : ");
-		return r;
+
+		return request;
 
 		// TODO implement me
 	}
 
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
+	public boolean validateRequest(Request r) {
+
+		System.out.println("Validating Request Parameters");
+
+		r.executeAction(this);
+		return true;
+	}
+
 	public void updateRequestState() {
 
 		// TODO implement me
 	}
 
-	public void updateRequest() {
+	public void updateRequest(String paramName, String newValue) {
+
+		System.out.println("Updating Request");
 
 		// TODO implement me
 	}
 
-	public void processRequest() {
-		// TODO implement me
+	public void processRequest(Request r) {
+
+		System.out.println("Retrieving Resources for the Requested Service Type");
+
+		
+		//Check Resource Availability and Allocate Resources
+		
+		fetchResource(r);
+	
+		allocateResources(r);
+		
+		
+		Trip trip = generateTrip(request, vehicle);
+
+		if (trip != null) {
+
+			System.out.println("Generated Trip for Customer Request");
+
+		}
+
 	}
 
 	public void sendNotifications() {
@@ -108,6 +139,36 @@ public class ReqMgmtFacade {
 
 	}
 
+	Vehicle fetchResource(Request r) {
+		
+		System.out.println("Checking Resource Pool for the Request");
+
+		
+		// Retrieving Contractor Owned or Company Owned Vehicle based on Request
+
+		
+		Vehicle v=null;
+		
+		//Vehicle v=vmgr.retrieveVehicle(r.getServiceType());
+		
+		if(v!=null)
+			
+		System.out.println("Acquired Resources for the Request");
+
+		
+		return v;
+
+	}
+
+	void allocateResources(Request r) {
+
+		// Update vehicle and allocate it to trip
+	
+		// v.updateVehicleState(new )
+		
+		System.out.println("Allocated Vehicle for the Request");
+
+	}
 	// Polling Request from PQ
 
 	public Request pollRequestFromQueue() {
@@ -127,8 +188,10 @@ public class ReqMgmtFacade {
 		int diffHours = (int) (diff / (60 * 60 * 1000));
 		System.out.println(diffHours);
 		if (endDate != null) {
-			if (diffHours <= 2&&diffHours>=0) {
+			if (diffHours <= 2 && diffHours >= 0) {
 				// updateRequestState();
+				// processRequest();
+
 				System.out.println("Yes its 2");
 				this.q.removeRequestFromQueue();
 				manageQueueRequest();
@@ -145,4 +208,17 @@ public class ReqMgmtFacade {
 		return this.q.retrieveRequestFromQueue();
 	}
 
+	Trip generateTrip(Request r, Vehicle v) {
+
+		Trip t = new Trip();
+		t.setTripPickUpTime(r.getrPickupDateTime());
+		t.setTripStatus("Initiated");
+		t.setTripSource(r.getrPickUpAddr());
+		t.setTripDest(r.getrDestAddr());
+		t.setSvcType(r.getrServiceType() );
+		t.setTripCustomers(r.getCustomers());
+
+		return t;
+
+	}
 }

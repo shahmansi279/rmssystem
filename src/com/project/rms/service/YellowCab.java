@@ -28,6 +28,18 @@ public class YellowCab extends Service
 	public void setRule() {
 		// TODO implement me	
 	}
+
+	@Override
+	void calculateBaseFare() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	void calculateAdditionalCharge() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	/**
 	 * <!-- begin-user-doc -->
@@ -36,9 +48,7 @@ public class YellowCab extends Service
 	 * @ordered
 	 */
 	
-	public void computeAdditionalCharge() {
-		// TODO implement me	
-	}
+	
 	
 }
 
