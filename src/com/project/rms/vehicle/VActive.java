@@ -1,15 +1,27 @@
 package com.project.rms.vehicle;
 
+import java.util.Scanner;
+
 public class VActive implements VehicleState
 {
 	
 	public Vehicle vehicle;
 	
-	public VActive(){
+	public VActive(Vehicle vehicle){
 		super();
 	}
 	
-	public String receiveRequest(){
+	public void doAction(Vehicle vehicle){
+		System.out.println("Vehicle is in active state");
+		//vehicle.setVehicleState(this);
+		
+    	  
+      }
+}
+	
+	
+	
+	/*public String receiveRequest(){
 		vehicle.setVehicleState(new VPending(vehicle));
 		return "Vehicle added";
 	}
@@ -29,6 +41,6 @@ public class VActive implements VehicleState
 	
 	public void updateVehicleState() {
 		// TODO implement me	
-	}
+	}*/
 	
-}
+

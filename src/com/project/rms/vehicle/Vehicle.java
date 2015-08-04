@@ -11,18 +11,19 @@ public abstract class Vehicle
 	public Seats description;
 	public VehicleType vehicleType;
 	public VehicleState vehicleState;
+	public String vHealth;
 
 	public Vehicle(){
 		vehicleState = new VPending(this);
 	}
 	
-	public void addVehicle(){
+	/*public void addVehicle(){
 		System.out.println(vehicleState.addVehicle());
 	}
 	
 	public void activeVehicle() {
 		System.out.println(vehicleState.activeVehicle());
-	}
+	}*/
 	
 	public void setVehicleState(VehicleState vs) {
 		vehicleState = vs;	
@@ -32,8 +33,13 @@ public abstract class Vehicle
 		return vehicleState;	
 	}
 	
-	public void setVehicleType() {
+	public void setVehicleType(VehicleType vt) {
 		// TODO implement me	
+		vehicleType = vt;
+	}
+	
+	public VehicleType getVehicleType() {
+		return vehicleType;	
 	}
 	
 	public void decorateVehicle() {
