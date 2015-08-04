@@ -25,12 +25,17 @@ public class RecallNotification extends Notification implements Subject
 	
 	public void appendMessage() {
 		// TODO implement me	
-		System.out.println("Safety Recall Notification");
-		System.out.println("Please take necessary action to repair your vehicle");
-		this.changed=true;
-        notifyObservers();
+		System.out.println("------------------------------");
+		System.out.println("Recall Notification Available");
 	}
 
+	public void postMessage(String msg){
+        System.out.println("Please take necessary action to repair your vehicle"+msg);
+        this.message=msg;
+        this.changed=true;
+        notifyObservers();
+    }
+	
 	@Override
 	public void register(Observer obj) {
 		// TODO Auto-generated method stub
