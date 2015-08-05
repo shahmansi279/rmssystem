@@ -34,11 +34,11 @@ public class QueueManager {
 
 	//Add Request to Pqueue
 	
-	void addRequestToQueue(Request r)
+	boolean addRequestToQueue(Request r)
 
 	{
 
-		pQueue.add(r);
+		return pQueue.add(r);
 
 	}
 

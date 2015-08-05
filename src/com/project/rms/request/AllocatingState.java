@@ -10,8 +10,52 @@ public class AllocatingState implements RequestState {
 		// TODO Auto-generated method stub
 
 		System.out.println("Request State -- Allocating State");
+		if(retrieveFromQueue( r,  rf))
+		{
+			processRequest(r, rf);
+			r.setrState(new ProcessedState());
+			r.executeAction(rf);
+		}
+		
+		else{
+			
+			
+			//failure state yet to code
+		}
+	}
 
-		r.setrState(new ProcessedState());
+	@Override
+	public boolean validateRequest(Request r) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean addtoQueue(Request r, ReqMgmtFacade rf) {
+		return false;
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public boolean processRequest(Request r, ReqMgmtFacade rf) {
+		
+		rf.processRequest(r);
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean retrieveFromQueue(Request r, ReqMgmtFacade rf) {
+
+		if (rf.removeRequestFromQueue().getrId()== r.getrId())
+			
+		return true;
+		
+		else return false;
+
+		// TODO Auto-generated method stub
+
 	}
 
 }
