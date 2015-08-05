@@ -2,9 +2,6 @@ package com.project.rms.vehicle;
 
 import java.util.List;
 
-import com.project.rms.accounts.AccountClient;
-import com.project.rms.accounts.Member;
-
 public class VehicleManager
 {
 	Vehicle veh;
@@ -17,7 +14,7 @@ public class VehicleManager
 		// TODO implement me
 		 if (!vehicles.isEmpty())
 	        {
-	    	        veh = new Vehicle(v.vId,v.vModel,v.vYear,v.vIn,v.description,v.vehicleType,v.vehicleState,v.vHealth,v.getVehicleState());
+	    	        veh = new Car(v.vId,v.vModel,v.vYear,v.vIn,v.description,v.vehicleType,v.vehicleState,v.vHealth,v.getVehicleState());
 	    	        vehicles.add(veh);
 	    	    
 	    	    System.out.println("Number of vehicles after adding = "
@@ -43,7 +40,7 @@ public class VehicleManager
     	for (int i = 0; i < VehicleClient.vehicles.size() && !retflag; i++) 
         {
      	        
-                 if (VehicleClient.vehicles.get(i).getVehicleType().equalsIgnoreCase(vehicleType))
+                 if (VehicleClient.vehicles.get(i).getVehicleType() != null) //.equalsIgnoreCase(vehicleType))
                  {
                  	System.out.println("Vehicle type retrieved "+VehicleClient.vehicles.get(i).vehicleType);
                  	retflag=true;

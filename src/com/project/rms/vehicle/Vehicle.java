@@ -13,19 +13,18 @@ public abstract class Vehicle
 	public VehicleState vehicleState;
 	public String vHealth;
 	
-	public Vehicle(String id, String model, int year, String vin, 
-			Seats desc, VehicleType type, VehicleState state, String health){
+	public Vehicle(){
 		
 		vehicleState = new VPending(this);
 		
-		this.vId = id;
+		/*this.vId = id;
 		this.vModel = model;
 		this.vYear = year;
 		this.vIn = vin;
 		this.description = desc;
 		this.vehicleType = type;
 		this.vehicleState = state;
-		this.vHealth = health;
+		this.vHealth = health;*/
 	}
 	
 	public String getvId() {
