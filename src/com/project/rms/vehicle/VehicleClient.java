@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.project.rms.accounts.Member;
+
 public class VehicleClient {
 	public static Vehicle vehicle;
 	public static String vId;
@@ -11,6 +13,10 @@ public class VehicleClient {
 	static VehicleManager vm = new VehicleManager();
 	
 	public static void main(String[] args){
+		
+		Vehicle v1;
+		//v1 = new Car("1","Toyota",2014,"1234567890",5,"Company Owned",Active,"Good");
+	    //vehicles.add(v1);
 		
 		System.out.println("RMS Vehicle Management");
 		System.out.println("------------------------");
@@ -20,7 +26,7 @@ public class VehicleClient {
 		int select = scanner2.nextInt ();
 		
 		if (select == 1){
-			//vehicle = new Vehicle();
+			vehicle = new Car();
 			System.out.println("RMS Vehicle Management");
 			System.out.println("------------------------");
 			System.out.println("1. Add Vehicle");
@@ -28,7 +34,7 @@ public class VehicleClient {
 			Scanner scanner3 = new Scanner ( System.in );
 			int s = scanner3.nextInt ();
 			if (s == 1){
-				//vehicle.setVehicleState(new VPending(vehicle));
+				vehicle.setVehicleState(new VPending(vehicle));
 				VPending vp = new VPending(vehicle);
 				vp.doAction(vehicle);
 

@@ -9,7 +9,7 @@ public abstract class Vehicle
 	public int vYear;
 	public String vIn;
 	public Seats description;
-	public VehicleType vehicleType;
+	public String vehicleType;
 	public VehicleState vehicleState;
 	public String vHealth;
 	
@@ -96,12 +96,12 @@ public abstract class Vehicle
 		return vehicleState;	
 	}
 	
-	public void setVehicleType(VehicleType vt) {
+	public void setVehicleType(String vt) {
 		// TODO implement me	
 		vehicleType = vt;
 	}
 	
-	public VehicleType getVehicleType() {
+	public String getVehicleType() {
 		return vehicleType;	
 	}
 	

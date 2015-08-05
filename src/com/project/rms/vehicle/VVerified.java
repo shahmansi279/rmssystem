@@ -15,7 +15,7 @@ public class VVerified implements VehicleState
 	
 	public void doAction(Vehicle vehicle){
 		System.out.println("Vehicle request is in verified state");
-		//vehicle.setVehicleState(this);
+		vehicle.setVehicleState(this);
 		System.out.println("Is vehicle");
 		System.out.println("1. company owned");
 		System.out.println("2. contractor owned");

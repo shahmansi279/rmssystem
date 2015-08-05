@@ -12,21 +12,15 @@ public class VehicleManager
 	
 	public void addVehicle(Vehicle v,  List<Vehicle> vehicles) {
 		// TODO implement me
-		 if (!vehicles.isEmpty())
-	        {
-	    	        veh = new Car(v.vId,v.vModel,v.vYear,v.vIn,v.description,v.vehicleType,v.vehicleState,v.vHealth,v.getVehicleState());
-	    	        vehicles.add(veh);
-	    	    
-	    	    System.out.println("Number of vehicles after adding = "
-	    				+ vehicles.size());
-	    		for (int i = 0; i < vehicles.size(); i++)
-	    			
-	    		{
-	    	
-	    				System.out.println("\n"+vehicles.get(i).getvId()+ " " +vehicles.get(i).getvModel()+" * "+ vehicles.get(i).getvYear()+ " * "+vehicles.get(i).getvIn() + " * "+vehicles.get(i).getDescription());
+		 if (!vehicles.isEmpty()){
+			 veh = new Car(v.vId,v.vModel,v.vYear,v.vIn,v.description,v.vehicleType,v.getVehicleState(),v.vHealth);
+	    	 vehicles.add(veh);
+	    	 System.out.println("Number of vehicles after adding = "+ vehicles.size());
+	    	 for (int i = 0; i < vehicles.size(); i++){
+	    		 System.out.println("\n"+vehicles.get(i).getvId()+ " " +vehicles.get(i).getvModel()+" * "+ vehicles.get(i).getvYear()+ " * "+vehicles.get(i).getvIn() + " * "+vehicles.get(i).getDescription());
 	        	
 	    		}
-	  }
+		 }
 		
 		
 	}

@@ -13,13 +13,11 @@ public class VActive implements VehicleState
 	
 	public void doAction(Vehicle vehicle){
 		System.out.println("Vehicle is in active state");
-		//vehicle.setVehicleState(this);
+		vehicle.setVehicleState(this);
 		
     	  
       }
 }
-	
-	
 	
 	/*public String receiveRequest(){
 		vehicle.setVehicleState(new VPending(vehicle));

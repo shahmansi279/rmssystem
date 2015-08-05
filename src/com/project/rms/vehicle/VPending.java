@@ -15,7 +15,7 @@ public class VPending implements VehicleState
 
 	public void doAction(Vehicle vehicle){
 			System.out.println("Vehicle request is in pending state");
-			//vehicle.setVehicleState(this);
+			vehicle.setVehicleState(this);
 			System.out.println("Is vehicle health good or bad: ");
 			System.out.println("1. good ");
 			System.out.println("2. bad ");
