@@ -10,49 +10,22 @@ import com.project.rms.accounts.Member;
 import com.project.rms.request.Request;
 
 public class VehicleClient {
-	public static Vehicle vehicle;
+	public static Vehicle vehicle = new Car();
 	public static String vId;
 	public static  List<Vehicle> vehicles = new ArrayList<Vehicle>();
 	static VehicleManager vm = new VehicleManager();
 	
 	public static void main(String[] args){
 		
-		/*Vehicle v1;
-		v1 = new Car("1","Toyota",2014,"1234567890",5,"Company Owned",Active,"Good");
-	    vehicles.add(v1);*/
 	    
-	    Scanner sc = new Scanner(System.in);
-		System.out.println("\nPlease enter vehicle id ");
-		String vId = sc.nextLine();
-		System.out.println("\nPlease enter vehicle model");
-		String vModel = sc.nextLine();
-		System.out.println("\nPlease enter vehicle year");
-		String vYear = sc.nextLine();
-		System.out.println("\nPlease enter vehicle identification number");
-		String vIn = sc.nextLine();
-		System.out.println("\nPlease enter vehicle type");
-		System.out.println("\n1. Contractor owned");
-		System.out.println("\n2. Company Owned");
-		int vType = sc.nextInt();
-		System.out.println("\nIs vehicle health good or bad");
-		System.out.println("\n1. Good");
-		System.out.println("\n2. Bad");
-		int vHealth = sc.nextInt();
-		
-		Vehicle v=vm.addVehicle(vId,vModel,vYear,vIn,vType,vHealth);
-
-		
-		v.setVehicleState(new VPending());
-		
 		System.out.println("RMS Vehicle Management");
 		System.out.println("------------------------");
-		System.out.println("1. Manage Inventory");
+		System.out.println("1. CRUD Vehicle");
 		System.out.println("2. Choose a Vehicle");
 		Scanner scanner2 = new Scanner ( System.in );
 		int select = scanner2.nextInt ();
 		
 		if (select == 1){
-			vehicle = new Car();
 			System.out.println("RMS Vehicle Management");
 			System.out.println("------------------------");
 			System.out.println("1. Add Vehicle");
@@ -60,9 +33,30 @@ public class VehicleClient {
 			Scanner scanner3 = new Scanner ( System.in );
 			int s = scanner3.nextInt ();
 			if (s == 1){
+				
+				Scanner sc = new Scanner(System.in);
+				System.out.println("\nPlease enter Vehicle ID ");
+				String vId = sc.nextLine();
+				System.out.println("\nPlease enter Vehicle Model");
+				String vModel = sc.nextLine();
+				System.out.println("\nPlease enter Vehicle Year");
+				String vYear = sc.nextLine();
+				System.out.println("\nPlease enter Vehicle Identification Number(VIN)");
+				String vIn = sc.nextLine();
+				System.out.println("\nPlease choose a Vehicle Type");
+				System.out.println("1. Contractor Owned");
+				System.out.println("2. Company Owned");
+				int vType = sc.nextInt();
+				System.out.println("\nIs vehicle health good or bad");
+				System.out.println("1. Good");
+				System.out.println("2. Bad");
+				int vHealth = sc.nextInt();
+				
+				Vehicle v = vm.addVehicle(vId,vModel,vYear,vIn,vType,vHealth);
+				//System.out.println("Vehicle Details - "+v);
 				vehicle.setVehicleState(new VPending());
 				VPending vp = new VPending();
-				vp.doAction(vehicle);
+				vp.doAction(v);
 
 			}
 			else if (s == 2){

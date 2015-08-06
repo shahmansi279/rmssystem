@@ -10,7 +10,7 @@ public class VehicleManager
 	}
 
 	
-	public void addVehicle(String vId,String vModel,String vYear,String vIn,int vType,int vHealth) {
+	public Vehicle addVehicle(String vId,String vModel,String vYear,String vIn,int vType,int vHealth) {
 		// TODO implement me
 		Vehicle veh = new Car();
 		
@@ -21,6 +21,7 @@ public class VehicleManager
 		veh.setVehicleType(vType);
 		veh.setvHealth(vHealth);
 		
+		return veh;
 		
 	}
 	

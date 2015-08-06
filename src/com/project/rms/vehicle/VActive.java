@@ -13,7 +13,6 @@ public class VActive implements VehicleState
 		System.out.println("Vehicle is in active state");
 		vehicle.setVehicleState(this);
 		
-    	  
       }
 }
 	
