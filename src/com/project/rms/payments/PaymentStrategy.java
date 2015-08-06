@@ -16,7 +16,7 @@ public  interface PaymentStrategy
 	 * @ordered
 	 */
 	
-	public void processPayment(String amount) ;
+	public void processPayment(double amount) ;
 	
 	
 }

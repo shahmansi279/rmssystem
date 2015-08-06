@@ -35,15 +35,16 @@ public class PaymentContext
 	 * @ordered
 	 */
 	
-	public void performProcessPayment() {
+	public void performProcessPayment(double tripFare) {
 		// TODO implement me	
 		
 		System.out.println("We are processing your payment... Thank you for your business");
+		
+		paymentStrategy.processPayment(tripFare);
 	}
 	
-	public void processPayment(String amount)
-	{
-		paymentStrategy.processPayment(amount);
-	}
+	
+
+	
 }
 

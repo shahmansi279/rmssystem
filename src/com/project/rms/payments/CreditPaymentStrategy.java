@@ -38,14 +38,13 @@ public class CreditPaymentStrategy implements PaymentStrategy
 	}
 
 	@Override
-	public void processPayment(String amount ) {
+	public void processPayment(double fareAmount ) {
 		// TODO Auto-generated method stub
 		System.out.println("[______________________________________________________________]");
 		System.out.println("[ ** Pattern ----> Strategy pattern ** ] used to determine payment method. ");
 		System.out.println("[______________________________________________________________]");
-		System.out.println("Payment method is  Creditcard");
-		System.out.println("Payment amount = "+amount);
-		//System.out.println("Member pays $ "+ amount + "using Credit Card");
+		System.out.println("Your Credit Card Payment of  "+ fareAmount +" $ has been processed succesfully");
+		
 	}
 
 	/**
