@@ -1,6 +1,8 @@
 package com.project.rms.accounts;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
-
+import com.project.rms.notification.*;
   
 
 /**
@@ -9,9 +11,9 @@ import java.util.Set;
  * Date: 08/01/2015
  */
 
-public class Member
+public abstract class Member
 {
-	long   nMemberID; 
+	String nMemberID; 
 	String memFname;
 	String memLname;
 	String memEmail;
@@ -27,14 +29,43 @@ public class Member
 	String memPrimeflag;
 	Account account ;
 	
+	//Aug 4 2015
+    List<Notification> an;
+    String memRole;  // Aug 5 2015
 	
-	public Member( long i, String strmFName, String strmLName, String strmEmail, String strmPhone,
+	public String getMemRole() {
+		return memRole;
+	}
+
+
+
+	public void setMemRole(String memRole) {
+		this.memRole = memRole;
+	}
+
+
+
+	public List<Notification> getAn() {
+		return an;
+	}
+
+
+
+	public void setAn(List<Notification> an) {
+		this.an = an;
+	}
+
+
+
+	/*public Member( long i, String strmFName, String strmLName, String strmEmail, String strmPhone,
 			String strmAddress1, String strmAddress2, String strmCity, String strmState, String strmZipcode,String strmPrefnotfn
-	,String strmPrefpmt, String strmCreditcard, String strmPrimeflag )
+	,String strmPrefpmt, String strmCreditcard, String strmPrimeflag )*/
+	 public Member()
 	{
 		// TODO Auto-generated constructor stub
          //to do generate random number based on date and time - prefix cust
-	   this.memFname =strmFName;
+		
+	 /*  this.memFname =strmFName;
 	   this.memLname = strmLName;
 	   this.memEmail = strmEmail;
 	   this.memPhone = strmPhone;
@@ -47,7 +78,7 @@ public class Member
 	   this.memPrefpmt = strmPrefpmt;
 	   this.memCreditcard = strmCreditcard;
 	   this.memPrimeflag = strmPrimeflag;
-	   this.nMemberID = i;
+	   this.nMemberID = i;*/
  
 	   
 	}
@@ -57,7 +88,7 @@ public class Member
 	/**
 	 * @return the nMemberID
 	 */
-	public final long getnMemberID() {
+	public final String getnMemberID() {
 		return nMemberID;
 	}
 
@@ -66,7 +97,7 @@ public class Member
 	/**
 	 * @param nMemberID the nMemberID to set
 	 */
-	public final void setnMemberID(long nMemberID) {
+	public final void setnMemberID(String nMemberID) {
 		this.nMemberID = nMemberID;
 	}
 

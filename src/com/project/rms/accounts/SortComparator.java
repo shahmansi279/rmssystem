@@ -6,22 +6,9 @@ public class SortComparator implements Comparator<Member>
 
 {
 
-@Override
-		public int compare(Member e1,Member e2)
-	    {
-	        if(e1.getnMemberID() > e2.getnMemberID())
-	        {
-	        	
-	            return 1;
-	        } else 
-	        {
-	            return -1;
-	        }
-	    }
+	@Override
+	public int compare(Member e1, Member e2) {
 
-		
-
-	
+		return e1.getMemFname().compareTo(e2.getMemFname());
 	}
-
-
+}

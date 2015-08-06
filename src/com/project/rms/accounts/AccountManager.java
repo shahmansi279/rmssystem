@@ -13,17 +13,23 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
+import com.project.rms.notification.*;
 
 
 	
 
 	public class AccountManager{
 		//public static List<Member> members = new ArrayList<Member>();
-		 Member sm1;
+		//Aug 4 2015 TBD
+		// Member sm1;
+		Customer cs;
+		SystemAdmin sa;
+		ServiceProvider sp;
 		 
 		
 		
 		//add member
+		//Aug 4 2015
 public  void addMembers(Member m,  List<Member> members1)
 //This method add members to Member array members1
 		{
@@ -32,10 +38,13 @@ public  void addMembers(Member m,  List<Member> members1)
 	        if (!members1.isEmpty())
 	        {
 	        	
-	        	
-	    	        sm1 = new Member(m.nMemberID,m.memFname,m.memLname,m.memEmail,m.memPhone,m.memAddress1,m.memAddress2,m.memCity,m.getMemState(),m.memZipcode,m.memPrefnotfn,m.memPrefpmt,m.memCreditcard,m.memPrimeflag);
-	    	        members1.add(sm1);
-	    	    
+	        	//Aug 4 2015 TBD
+	        	// DO WE NEED TO instantiate Service Provider, SysAdmin??
+	    	        cs = new Customer(m.nMemberID,m.memFname,m.memLname,m.memEmail,m.memPhone,m.memAddress1,m.memAddress2,m.memCity,m.getMemState(),m.memZipcode,m.memPrefnotfn,m.memPrefpmt,m.memCreditcard,m.memPrimeflag,m.memRole);
+	    	        members1.add(cs);
+	    	       
+	    	        
+	    	        
 	    	    System.out.println("After adding the size of the members arraylist = "
 	    				+ members1.size());
 	    		//sortMembers(members);
@@ -43,7 +52,7 @@ public  void addMembers(Member m,  List<Member> members1)
 	    			
 	    		{
 	    	
-	    				System.out.println("\n"+members1.get(i).getnMemberID()+ " " +members1.get(i).getMemFname()+" * "+ members1.get(i).getMemLname()+ " * "+members1.get(i).getMemEmail() + " * "+members1.get(i).getMemPhone());
+	    				System.out.println("\n"+members1.get(i).getnMemberID()+ " " +members1.get(i).getMemFname()+" * "+ members1.get(i).getMemLname()+ " * "+members1.get(i).getMemEmail() + " * "+members1.get(i).getMemPhone()+ " * "+members1.get(i).getMemRole());
 	    				//System.out.println(members1.get(i).getMemLname());
 	        	
 	    		}
@@ -109,7 +118,7 @@ public static void removeCustomer(String CustFName) {
 
 	}
 
-public static void retrieveCustomer(String CustFName) 
+public static Member retrieveCustomer(String memberId) 
 
 {
 	boolean retflag=false;
@@ -118,10 +127,11 @@ public static void retrieveCustomer(String CustFName)
     	for (int i = 0; i < AccountClient.members1.size() && !retflag; i++) 
         {
      	        
-                 if (AccountClient.members1.get(i).getMemFname().equalsIgnoreCase(CustFName))
+                 if (AccountClient.members1.get(i).getnMemberID().equalsIgnoreCase(memberId))
                  {
-                 	System.out.println("Member First name retrieved "+AccountClient.members1.get(i).memFname);
-                 	retflag=true;
+                 	return AccountClient.members1.get(i);
+                 	
+                 	//retflag=true;
                  
                  }
                  
@@ -129,16 +139,17 @@ public static void retrieveCustomer(String CustFName)
                 // System.out.println("Size of the list after retrieve operation is "+ AccountClient.members1.size());
 
          }
-    	 if (retflag)
+    	 /*if (retflag)
     	     System.out.println("Member has been retrieved successfully!");
     	 else 
-    		 System.out.println("Member not found.. Pl try again..!");
+    		 System.out.println("Member not found.. Pl try again..!");*/
+		return null;
     	
-    }
+    
+}
 
 
-
-public static void SearchCustomer(long CustId) {
+public static void SearchCustomer(String CustId) {
 	// TODO implement me	
 	// This method is used to retrieve a member from the array
     {	
@@ -186,9 +197,10 @@ public static void updateCustomer(String CustFName, String CEmail) {
      	        
                  if (AccountClient.members1.get(i).getMemFname().equalsIgnoreCase(CustFName))
                  {
-                 	System.out.println("Member Email Updated for "+AccountClient.members1.get(i).memFname);
+                 	
                  	AccountClient.members1.get(i).memEmail= CEmail;
                  	updtflag = true;
+                 	System.out.println("Member Email Updated for "+AccountClient.members1.get(i).memFname+" "+AccountClient.members1.get(i).memEmail);
                  	System.out.println("Member has been updated successfully!");
                  }
          

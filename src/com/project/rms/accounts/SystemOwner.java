@@ -9,8 +9,7 @@ import com.project.rms.notification.Observer;
  * @generated
  */
 
-public class SystemOwner extends Member implements Observer
-{
+public class SystemOwner extends Member{
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->
@@ -28,6 +27,8 @@ public class SystemOwner extends Member implements Observer
 	public SystemOwner(){
 		super();
 	}
+
+	
 
 }
 
