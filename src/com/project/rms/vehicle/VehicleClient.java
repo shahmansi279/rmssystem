@@ -1,10 +1,13 @@
 package com.project.rms.vehicle;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
 import com.project.rms.accounts.Member;
+import com.project.rms.request.Request;
 
 public class VehicleClient {
 	public static Vehicle vehicle;
@@ -14,9 +17,32 @@ public class VehicleClient {
 	
 	public static void main(String[] args){
 		
-		Vehicle v1;
-		//v1 = new Car("1","Toyota",2014,"1234567890",5,"Company Owned",Active,"Good");
-	    //vehicles.add(v1);
+		/*Vehicle v1;
+		v1 = new Car("1","Toyota",2014,"1234567890",5,"Company Owned",Active,"Good");
+	    vehicles.add(v1);*/
+	    
+	    Scanner sc = new Scanner(System.in);
+		System.out.println("\nPlease enter vehicle id ");
+		String vId = sc.nextLine();
+		System.out.println("\nPlease enter vehicle model");
+		String vModel = sc.nextLine();
+		System.out.println("\nPlease enter vehicle year");
+		String vYear = sc.nextLine();
+		System.out.println("\nPlease enter vehicle identification number");
+		String vIn = sc.nextLine();
+		System.out.println("\nPlease enter vehicle type");
+		System.out.println("\n1. Contractor owned");
+		System.out.println("\n2. Company Owned");
+		int vType = sc.nextInt();
+		System.out.println("\nIs vehicle health good or bad");
+		System.out.println("\n1. Good");
+		System.out.println("\n2. Bad");
+		int vHealth = sc.nextInt();
+		
+		Vehicle v=vm.addVehicle(vId,vModel,vYear,vIn,vType,vHealth);
+
+		
+		v.setVehicleState(new VPending());
 		
 		System.out.println("RMS Vehicle Management");
 		System.out.println("------------------------");
@@ -34,8 +60,8 @@ public class VehicleClient {
 			Scanner scanner3 = new Scanner ( System.in );
 			int s = scanner3.nextInt ();
 			if (s == 1){
-				vehicle.setVehicleState(new VPending(vehicle));
-				VPending vp = new VPending(vehicle);
+				vehicle.setVehicleState(new VPending());
+				VPending vp = new VPending();
 				vp.doAction(vehicle);
 
 			}

@@ -9,7 +9,7 @@ public class VVerified implements VehicleState
 	
 	public Vehicle vehicle;
 	
-	public VVerified(Vehicle vehicle){
+	public VVerified(){
 		super();
 	}
 	
@@ -22,7 +22,8 @@ public class VVerified implements VehicleState
 		Scanner s = new Scanner ( System.in );
 		int vType = s.nextInt ();
         if (vType == 1){
-        	VActive va = new VActive(vehicle);
+        	VActive va = new VActive();
+        	vehicle.setVehicleState(new VActive());
 			va.doAction(vehicle);
       }else if(vType == 2){
     	  

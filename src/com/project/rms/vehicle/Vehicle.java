@@ -5,26 +5,15 @@ public abstract class Vehicle
 	
 	public String vId;
 	public String vModel;
-	//public VehicleType vType;
-	public int vYear;
+	public String vYear;
 	public String vIn;
-	public Seats description;
-	public String vehicleType;
+	public int vehicleType;
 	public VehicleState vehicleState;
-	public String vHealth;
+	public int vHealth;
+	//public String location();
 	
 	public Vehicle(){
-		
-		vehicleState = new VPending(this);
-		
-		/*this.vId = id;
-		this.vModel = model;
-		this.vYear = year;
-		this.vIn = vin;
-		this.description = desc;
-		this.vehicleType = type;
-		this.vehicleState = state;
-		this.vHealth = health;*/
+		vehicleState = new VPending();
 	}
 	
 	public String getvId() {
@@ -47,13 +36,13 @@ public abstract class Vehicle
 	}
 
 
-	public int getvYear() {
+	public String getvYear() {
 		return vYear;
 	}
 
 
-	public void setvYear(int vYear) {
-		this.vYear = vYear;
+	public void setvYear(String vYear2) {
+		this.vYear = vYear2;
 	}
 
 
@@ -67,26 +56,15 @@ public abstract class Vehicle
 	}
 
 
-	public Seats getDescription() {
-		return description;
-	}
 
-
-	public void setDescription(Seats description) {
-		this.description = description;
-	}
-
-
-	public String getvHealth() {
+	public int getvHealth() {
 		return vHealth;
 	}
 
 
-	public void setvHealth(String vHealth) {
-		this.vHealth = vHealth;
+	public void setvHealth(int vHealth2) {
+		this.vHealth = vHealth2;
 	}
-	
-	
 	
 	public void setVehicleState(VehicleState vs) {
 		vehicleState = vs;	
@@ -96,12 +74,12 @@ public abstract class Vehicle
 		return vehicleState;	
 	}
 	
-	public void setVehicleType(String vt) {
+	public void setVehicleType(int vType) {
 		// TODO implement me	
-		vehicleType = vt;
+		vehicleType = vType;
 	}
 	
-	public String getVehicleType() {
+	public int getVehicleType() {
 		return vehicleType;	
 	}
 	

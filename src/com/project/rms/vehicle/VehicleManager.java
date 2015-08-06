@@ -10,22 +10,21 @@ public class VehicleManager
 	}
 
 	
-	public void addVehicle(Vehicle v,  List<Vehicle> vehicles) {
+	public void addVehicle(String vId,String vModel,String vYear,String vIn,int vType,int vHealth) {
 		// TODO implement me
-		 if (!vehicles.isEmpty()){
-			 veh = new Car(v.vId,v.vModel,v.vYear,v.vIn,v.description,v.vehicleType,v.getVehicleState(),v.vHealth);
-	    	 vehicles.add(veh);
-	    	 System.out.println("Number of vehicles after adding = "+ vehicles.size());
-	    	 for (int i = 0; i < vehicles.size(); i++){
-	    		 System.out.println("\n"+vehicles.get(i).getvId()+ " " +vehicles.get(i).getvModel()+" * "+ vehicles.get(i).getvYear()+ " * "+vehicles.get(i).getvIn() + " * "+vehicles.get(i).getDescription());
-	        	
-	    		}
-		 }
+		Vehicle veh = new Car();
+		
+		veh.setvId(vId);
+		veh.setvModel(vModel);
+		veh.setvYear(vYear);
+		veh.setvIn(vIn);
+		veh.setVehicleType(vType);
+		veh.setvHealth(vHealth);
 		
 		
 	}
 	
-	public void retrieveVehicle(String vehicleType) {
+	public Vehicle retrieveVehicle(String vehicleType) {
 		// TODO implement me
 		
 		boolean retflag=false;
@@ -37,20 +36,14 @@ public class VehicleManager
                  if (VehicleClient.vehicles.get(i).getVehicleType() != null) //.equalsIgnoreCase(vehicleType))
                  {
                  	System.out.println("Vehicle type retrieved "+VehicleClient.vehicles.get(i).vehicleType);
-                 	retflag=true;
+                 	
+                 	return VehicleClient.vehicles.get(i);
+                 //	retflag=true;
                  
                  }
-                 
-                 
-                // System.out.println("Size of the list after retrieve operation is "+ AccountClient.members1.size());
-
+            
          }
-    	 if (retflag)
-    	     System.out.println("Vehicle has been retrieved successfully!");
-    	 else 
-    		 System.out.println("Vehicle not found.. Pl try again..!");
     	
-		
 	}
 	
 	public void deleteVehicle(String vId) {

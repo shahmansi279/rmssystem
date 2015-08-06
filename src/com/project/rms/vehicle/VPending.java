@@ -9,7 +9,7 @@ public class VPending implements VehicleState
 	
 	public Vehicle vehicle;
 	
-	public VPending(Vehicle vehicle){
+	public VPending(){
 		super();
 	}
 
@@ -23,7 +23,8 @@ public class VPending implements VehicleState
 			Scanner s = new Scanner(System.in);
 			int vHealth = s.nextInt();
 	        if (vHealth == 1){
-	        	VVerified vf = new VVerified(vehicle);
+	        	VVerified vf = new VVerified();
+	        	vehicle.setVehicleState(new VVerified());
 				vf.doAction(vehicle);
 	      }
 	        else if(vHealth == 2){
@@ -31,47 +32,6 @@ public class VPending implements VehicleState
 
 	      }
 	}
-	
-	/*
-	@Override
-	public String receiveRequest() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String addVehicle() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String activeVehicle() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void updateVehicleState() {
-		// TODO Auto-generated method stub
-		
-	}*/
-	
-	/*public String receiveRequest(){
-		vehicle.setVehicleState(new VPending(vehicle));
-		return "Request received";
-	}
-	public String addVehicle(){
-		return "Must receive a request first";
-	}
-	public String activeVehicle() {
-		return "Must receive a request first";
-	}
-	
-	public void updateVehicleState() {
-		// TODO implement me	
-	}*/
-	
 }
 
 

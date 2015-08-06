@@ -5,11 +5,11 @@ import java.util.Scanner;
 
 import com.project.rms.accounts.*;
 import com.project.rms.request.*;
-//import com.project.rms.vehicle.*;
+import com.project.rms.vehicle.*;
 
 public class RMSClient {
 
-//	Arraylist<Vehicle> vArr;
+	ArrayList<Vehicle> vArr;
 	ArrayList<Request> reqArr;
 	ArrayList<Member> customerArr;
 	ArrayList<Member> driverArr;
