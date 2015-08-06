@@ -24,7 +24,7 @@ public class Trip {
 	public ArrayList<Member> tripCustomers;
 
 	
-	public Member tripCustomer;
+	public ArrayList<String> tripCustomer;
 	public Member vehicleDriver;
 	public String tripStatus;
 	public String tripMiles;
@@ -34,10 +34,20 @@ public class Trip {
 	public Date tripCompletedTime;
 	public ServiceType svcType;
 
-	
+	double tripFare;
+
+	public double getTripFare() {
+		return tripFare;
+	}
+
+	public void setTripFare(double tripFare) {
+		this.tripFare = tripFare;
+	}
 
 	public Trip() {
 		super();
+		
+		tripCustomer= new ArrayList<String>();
 	}
 
 	public String getTripId() {
@@ -112,11 +122,13 @@ public class Trip {
 		this.tripCustomers = tripCustomers;
 	}
 
-	public Member getTripCustomer() {
+	
+
+	public ArrayList<String> getTripCustomer() {
 		return tripCustomer;
 	}
 
-	public void setTripCustomer(Member tripCustomer) {
+	public void setTripCustomer(ArrayList<String> tripCustomer) {
 		this.tripCustomer = tripCustomer;
 	}
 
@@ -130,6 +142,8 @@ public class Trip {
 	public void setSvcType(ServiceType svcType) {
 		this.svcType = svcType;
 	}
+
+	
 	
 	
 

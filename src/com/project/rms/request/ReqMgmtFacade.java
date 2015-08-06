@@ -2,7 +2,13 @@ package com.project.rms.request;
 
 import java.util.Set;
 
+import com.project.rms.accounts.AccountManager;
+import com.project.rms.service.PrivateTaxi;
+import com.project.rms.service.Service;
 import com.project.rms.service.ServiceType;
+import com.project.rms.service.SharedTaxi;
+import com.project.rms.service.Uber;
+import com.project.rms.service.YellowCab;
 import com.project.rms.utils.GPSHelper;
 import com.project.rms.vehicle.Car;
 import com.project.rms.vehicle.CompanyOwned;
@@ -59,35 +65,39 @@ public class ReqMgmtFacade {
 
 	}
 
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
+	
 
 	public Request createRequest(String memberId, String rPickLocAddr, String rDestLoc, Date rPickUpTime,
 			int rServiceType, HashMap<String, String> rFeature)
 
 	{
 
-		Vehicle v = new Car();
-
+		Service svName;
+		ServiceType svcType;
+		String serviceTypeDesc;
 		String serviceType;
+		
+		//Setting the Service for the Type of Service Requested
+		
 		if (rServiceType == 1) {
-			serviceType = "PrivateTaxi";
-			// v.setVehicleType(new CompanyOwned());
+			serviceTypeDesc = "PrivateTaxi";
+			svcType = new PrivateTaxi();
+
+			svName = new YellowCab();
+
 		} else {
-			serviceType = "SharedTaxi";
-			// v.setVehicleType(new ContractorOwned());
+			serviceTypeDesc = "SharedTaxi";
+			svcType = new SharedTaxi();
+			svName = new Uber();
 
 		}
 		this.request = new Request();
-
+		request.setMemberId(memberId);
 		request.setrPickUpAddr(rPickLocAddr);
 		request.setrDestAddr(rDestLoc);
 		request.setrPickupDateTime(rPickUpTime);
-		request.setrServiceType(serviceType);
+		request.setrServiceTypeDesc(serviceTypeDesc);
+		request.setSvcName(svName);
 		request.setrFeature(rFeature);
 		request.setrStatus("Created");
 		request.setrState(new ProcessingState());
@@ -120,27 +130,46 @@ public class ReqMgmtFacade {
 		// TODO implement me
 	}
 
-	public void processRequest(Request r) {
+	public boolean processRequest(Request r) {
 
 		System.out.println("Retrieving Resources for the Requested Service Type");
 
 		// Check Resource Availability and Allocate Resources
 
-		fetchResource(r);
-
-		allocateResources(r);
-
-		// Trip trip = generateTrip(request, vehicle);
-
-		// if (trip != null) {
+		
+		
+		Trip trip= r.getSvcName().dispatchService(r);
+		
+		
+		if (trip != null) {
 
 		System.out.println("Generated Trip for Customer Request");
+	//	sendNotifications(t);
+		return true;
 
-		// }
+		}
+		
+		else{
+			
+			return false;
+		}
 
 	}
 
-	public void sendNotifications() {
+	public void sendNotifications(Trip t) {
+		
+		
+		AccountManager acct=new AccountManager();
+		
+		//loop over array 
+		//acct.retrieveCustomer(t.getTripCustomer());
+		
+		//get preference
+		
+		//invoke notificatioin context
+		//NotificationManager 
+		
+		
 		// TODO implement me
 	}
 
@@ -160,33 +189,7 @@ public class ReqMgmtFacade {
 
 	}
 
-	void fetchResource(Request r) {
-
-		System.out.println("Checking Resource Pool for the Request");
-
-		// Retrieving Contractor Owned or Company Owned Vehicle based on Request
-
-		// String v=null;
-
-		// Vehicle v=vmgr.retrieveVehicle(r.getServiceType());
-
-		// if(v!=null)
-
-		System.out.println("Acquired Resources for the Request");
-
-		// return v;
-
-	}
-
-	void allocateResources(Request r) {
-
-		// Update vehicle and allocate it to trip
-
-		// v.updateVehicleState(new )
-
-		System.out.println("Allocated Vehicle for the Request");
-
-	}
+	
 	// Polling Request from PQ
 
 	public Request pollRequestFromQueue() {
@@ -200,7 +203,7 @@ public class ReqMgmtFacade {
 		Request firstInQueue;
 		firstInQueue = retrieveRequestFromQueue();
 		if (r.getrId() == firstInQueue.getrId())
-			
+
 		{
 
 			retrieveRequestFromQueue().getrPickupDateTime();

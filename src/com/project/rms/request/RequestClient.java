@@ -38,7 +38,7 @@ public class RequestClient {
 
 		
 
-		System.out.println("Continue?[Y/N]");
+		
 		
 		Scanner sc = new Scanner(System.in);
 
@@ -106,6 +106,28 @@ public class RequestClient {
 
 
 	}
+	
+	public void updateTripRequest(){
+		
+		Scanner sc = new Scanner(System.in);
+
+		
+		System.out.println("\nPlease enter your member account id ");
+		String driverId = sc.nextLine();
+		
+
+		System.out.println("\nPlease enter your trip id ");
+		String tripId = sc.nextLine();
+		
+		TripManager tm= new TripManager();
+		Trip trip=tm.fetchTrip(tripId);
+		tm.updateTrip(tripId,driverId);
+		
+		tm.invokePaymentManager();
+	}
+	
+	
+	
 	
 	
 }

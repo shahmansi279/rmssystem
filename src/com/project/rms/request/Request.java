@@ -22,13 +22,13 @@ public class Request
 	public Date rCreationDateTime;
 	public Date rPickupDateTime;
 	public String rStatus;
-	public String rServiceType;
+	public String rServiceTypeDesc;
 	public HashMap<String, String> rFeature;
-
+	public ServiceType svcType;
+	public Service svcName;
 	ReqMgmtFacade reqMgmtFacade;
+	String memberId;
 
-	Member customer;
-	ArrayList<Member> customers;
 	RequestState processingSt = null;
 	RequestState processedSt;
 	RequestState queuedSt;
@@ -50,16 +50,21 @@ public class Request
 
 		processingSt = new ProcessingState();
 
-		/*
-		 * 
-		 * processedSt = new ProcessedState(); queuedSt = new QueuedState();
-		 * 
-		 * acceptedSt = new AcceptedState(); rejectedSt = new RejectedState();
-		 * 
-		 * allocatingSt = new AllocatingState();
-		 * 
-		 */
 	}
+	
+	
+
+	public String getMemberId() {
+		return memberId;
+	}
+
+
+
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
+	}
+
+
 
 	public String getrDestAddr() {
 		return rDestAddr;
@@ -113,22 +118,7 @@ public class Request
 		this.reqMgmtFacade = reqMgmtFacade;
 	}
 
-	public Member getCustomer() {
-		return customer;
-	}
-
-	public void setCustomer(Member customer) {
-		this.customer = customer;
-	}
-
-	public ArrayList<Member> getCustomers() {
-		return customers;
-	}
-
-	public void setCustomers(ArrayList<Member> customers) {
-		this.customers = customers;
-	}
-
+	
 	public RequestState getrState() {
 		return rState;
 	}
@@ -184,12 +174,28 @@ public class Request
 
 	}
 
-	public String getrServiceType() {
-		return rServiceType;
+	public String getrServiceTypeDesc() {
+		return rServiceTypeDesc;
 	}
 
-	public void setrServiceType(String serviceType) {
-		this.rServiceType = serviceType;
+	public void setrServiceTypeDesc(String serviceType) {
+		this.rServiceTypeDesc = serviceType;
+	}
+
+	public ServiceType getSvcType() {
+		return svcType;
+	}
+
+	public void setSvcType(ServiceType svcType) {
+		this.svcType = svcType;
+	}
+
+	public Service getSvcName() {
+		return svcName;
+	}
+
+	public void setSvcName(Service svcName) {
+		this.svcName = svcName;
 	}
 
 }

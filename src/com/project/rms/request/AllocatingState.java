@@ -1,5 +1,7 @@
 package com.project.rms.request;
 
+import com.project.rms.request.FailedState;
+
 public class AllocatingState implements RequestState {
 
 	@Override
@@ -10,18 +12,20 @@ public class AllocatingState implements RequestState {
 		// TODO Auto-generated method stub
 
 		System.out.println("Request State -- Allocating State");
-		if(retrieveFromQueue( r,  rf))
-		{
-			processRequest(r, rf);
-			r.setrState(new ProcessedState());
-			r.executeAction(rf);
+		if (retrieveFromQueue(r, rf)) {
+			if (processRequest(r, rf))
+				
+			{
+				r.setrState(new ProcessedState());
+				r.executeAction(rf);
+
+			}
 		}
 		
-		else{
-			
-			
-			//failure state yet to code
+		else {
+			r.setrState(new FailedState());
 		}
+
 	}
 
 	@Override
@@ -39,7 +43,7 @@ public class AllocatingState implements RequestState {
 
 	@Override
 	public boolean processRequest(Request r, ReqMgmtFacade rf) {
-		
+
 		rf.processRequest(r);
 		// TODO Auto-generated method stub
 		return false;
@@ -48,11 +52,12 @@ public class AllocatingState implements RequestState {
 	@Override
 	public boolean retrieveFromQueue(Request r, ReqMgmtFacade rf) {
 
-		if (rf.removeRequestFromQueue().getrId()== r.getrId())
-			
-		return true;
-		
-		else return false;
+		if (rf.removeRequestFromQueue().getrId() == r.getrId())
+
+			return true;
+
+		else
+			return false;
 
 		// TODO Auto-generated method stub
 
