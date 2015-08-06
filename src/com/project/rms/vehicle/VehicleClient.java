@@ -1,13 +1,8 @@
 package com.project.rms.vehicle;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
-
-import com.project.rms.accounts.Member;
-import com.project.rms.request.Request;
 
 public class VehicleClient {
 	public static Vehicle vehicle = new Car();
@@ -17,7 +12,7 @@ public class VehicleClient {
 	
 	public static void main(String[] args){
 		
-	    
+
 		System.out.println("RMS Vehicle Management");
 		System.out.println("------------------------");
 		System.out.println("1. CRUD Vehicle");
@@ -47,13 +42,17 @@ public class VehicleClient {
 				System.out.println("1. Contractor Owned");
 				System.out.println("2. Company Owned");
 				int vType = sc.nextInt();
+				//if (vType == 1){
+				System.out.println("\nPlease enter name of the driver");
+				String vDriver = sc.nextLine();
+
+				//}else {String vDriver = null;}				
 				System.out.println("\nIs vehicle health good or bad");
 				System.out.println("1. Good");
 				System.out.println("2. Bad");
 				int vHealth = sc.nextInt();
 				
-				Vehicle v = vm.addVehicle(vId,vModel,vYear,vIn,vType,vHealth);
-				//System.out.println("Vehicle Details - "+v);
+				Vehicle v = vm.addVehicle(vId,vModel,vYear,vIn,vType,vHealth,vDriver);
 				vehicle.setVehicleState(new VPending());
 				VPending vp = new VPending();
 				vp.doAction(v);

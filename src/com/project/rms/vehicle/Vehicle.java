@@ -10,12 +10,27 @@ public abstract class Vehicle
 	public int vehicleType;
 	public VehicleState vehicleState;
 	public int vHealth;
+	public String vDriver = null;
 	//public String location();
 	
 	public Vehicle(){
 		vehicleState = new VPending();
 	}
 	
+	
+	
+	public String getvDriver() {
+		return vDriver;
+	}
+
+
+
+	public void setvDriver(String vDriver) {
+		this.vDriver = vDriver;
+	}
+
+
+
 	public String getvId() {
 		return vId;
 	}

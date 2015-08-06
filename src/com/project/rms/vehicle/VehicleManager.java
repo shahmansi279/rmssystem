@@ -1,5 +1,6 @@
 package com.project.rms.vehicle;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class VehicleManager
@@ -10,8 +11,10 @@ public class VehicleManager
 	}
 
 	
-	public Vehicle addVehicle(String vId,String vModel,String vYear,String vIn,int vType,int vHealth) {
+	public Vehicle addVehicle(String vId,String vModel,String vYear,String vIn,int vType,int vHealth,String vDriver) {
+		
 		// TODO implement me
+		
 		Vehicle veh = new Car();
 		
 		veh.setvId(vId);
@@ -20,38 +23,27 @@ public class VehicleManager
 		veh.setvIn(vIn);
 		veh.setVehicleType(vType);
 		veh.setvHealth(vHealth);
-		
+		veh.setvDriver(vDriver);
+		System.out.println("Vehicle Details - " + veh.getvId()+" " + veh.getvDriver());
+
 		return veh;
 		
 	}
 	
 	public Vehicle retrieveVehicle(String vehicleType) {
 		// TODO implement me
-		
-		boolean retflag=false;
-    	System.out.println("Retrieving Vehicle...");	
-    	
-    	for (int i = 0; i < VehicleClient.vehicles.size() && !retflag; i++) 
-        {
-     	        
-                 if (VehicleClient.vehicles.get(i).getVehicleType() != null) //.equalsIgnoreCase(vehicleType))
-                 {
-                 	System.out.println("Vehicle type retrieved "+VehicleClient.vehicles.get(i).vehicleType);
-                 	
-                 	return VehicleClient.vehicles.get(i);
-                 //	retflag=true;
-                 
-                 }
-            
-         }
-    	
-	}
+		if ((veh.getVehicleType() == 1)&&(vehicleType == "PrivateTaxi")){
+			return veh;
+		}
+		else if ((veh.getVehicleType() == 2)&&(vehicleType == "SharedTaxi")){
+			return veh;
+		}
+	return null;
+	} 
 	
 	public void deleteVehicle(String vId) {
 		// TODO implement me	
-		
-		System.out.println("Deleting Vehicle...");
-        
+	        
         for (int i = 0; i < VehicleClient.vehicles.size(); i++) 
         {
      	        
@@ -63,9 +55,7 @@ public class VehicleManager
 
 
          }
-        System.out.println("Vehicle has been deleted successfully!");
-         System.out.println("Size of the list after delete operation is "
-                         + VehicleClient.vehicles.size());
+        
  }
 	
 
