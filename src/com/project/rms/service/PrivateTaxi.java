@@ -51,11 +51,7 @@ public class PrivateTaxi implements ServiceType
 	}
 	
 	
-	public static void main(String args[]){
-
-		
-
-}
+	
 
 	@Override
 	public double calculateBaseFare(Service service) {
