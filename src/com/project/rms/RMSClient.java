@@ -14,24 +14,26 @@ public class RMSClient {
 	ArrayList<Member> customerArr;
 	ArrayList<Member> driverArr;
 	ArrayList<Member> adminArr;
-	static RequestClient reqClient;
-	
-	RMSClient(){
-		
-	
+	ArrayList<Trip> tripArr;
+	RequestClient reqClient;
+	TripManager tripClient;
 
-		
+	RMSClient() {
+
+		this.reqClient = new RequestClient();
+		this.tripClient = new TripManager();
+
 	}
 
 	public static void main(String args[]) {
-		
-		reqClient= new RequestClient();
-		populateData();
-		showMainMenu();
-		
+
+		RMSClient rms = new RMSClient();
+		rms.populateData();
+		rms.showMainMenu();
+
 	}
 
-	private static void populateData() {
+	public void populateData() {
 
 		populateAccountData();
 		populateRequestData();
@@ -41,7 +43,7 @@ public class RMSClient {
 
 	}
 
-	private static void populateVehicleData() {
+	public void populateVehicleData() {
 
 		// jessie needs to poulate some vehicle data
 
@@ -49,7 +51,20 @@ public class RMSClient {
 
 	}
 
-	private static void populateRequestData() {
+	public void populateRequestData() {
+
+		this.tripArr = new ArrayList<Trip>();
+
+		Trip t2 = new Trip();
+		t2.setTripId("00006");
+		t2.setTripSource("555 e el camino");
+		t2.setTripFare(100.00);
+		this.tripArr.add(t2);
+		Trip t = new Trip();
+		t.setTripId("00005");
+		t.setTripSource("555 e el camino");
+		t.setTripFare(200.00);
+		this.tripArr.add(t);
 
 		// mansi needs to poulate some request data
 
@@ -57,7 +72,7 @@ public class RMSClient {
 
 	}
 
-	private static void populateAccountData() {
+	public void populateAccountData() {
 
 		// thiagu needs to poulate some account data - some customer , some
 		// sysadmin , some driver , some contractor
@@ -66,29 +81,27 @@ public class RMSClient {
 
 	}
 
-	private static void showMainMenu() {
-		
-		
+	private  void showMainMenu() {
+
 		System.out.println("Welcome to RMS System --- Please choose your role from the Menu below");
 		System.out.println("1 Customer");
 		System.out.println("2 RMS System Admin");
 		System.out.println("3 Contractor");
 		System.out.println("4 Driver");
-		
+
 		Scanner scan = new Scanner(System.in);
 		int choice = Integer.parseInt(scan.nextLine());
-		
-		
+
 		switch (choice) {
 		case 1:
 			System.out.println("Customer ");
 			showCustomerMenu();
-			
+
 			break;
 		case 2:
 			System.out.println("RMS System Admin");
 			showAdminMenu();
-			
+
 			break;
 		case 3:
 			System.out.println("Contractor");
@@ -99,7 +112,7 @@ public class RMSClient {
 
 			System.out.println("Driver");
 			showDriverMenu();
-			
+
 			break;
 
 		default:
@@ -108,15 +121,13 @@ public class RMSClient {
 			break;
 		}
 
-		//selectSubMenu(choice);
+		// selectSubMenu(choice);
 		// TODO Auto-generated method stub
 
 	}
 
-	
+	private  void showDriverMenu() {
 
-	private static void showDriverMenu() {
-		
 		System.out.println("Choose a valid option");
 		System.out.println("1 View Notification");
 		System.out.println("2 View Account History");
@@ -125,27 +136,28 @@ public class RMSClient {
 
 		Scanner scan = new Scanner(System.in);
 		int choice = Integer.parseInt(scan.nextLine());
-		
+
 		switch (choice) {
 		case 1:
 			System.out.println("View Notification");
-			//perform operations
-			
+			// perform operations
+
 			break;
 		case 2:
 			System.out.println("View Account History");
-			//perform operations
-			
+			// perform operations
+
 			break;
 		case 3:
 			System.out.println("Update Trip Status");
-			//perform operations
-			
+			this.tripClient.setTripArr(this.tripArr);
+			this.tripClient.processTripUpdateRequest();
+
 			break;
 		case 4:
 			System.out.println("Return to Main Menu");
 			showMainMenu();
-			
+
 			break;
 		case 5:
 			System.out.println("Exit");
@@ -156,12 +168,10 @@ public class RMSClient {
 			break;
 		}
 
-		
 	}
 
-	private static void showAdminMenu() {
-		
-		
+	private  void showAdminMenu() {
+
 		System.out.println("Choose a valid option");
 		System.out.println("1 CRUD Account");
 		System.out.println("2 CRUD Rule");
@@ -170,45 +180,46 @@ public class RMSClient {
 		System.out.println("5 Update Payment");
 		System.out.println("6 Return to Main Menu");
 		System.out.println("7 Exit");
-		
-		
+
 		Scanner scan = new Scanner(System.in);
 		int choice = Integer.parseInt(scan.nextLine());
-		
+
 		switch (choice) {
 		case 1:
 			System.out.println("CRUD Account");
-			
-			//invoke account client
-			
+
+			// invoke account client
+
 			break;
 		case 2:
 			System.out.println("CRUD Rule");
-			
-			//invoke rule manager
-			
+
+			// invoke rule manager
+
 			break;
 		case 3:
 			System.out.println("CRUD Vehicle");
-			
-			//invoke vehicle manager
-			
+
+			// invoke vehicle manager
+
 			break;
 		case 4:
+	
 			System.out.println("Update Trip");
-			
-			//invoke trip
-			
+			this.tripClient.setTripArr(this.tripArr);
+			this.tripClient.processTripUpdateRequest();
+
 			break;
 		case 5:
 			System.out.println("Update Payment");
-			
-			//invoke trip client
-			
+
+			// invoke trip client
+
 			break;
-	
+
 		case 6:
 			System.out.println("Return to Main Menu");
+			showMainMenu();
 			break;
 		case 7:
 			System.out.println("Exit");
@@ -220,14 +231,13 @@ public class RMSClient {
 
 		}
 
-		
 	}
 	// TODO Auto-generated method stub
 
-	private static void showCustomerMenu() {
-		
-		//init()
-		
+	private void showCustomerMenu() {
+
+		// init()
+
 		System.out.println("Choose a valid option");
 		System.out.println("1 Create an Account");
 		System.out.println("2 Update an Account");
@@ -236,54 +246,50 @@ public class RMSClient {
 		System.out.println("5 Make Payment");
 		System.out.println("6 Return to Main Menu");
 		System.out.println("7 Exit");
-		
+
 		Scanner scan = new Scanner(System.in);
 		int choice = Integer.parseInt(scan.nextLine());
-		
 
 		switch (choice) {
 		case 1:
 			System.out.println("Create an Account");
-			
-			
-			
-			//call to fucn
-			
+
+			// call to fucn
+
 			break;
 		case 2:
 			System.out.println("Update an Account");
-			
-			//call to funcn
+
+			// call to funcn
 			break;
 		case 3:
 			System.out.println("Delete an Account");
 			break;
-		
+
 		case 4:
 			System.out.println("Request Ride");
-			reqClient.createRequest();
-			
+			this.reqClient.createRequest();
+
 			break;
-		
+
 		case 5:
 			System.out.println("Make Payment");
 			break;
-		
+
 		case 6:
 			System.out.println("Return to Main Menu");
 			break;
-		
+
 		case 7:
 			System.out.println("Exit");
 			break;
-	
+
 		default:
 			System.out.println("Invalid Option .... Please Try Again");
 			showCustomerMenu();
 			break;
 		}
 
-		
 		// TODO Auto-generated method stub
 
 	}
@@ -299,10 +305,9 @@ public class RMSClient {
 		System.out.println("6 View Notification");
 		System.out.println("7 Return to Main Menu");
 		System.out.println("8 Exit");
-		
+
 		Scanner scan = new Scanner(System.in);
 		int choice = Integer.parseInt(scan.nextLine());
-		
 
 		switch (choice) {
 
@@ -336,8 +341,6 @@ public class RMSClient {
 			break;
 		}
 
-		
 	}
 
-	
 }
