@@ -8,7 +8,7 @@ public class InfantSeat extends VehicleDecorator
 	
 	public int cost() {
 		// TODO implement me
-		return 5;
+		return vDec.cost()+5;
 	}
 	
 	public String getFeatureDescription() {

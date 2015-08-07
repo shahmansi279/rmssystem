@@ -10,19 +10,18 @@ public class VehicleClient {
 	public static  List<Vehicle> vehicles = new ArrayList<Vehicle>();
 	static VehicleManager vm = new VehicleManager();
 	
-	//public static void main(String[] args){
-	public void createVehicle(){
+	public static void main(String[] args){
+	//public void createVehicle(){
 		
 		String vDriver;
-		/*System.out.println("RMS Vehicle Management");
+		System.out.println("RMS Vehicle Management");
 		System.out.println("------------------------");
 		System.out.println("1. CRUD Vehicle");
 		System.out.println("2. Choose a Vehicle");
 		Scanner scanner2 = new Scanner ( System.in );
 		int select = scanner2.nextInt ();
 		
-		if (select == 1){*/
-		
+		if (select == 1){
 		
 			System.out.println("RMS Vehicle Management");
 			System.out.println("------------------------");
@@ -33,8 +32,8 @@ public class VehicleClient {
 			if (s == 1){
 				
 				Scanner sc = new Scanner(System.in);
-				System.out.println("\nPlease enter Vehicle ID ");
-				String vId = sc.nextLine();
+				//System.out.println("\nPlease enter Vehicle ID ");
+				//String vId = sc.nextLine();
 				System.out.println("\nPlease enter Vehicle Model");
 				String vModel = sc.nextLine();
 				System.out.println("\nPlease enter Vehicle Year");
@@ -46,20 +45,25 @@ public class VehicleClient {
 				System.out.println("2. Company Owned");
 				int vType = sc.nextInt();
 				if (vType == 1){
-				System.out.println("\nPlease enter name of the driver");
-				//vDriver = sc.nextLine();
-				Scanner sc1 = new Scanner(System.in);
-				vDriver = (sc1.nextLine());
+					System.out.println("\nPlease enter Driver ID");
+					//vDriver = sc.nextLine();
+					Scanner sc1 = new Scanner(System.in);
+					vDriver = (sc1.nextLine());
 				}else {vDriver = null;}				
-				System.out.println("\nIs vehicle health good or bad");
+				System.out.println("\nIs Vehicle Health good or bad");
 				System.out.println("1. Good");
 				System.out.println("2. Bad");
 				int vHealth = sc.nextInt();
-				
-				Vehicle v = vm.addVehicle(vId,vModel,vYear,vIn,vType,vHealth,vDriver);
+				System.out.println("\nPlease enter Vehicle Location");
+				Scanner sc2 = new Scanner(System.in);
+				String location = (sc2.nextLine());
+				Vehicle v = vm.addVehicle(vModel,vYear,vIn,vType,vHealth,vDriver,location);
 				vehicle.setVehicleState(new VPending());
 				VPending vp = new VPending();
 				vp.doAction(v);
+				//System.out.println("retrieving");
+				//vm.retrieveVehicle("PrivateTaxi");
+				//System.out.println(v.getVehicleState());
 
 			}
 			else if (s == 2){
@@ -72,7 +76,7 @@ public class VehicleClient {
 			}
 		}
 		
-		/*else if (select == 2){
+		else if (select == 2){
 
 		System.out.println("Select a vehicle type:");
 		System.out.println("1. Car");
@@ -100,8 +104,8 @@ public class VehicleClient {
 			System.out.println(vehicle.getFeatureDescription()); 
 			
 			}
-		}*/
-	//}
+		}
+	}
 }
 		
 

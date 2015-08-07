@@ -14,11 +14,11 @@ public class VActive implements VehicleState
 	public void doAction(Vehicle vehicle){
 		System.out.println("Vehicle is in active state");
 		vehicle.setVehicleState(this);
-		if (vehicle.getvDriver() != null){
+		/*if (vehicle.getvDriver() != null){
 			VAssigned va = new VAssigned();
         	vehicle.setVehicleState(new VAssigned());
 			va.doAction(vehicle);
-		}
+		}*/
 		
       }
 }

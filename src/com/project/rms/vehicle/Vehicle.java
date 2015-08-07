@@ -11,7 +11,7 @@ public abstract class Vehicle
 	public VehicleState vehicleState;
 	public int vHealth;
 	public String vDriver;
-	//public String location();
+	public String location;
 	
 	public Vehicle(){
 		vehicleState = new VPending();
@@ -19,6 +19,18 @@ public abstract class Vehicle
 	
 	
 	
+	public String getLocation() {
+		return location;
+	}
+
+
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+
+
 	public String getvDriver() {
 		return vDriver;
 	}

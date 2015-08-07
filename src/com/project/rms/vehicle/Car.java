@@ -7,7 +7,7 @@ public class Car extends Vehicle
 		super();
 	}
 	
-	public Car(String vId, String vModel, String vYear, String vIn, int vehicleType, int vHealth, String vDriver) {
+	public Car(String vId, String vModel, String vYear, String vIn, int vehicleType, int vHealth, String vDriver,String location) {
 		// TODO Auto-generated constructor stub
 		
 		this.vId = vId;
@@ -17,7 +17,7 @@ public class Car extends Vehicle
 		this.vehicleType = vehicleType;
 		this.vHealth = vHealth;
 		this.vDriver = vDriver;
-
+		this.location = location;
 	}
 
 	public int cost() {
