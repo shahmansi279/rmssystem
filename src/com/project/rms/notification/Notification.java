@@ -21,7 +21,7 @@ package com.project.rms.notification;
 	}
 
 	
-final void prepareNotification() {
+public final void prepareNotification() {
 		// TODO implement me	
 	prepareHeader();
 	appendMessage();

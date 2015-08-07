@@ -10,17 +10,20 @@ public class VehicleClient {
 	public static  List<Vehicle> vehicles = new ArrayList<Vehicle>();
 	static VehicleManager vm = new VehicleManager();
 	
-	public static void main(String[] args){
+	//public static void main(String[] args){
+	public void createVehicle(){
 		
 		String vDriver;
-		System.out.println("RMS Vehicle Management");
+		/*System.out.println("RMS Vehicle Management");
 		System.out.println("------------------------");
 		System.out.println("1. CRUD Vehicle");
 		System.out.println("2. Choose a Vehicle");
 		Scanner scanner2 = new Scanner ( System.in );
 		int select = scanner2.nextInt ();
 		
-		if (select == 1){
+		if (select == 1){*/
+		
+		
 			System.out.println("RMS Vehicle Management");
 			System.out.println("------------------------");
 			System.out.println("1. Add Vehicle");
@@ -69,7 +72,7 @@ public class VehicleClient {
 			}
 		}
 		
-		else if (select == 2){
+		/*else if (select == 2){
 
 		System.out.println("Select a vehicle type:");
 		System.out.println("1. Car");
@@ -97,8 +100,8 @@ public class VehicleClient {
 			System.out.println(vehicle.getFeatureDescription()); 
 			
 			}
-		}
-	}
+		}*/
+	//}
 }
 		
 

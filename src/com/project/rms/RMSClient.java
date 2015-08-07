@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.project.rms.accounts.*;
+import com.project.rms.notification.TripNotification;
 import com.project.rms.request.*;
 import com.project.rms.service.PrivateTaxi;
 import com.project.rms.service.ServiceClient;
@@ -22,6 +23,7 @@ public class RMSClient {
 	ArrayList<Trip> tripArr;
 	RequestClient reqClient;
 	TripManager tripClient;
+	VehicleClient vehClient;
 
 	ServiceClient scClient;
 
@@ -30,6 +32,8 @@ public class RMSClient {
 		this.reqClient = new RequestClient();
 		this.tripClient = new TripManager();
 		this.scClient = new ServiceClient();
+		this.vehClient  = new VehicleClient();
+		
 
 	}
 
@@ -160,6 +164,9 @@ public class RMSClient {
 		case 1:
 			System.out.println("View Notification");
 			// perform operations
+			TripNotification tn = new TripNotification();
+			System.out.println("Preparing Notification...");
+			tn.prepareNotification();
 
 			break;
 		case 2:
@@ -222,6 +229,8 @@ public class RMSClient {
 			System.out.println("CRUD Vehicle");
 
 			// invoke vehicle manager
+			vehClient.createVehicle();
+			
 
 			break;
 		case 4:
