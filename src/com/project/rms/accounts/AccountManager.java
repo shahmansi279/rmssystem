@@ -40,19 +40,18 @@ public  void addMembers(Member m,  List<Member> members1)
 	        	
 	        	//Aug 4 2015 TBD
 	        	// DO WE NEED TO instantiate Service Provider, SysAdmin??
-	    	        cs = new Customer(m.nMemberID,m.memFname,m.memLname,m.memEmail,m.memPhone,m.memAddress1,m.memAddress2,m.memCity,m.getMemState(),m.memZipcode,m.memPrefnotfn,m.memPrefpmt,m.memCreditcard,m.memPrimeflag,m.memRole);
-	    	        members1.add(cs);
-	    	       
+	    	       // cs = new Customer(m.nMemberID,m.memFname,m.memLname,m.memEmail,m.memPhone,m.memAddress1,m.memAddress2,m.memCity,m.getMemState(),m.memZipcode,m.memPrefnotfn,m.memPrefpmt,m.memCreditcard,m.memPrimeflag,m.memRole,m.memType);
 	    	        
-	    	        
+	        	members1.add(m);
 	    	    System.out.println("After adding the size of the members arraylist = "
 	    				+ members1.size());
+	    	 
 	    		//sortMembers(members);
 	    		for (int i = 0; i < members1.size(); i++)
 	    			
 	    		{
 	    	
-	    				System.out.println("\n"+members1.get(i).getnMemberID()+ " " +members1.get(i).getMemFname()+" * "+ members1.get(i).getMemLname()+ " * "+members1.get(i).getMemEmail() + " * "+members1.get(i).getMemPhone()+ " * "+members1.get(i).getMemRole());
+	    				System.out.println("\n"+members1.get(i).getnMemberID()+ " " +members1.get(i).getMemFname()+" * "+ members1.get(i).getMemLname()+ " * "+members1.get(i).getMemEmail() + " * "+members1.get(i).getMemPhone()+ " * "+members1.get(i).getMemRole()+ " Member type= "+members1.get(i).getMemType());
 	    				//System.out.println(members1.get(i).getMemLname());
 	        	
 	    		}
@@ -92,7 +91,7 @@ public  void addMembers(Member m,  List<Member> members1)
 	 * @ordered
 	 */
 	
-public static void removeCustomer(String CustFName) {
+public void removeCustomer(String CustFName) {
 		// TODO implement me	
 		// This method is used to delete a member from the array
         {
@@ -129,10 +128,15 @@ public static Member retrieveCustomer(String memberId)
      	        
                  if (AccountClient.members1.get(i).getnMemberID().equalsIgnoreCase(memberId))
                  {
-                 	return AccountClient.members1.get(i);
-                 	
+                	// System.out.println("Retrieved data is "+ AccountClient.members1.get(i));
+                	 System.out.println("\n"+AccountClient.members1.get(i).getnMemberID()+ " " +AccountClient.members1.get(i).getMemFname()+" * "+ AccountClient.members1.get(i).getMemLname()+ " * "+AccountClient.members1.get(i).getMemEmail() + " * "+AccountClient.members1.get(i).getMemPhone()+ " * "+AccountClient.members1.get(i).getMemRole()); 	 
+                	 
+                	 return AccountClient.members1.get(i);
                  	//retflag=true;
                  
+                	 
+                	 
+                	 
                  }
                  
                  
@@ -148,7 +152,7 @@ public static Member retrieveCustomer(String memberId)
     
 }
 
-
+//Updated id to string on Aug 7 2015
 public static void SearchCustomer(String CustId) {
 	// TODO implement me	
 	// This method is used to retrieve a member from the array
@@ -156,12 +160,13 @@ public static void SearchCustomer(String CustId) {
 
     	System.out.println("Printing after Searching..");	
     	boolean foundflag=false;
-    	for (int i = 0; i < AccountClient.members1.size() && foundflag==false; i++) 
+    	System.out.println("Array size = "+AccountClient.members1.size());
+    	for (int i = 0; i < AccountClient.members1.size() && !foundflag; i++) 
         {
      	        
-                 if (AccountClient.members1.get(i).getnMemberID()== CustId)
+                 if (AccountClient.members1.get(i).getnMemberID().equalsIgnoreCase(CustId))
                  {
-                	System.out.println("Member found\n");
+                	System.out.println("Member found\n"+CustId);
                 	foundflag=true;
                  	System.out.println("Member details Searched "+AccountClient.members1.get(i).memFname+" "+ AccountClient.members1.get(i).getMemEmail());
                  	//AccountClient.members1.get(i).memFname= CustFName;
@@ -176,7 +181,7 @@ public static void SearchCustomer(String CustId) {
          }
     	
     	
-    }
+    } 
 } 
 
 	/**

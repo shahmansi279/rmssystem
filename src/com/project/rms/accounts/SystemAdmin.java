@@ -19,9 +19,9 @@ public class SystemAdmin extends Member
 	 * <!--  end-user-doc  -->
 	 * @generated
 	 */
-	public void Sysadmin( String memId , String strmFName, String strmLName, String strmEmail, String strmPhone,
+	public SystemAdmin( String memId , String strmFName, String strmLName, String strmEmail, String strmPhone,
 			String strmAddress1, String strmAddress2, String strmCity, String strmState, String strmZipcode,String strmPrefnotfn
-	,String strmPrefpmt, String strmCreditcard, String strmPrimeflag, Account a,Notification n)
+	,String strmPrefpmt, String strmCreditcard, String strmPrimeflag,String strmRole,String strmmemType)
 	
 	{
 		 this.memFname =strmFName;
@@ -38,7 +38,8 @@ public class SystemAdmin extends Member
 		   this.memCreditcard = strmCreditcard;
 		   this.memPrimeflag = strmPrimeflag;
 		   this.nMemberID = memId;
-	    
+		   this.memRole =strmRole;
+		   this.memType=strmmemType;
 	    
 	}
 

@@ -16,12 +16,12 @@ public class ServiceProvider extends Member
 	 * @generated
 	 */
 	
-	public ServiceProvider( String memId, String strmFName, String strmLName, String strmEmail, String strmPhone,
+	public ServiceProvider( String memId , String strmFName, String strmLName, String strmEmail, String strmPhone,
 			String strmAddress1, String strmAddress2, String strmCity, String strmState, String strmZipcode,String strmPrefnotfn
-	,String strmPrefpmt, String strmCreditcard, String strmPrimeflag, Account a, Notification n)
+	,String strmPrefpmt, String strmCreditcard, String strmPrimeflag,String strmRole,String strmmemType)
 	
 	{
-		 this.memFname =strmFName;
+		this.memFname =strmFName;
 		   this.memLname = strmLName;
 		   this.memEmail = strmEmail;
 		   this.memPhone = strmPhone;
@@ -35,6 +35,8 @@ public class ServiceProvider extends Member
 		   this.memCreditcard = strmCreditcard;
 		   this.memPrimeflag = strmPrimeflag;
 		   this.nMemberID = memId;
+		   this.memRole =strmRole;
+		   this.memType=strmmemType;
 	    
 	    
 	}

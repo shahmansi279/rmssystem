@@ -21,7 +21,7 @@ public class Customer extends Member
 	
 	public Customer( String memId , String strmFName, String strmLName, String strmEmail, String strmPhone,
 			String strmAddress1, String strmAddress2, String strmCity, String strmState, String strmZipcode,String strmPrefnotfn
-	,String strmPrefpmt, String strmCreditcard, String strmPrimeflag , String strmRole)
+	,String strmPrefpmt, String strmCreditcard, String strmPrimeflag , String strmRole, String strmmemType)
 	
 	
 	{
@@ -45,6 +45,7 @@ public class Customer extends Member
 		   this.memPrimeflag = strmPrimeflag;
 		   this.nMemberID = memId;
 		   this.memRole =strmRole;
+		   this.memType=strmmemType;
 	    
 	}
 	

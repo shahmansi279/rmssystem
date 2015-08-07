@@ -27,7 +27,8 @@ public abstract class Member
 	String memPrefpmt;
 	String memCreditcard;
 	String memPrimeflag;
-	Account account ;
+	String memType;
+	Account account;
 	
 	//Aug 4 2015
     List<Notification> an;
@@ -328,7 +329,15 @@ public abstract class Member
 	public final void setMemPrimeflag(String memPrimeflag) {
 		this.memPrimeflag = memPrimeflag;
 	}
+	public final String getMemType() {
+		return memType;
+	}
 
+
+
+	public void setMemType(String memType) {
+		this.memType = memType;
+	}
 
 
 	/**
