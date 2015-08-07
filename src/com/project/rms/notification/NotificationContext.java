@@ -1,26 +1,29 @@
 package com.project.rms.notification;
 
-public class NotificationContext
-{
-	
-	private NotifierStrategy notifier;
-	
-	public NotificationManager notificationManager;
-	
-	public NotificationContext(){
+public class NotificationContext {
+
+	private NotifierStrategy notifierStrategy;
+
+	private Notification notification;
+
+	public NotificationContext() {
 		super();
 	}
-	
-	public NotifierStrategy setStrategy(String memPrefnotfn){
-		if ("email".equalsIgnoreCase(memPrefnotfn)){
-			notifier = new EmailNotifierStrategy();
-		}
-		
-		else if ("sms".equalsIgnoreCase(memPrefnotfn)){
-			notifier = new SMSNotifierStrategy();
-		}
-		return notifier;
+
+	public NotifierStrategy getNotifierStrategy() {
+		return notifierStrategy;
+	}
+
+	public void setNotifierStrategy(NotifierStrategy notifierStrategy) {
+		this.notifierStrategy = notifierStrategy;
+	}
+
+	public Notification getNotification() {
+		return notification;
+	}
+
+	public void sendNotification(Notification n, String memberIdentification) {
+		this.notifierStrategy.sendNotification(n, memberIdentification);
 	}
 
 }
-

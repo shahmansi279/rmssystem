@@ -21,8 +21,8 @@ public abstract class Service {
 	 * @generated
 	 * @ordered
 	 */
-
-	public ServiceType sType;
+	protected String serviceName;
+	protected ServiceType sType;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -67,17 +67,35 @@ public abstract class Service {
 	 * @ordered
 	 */
 
+	
 	public Set<ServiceRule> serviceRule;
+
+	public String getServiceName() {
+		return serviceName;
+	}
+
+	public void setServiceName(String serviceName) {
+		this.serviceName = serviceName;
+	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public Service() {
+	public Service(ServiceType serviceType) {
 		super();
+		this.serviceType = serviceType;
+	
 	}
 
+	protected ServiceType getServiceType() {
+		return serviceType;
+	}
+
+	protected void setServiceType(ServiceType serviceType) {
+		this.serviceType = serviceType;
+	}
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -94,24 +112,30 @@ public abstract class Service {
 	 * @ordered
 	 */
 
-	final void computeFare(Trip trip) {
+	public final double computeFare(Trip trip) {
 
+		double fare;
+		int miles;
 		System.out.println("Calculating Trip Fare");
 
-		computeDistance(trip);
+		miles = computeDistance(trip);
 
-		calculateBaseFare();
+		System.out.println("Trip Miles are " + miles);
 
+		trip.setTripMiles(miles);
+
+		System.out.println("Calculating Service Base Fare");
+
+		fare=calculateBaseFare(miles);
+
+	
+
+		
+		return fare;
 		// TODO implement me
 	}
 
-	public ServiceType getServiceType() {
-		return serviceType;
-	}
-
-	public void setServiceType(ServiceType serviceType) {
-		this.serviceType = serviceType;
-	}
+	
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -120,10 +144,10 @@ public abstract class Service {
 	 * @ordered
 	 */
 
-	abstract void calculateBaseFare();
+	abstract double calculateBaseFare(int miles);
 	// TODO implement me
 
-	abstract void calculateAdditionalCharge();
+	abstract double calculateAdditionalCharge(double fare);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -132,10 +156,12 @@ public abstract class Service {
 	 * @ordered
 	 */
 
-	public void computeDistance(Trip trip) {
+	public int computeDistance(Trip trip) {
 		// TODO implement me
 
 		System.out.println("Calculating Trip Miles");
+
+		return trip.getTripEndMiles() - trip.getTripStartMiles();
 
 	}
 
@@ -152,7 +178,7 @@ public abstract class Service {
 	public Trip dispatchService(Request r) {
 
 		Vehicle v = fetchResource(r);
-		allocateResources(r,v);
+		allocateResources(r, v);
 		return dispatchTaxi(this.getServiceType(), r, v);
 
 	}

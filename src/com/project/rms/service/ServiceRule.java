@@ -17,61 +17,59 @@ public class ServiceRule
 	 * @ordered
 	 */
 	
-	public String ruleDescription;
+	public String serviceRuleId;
+	public String serviceRuleCategory;
+	public String ruleServiceName;
+	public String ruleServiceType;
+	public String ruleCategory;
+	public String ruleCreator;
+	public String ruleCategoryValue;
 	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
-	public Service serviceDescription;
-	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
-	public String ruleType;
-	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
-	public String ruleSType;
-	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
-	public ServiceRuleManager serviceRuleManager;
-	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
-	public Service service;
-	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 */
-	public ServiceRule(){
-		super();
+	public String getServiceRuleId() {
+		return serviceRuleId;
 	}
+	public void setServiceRuleId(String serviceRuleId) {
+		this.serviceRuleId = serviceRuleId;
+	}
+	public String getServiceRuleCategory() {
+		return serviceRuleCategory;
+	}
+	public void setServiceRuleCategory(String serviceRuleCategory) {
+		this.serviceRuleCategory = serviceRuleCategory;
+	}
+	public String getRuleServiceName() {
+		return ruleServiceName;
+	}
+	public void setRuleServiceName(String ruleServiceName) {
+		this.ruleServiceName = ruleServiceName;
+	}
+	public String getRuleServiceType() {
+		return ruleServiceType;
+	}
+	public void setRuleServiceType(String ruleServiceType) {
+		this.ruleServiceType = ruleServiceType;
+	}
+	public String getRuleCategory() {
+		return ruleCategory;
+	}
+	public void setRuleCategory(String ruleCategory) {
+		this.ruleCategory = ruleCategory;
+	}
+	public String getRuleCreator() {
+		return ruleCreator;
+	}
+	public void setRuleCreator(String ruleCreator) {
+		this.ruleCreator = ruleCreator;
+	}
+	public String getRuleCategoryValue() {
+		return ruleCategoryValue;
+	}
+	public void setRuleCategoryValue(String ruleCategoryValue) {
+		this.ruleCategoryValue = ruleCategoryValue;
+	}
+	
+	
+	
 
 }
 

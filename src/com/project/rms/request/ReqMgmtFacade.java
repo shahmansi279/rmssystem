@@ -2,7 +2,13 @@ package com.project.rms.request;
 
 import java.util.Set;
 
+import com.project.rms.accounts.AccountClient;
 import com.project.rms.accounts.AccountManager;
+import com.project.rms.accounts.Member;
+import com.project.rms.notification.EmailNotifierStrategy;
+import com.project.rms.notification.NotificationManager;
+import com.project.rms.notification.SMSNotifierStrategy;
+import com.project.rms.notification.TripNotification;
 import com.project.rms.service.PrivateTaxi;
 import com.project.rms.service.Service;
 import com.project.rms.service.ServiceType;
@@ -22,6 +28,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.Period;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -48,6 +55,7 @@ public class ReqMgmtFacade {
 	static PriorityQueue<Request> pQueue;
 	Request request;
 	static Set<Request> requests;
+	AccountManager accMgr;
 	// Vehicle vehicle;
 
 	/**
@@ -58,14 +66,12 @@ public class ReqMgmtFacade {
 	public ReqMgmtFacade() {
 		super();
 		comparator = new RequestComparator();
-
+		this.accMgr = new AccountManager();
 		this.pQueue = new PriorityQueue<Request>(comparator);
 		this.q = new QueueManager(pQueue);
 		// this.vmgr = new VehicleManager();
 
 	}
-
-	
 
 	public Request createRequest(String memberId, String rPickLocAddr, String rDestLoc, Date rPickUpTime,
 			int rServiceType, HashMap<String, String> rFeature)
@@ -76,19 +82,16 @@ public class ReqMgmtFacade {
 		ServiceType svcType;
 		String serviceTypeDesc;
 		String serviceType;
-		
-		//Setting the Service for the Type of Service Requested
-		
-		if (rServiceType == 1) {
-			serviceTypeDesc = "PrivateTaxi";
-			svcType = new PrivateTaxi();
 
-			svName = new YellowCab();
+		// Setting the Service for the Type of Service Requested
+
+		if (rServiceType == 1) {
+
+			svName = new YellowCab(new PrivateTaxi());
 
 		} else {
-			serviceTypeDesc = "SharedTaxi";
-			svcType = new SharedTaxi();
-			svName = new Uber();
+
+			svName = new Uber(new SharedTaxi());
 
 		}
 		this.request = new Request();
@@ -96,13 +99,15 @@ public class ReqMgmtFacade {
 		request.setrPickUpAddr(rPickLocAddr);
 		request.setrDestAddr(rDestLoc);
 		request.setrPickupDateTime(rPickUpTime);
-		request.setrServiceTypeDesc(serviceTypeDesc);
+		// request.setrServiceTypeDesc(request.getS);
 		request.setSvcName(svName);
 		request.setrFeature(rFeature);
 		request.setrStatus("Created");
 		request.setrState(new ProcessingState());
 		request.setrId("00004");
 
+		
+		
 		System.out.println("Request Created with ID : " + request.getrId());
 
 		return request;
@@ -136,41 +141,42 @@ public class ReqMgmtFacade {
 
 		// Check Resource Availability and Allocate Resources
 
-		
-		
-		Trip trip= r.getSvcName().dispatchService(r);
-		
-		
+		Trip trip = r.getSvcName().dispatchService(r);
+
 		if (trip != null) {
 
-		System.out.println("Generated Trip for Customer Request");
-	//	sendNotifications(t);
-		return true;
+			System.out.println("Generated Trip for Customer Request");
+			sendNotifications(trip);
+			return true;
 
 		}
-		
-		else{
-			
+
+		else {
+
 			return false;
 		}
 
 	}
 
 	public void sendNotifications(Trip t) {
+
+		AccountManager acct = new AccountManager();
+
+		ArrayList<Member> tripMembers = t.getTripCustomers();
+
+		for (Member m : tripMembers) {
+
+			// loop over array and invoke notification manager for sending notification
+
+			NotificationManager nm = new NotificationManager();
+
+			nm.sendNotification(new TripNotification(m.getMemFname()), m);
+					
+
+			
+		}
 		
-		
-		AccountManager acct=new AccountManager();
-		
-		//loop over array 
-		//acct.retrieveCustomer(t.getTripCustomer());
-		
-		//get preference
-		
-		//invoke notificatioin context
-		//NotificationManager 
-		
-		
-		// TODO implement me
+	
 	}
 
 	// Adding Request to PQ
@@ -189,7 +195,6 @@ public class ReqMgmtFacade {
 
 	}
 
-	
 	// Polling Request from PQ
 
 	public Request pollRequestFromQueue() {
@@ -268,18 +273,7 @@ public class ReqMgmtFacade {
 		return this.q.retrieveRequestFromQueue();
 	}
 
-	/*
-	 * Trip generateTrip(Request r, Vehicle v) {
-	 * 
-	 * Trip t = new Trip(); t.setTripPickUpTime(r.getrPickupDateTime());
-	 * t.setTripStatus("Initiated"); t.setTripSource(r.getrPickUpAddr());
-	 * t.setTripDest(r.getrDestAddr()); t.setSvcType(r.getrServiceType() );
-	 * t.setTripCustomers(r.getCustomers());
-	 * 
-	 * return t;
-	 * 
-	 * }
-	 */
+	
 
 	public Request removeRequestFromQueue() {
 		// TODO Auto-generated method stub

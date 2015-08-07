@@ -33,7 +33,7 @@ public class ServiceClient {
 
 		String ruleCategory = sc.nextLine();
 
-		if (ruleCategory == "FareRule") {
+		if (ruleCategory.equals("FareRule")) {
 			System.out.println("\nPlease choose SurgePricing or Normal Pricing for the rule ");
 
 			String ruleCategoryValue = sc.nextLine();
@@ -89,7 +89,7 @@ public class ServiceClient {
 
 			break;
 		case 2:
-			System.out.println("Retrieve Ride");
+			System.out.println("Retrieve Rule");
 
 			// call to funcn
 			break;

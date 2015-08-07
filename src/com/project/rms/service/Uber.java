@@ -2,8 +2,10 @@ package com.project.rms.service;
 
 import java.util.ArrayList;
 
+import com.project.rms.accounts.AccountManager;
 import com.project.rms.request.Request;
 import com.project.rms.request.Trip;
+import com.project.rms.request.TripManager;
 import com.project.rms.vehicle.Vehicle;
 
 /**
@@ -14,8 +16,11 @@ import com.project.rms.vehicle.Vehicle;
 
 public class Uber extends Service {
 
-	public Uber() {
-		super();
+	public Uber(ServiceType svcType) {
+
+		super(svcType);
+		this.serviceName = "Uber";
+
 	}
 
 	public void setRule() {
@@ -23,26 +28,34 @@ public class Uber extends Service {
 	}
 
 	@Override
-	void calculateBaseFare() {
+	double calculateBaseFare(int miles) {
+
+		double baseFare = this.serviceType.calculateBaseFare(miles);
 		// TODO Auto-generated method stub
+
+		return calculateAdditionalCharge(baseFare);
 
 	}
 
 	@Override
-	void calculateAdditionalCharge() {
+	double calculateAdditionalCharge(double fare) {
+
+		System.out.println("Adding extra 10 $ for Charges towards Uber Service ");
+
+		return (fare) + 10;
 		// TODO Auto-generated method stub
 
 	}
 
-	//Dispatch Taxi for Uber 
-	
-	@Override
-	public Trip dispatchTaxi(ServiceType svcType, Request r,Vehicle v) {
+	// Dispatch Taxi for Uber
 
-		
+	@Override
+	public Trip dispatchTaxi(ServiceType svcType, Request r, Vehicle v) {
+
 		ArrayList<Request> requestArr = findSharedRideRequest(r);
 		String tripId = mergeWithSharedRequest(r, requestArr);
 		Trip t = null;
+
 		if (tripId != null) {
 			t = fetchTrip(tripId);
 			updateTrip(t, tripId, r, svcType);
@@ -50,16 +63,22 @@ public class Uber extends Service {
 
 		else {
 			t = generateTrip(r);
+
 		}
+
 		// TODO Auto-generated method stub
+
 		return t;
 	}
 
-	
 	private Trip generateTrip(Request r) {
+
+		TripManager tm = new TripManager();
+		tm.generateTripRecord();
+
 		// TODO Auto-generated method stub
 
-		return new Trip();
+		return tm.generateTripRecord();
 	}
 
 	private Trip fetchTrip(String tripId) {
@@ -71,9 +90,13 @@ public class Uber extends Service {
 
 	private boolean updateTrip(Trip t, String tripId, Request r, ServiceType svcType) {
 
-		System.out.println("Updating Trip with ID -T1101 with request with ID 00004");
+		System.out.println("Updating Trip with ID " + tripId + " with request with ID " + r.getrId());
 
-		t.tripCustomer.add(r.getMemberId());
+		// accountMgr
+		AccountManager am = new AccountManager();
+		
+		
+	//	t.tripCustomers.add(am.retrieveCustomer(r.getMemberId()));
 		t.setTripSource(r.getrPickUpAddr());
 		t.setTripDest(r.getrDestAddr());
 		t.setSvcType(svcType);
@@ -87,7 +110,7 @@ public class Uber extends Service {
 
 	private String mergeWithSharedRequest(Request r, ArrayList<Request> requestArr) {
 
-		return "T1101";
+		return "T0001";
 		// TODO Auto-generated method stub
 
 	}
@@ -101,8 +124,7 @@ public class Uber extends Service {
 
 	@Override
 	Vehicle fetchResource(Request r) {
-		
-		
+
 		System.out.println("Checking Resource Pool for the Request");
 
 		// Retrieving Contractor Owned or Company Owned Vehicle based on Request
@@ -121,9 +143,8 @@ public class Uber extends Service {
 	}
 
 	@Override
-	boolean allocateResources(Request r,Vehicle v) {
-		
-		
+	boolean allocateResources(Request r, Vehicle v) {
+
 		// Update vehicle and allocate it to trip
 
 		// v.updateVehicleState(new )
