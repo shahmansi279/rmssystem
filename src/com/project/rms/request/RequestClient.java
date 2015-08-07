@@ -40,7 +40,7 @@ public class RequestClient {
 
 		
 		
-		Scanner sc = new Scanner(System.in);
+			Scanner sc = new Scanner(System.in);
 
 	
 			System.out.println("\nPlease enter member account id ");

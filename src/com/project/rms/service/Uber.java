@@ -14,8 +14,13 @@ import com.project.rms.vehicle.Vehicle;
 
 public class Uber extends Service {
 
-	public Uber() {
-		super();
+	
+	
+	public Uber(ServiceType svcType) {
+	
+		super(svcType);
+		this.serviceName="Uber";
+		
 	}
 
 	public void setRule() {
@@ -23,14 +28,24 @@ public class Uber extends Service {
 	}
 
 	@Override
-	void calculateBaseFare() {
+	double calculateBaseFare(int miles) {
+		
+	double baseFare=this.serviceType.calculateBaseFare(miles);
 		// TODO Auto-generated method stub
+	
+	return calculateAdditionalCharge(baseFare);
 
 	}
 
 	@Override
-	void calculateAdditionalCharge() {
+	double calculateAdditionalCharge(double fare) {
+		
+		System.out.println("Adding extra 10 $ for Charges towards Uber Service ");
+		
+		return (fare)+10;
 		// TODO Auto-generated method stub
+		
+
 
 	}
 
@@ -51,12 +66,18 @@ public class Uber extends Service {
 		else {
 			t = generateTrip(r);
 		}
+	
 		// TODO Auto-generated method stub
+		
 		return t;
 	}
 
 	
 	private Trip generateTrip(Request r) {
+		
+		
+		//generate an auto trip record
+		
 		// TODO Auto-generated method stub
 
 		return new Trip();

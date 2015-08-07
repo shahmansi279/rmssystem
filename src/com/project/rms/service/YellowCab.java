@@ -12,24 +12,13 @@ import com.project.rms.vehicle.Vehicle;
 
 public class YellowCab extends Service {
 
-	public YellowCab() {
-		super();
+	public YellowCab(ServiceType svcType) {
+		super(svcType);
+		this.serviceName = "YellowCab";
 	}
 
 	public void setRule() {
 		// TODO implement me
-	}
-
-	@Override
-	void calculateBaseFare() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	void calculateAdditionalCharge() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -99,6 +88,27 @@ public class YellowCab extends Service {
 		System.out.println("Allocated Vehicle for the Request");
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+
+	double calculateBaseFare(int miles) {
+
+		double baseFare = this.serviceType.calculateBaseFare(miles);
+		// TODO Auto-generated method stub
+
+		return calculateAdditionalCharge(baseFare);
+
+	}
+
+	@Override
+	double calculateAdditionalCharge(double fare) {
+
+		System.out.println("Adding extra 15 $ for Charges towards Yellow Cab Service ");
+
+		return (fare) + 10;
+		// TODO Auto-generated method stub
+
 	}
 
 }

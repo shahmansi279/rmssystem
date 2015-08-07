@@ -65,8 +65,6 @@ public class ReqMgmtFacade {
 
 	}
 
-	
-
 	public Request createRequest(String memberId, String rPickLocAddr, String rDestLoc, Date rPickUpTime,
 			int rServiceType, HashMap<String, String> rFeature)
 
@@ -76,19 +74,17 @@ public class ReqMgmtFacade {
 		ServiceType svcType;
 		String serviceTypeDesc;
 		String serviceType;
-		
-		//Setting the Service for the Type of Service Requested
-		
-		if (rServiceType == 1) {
-			serviceTypeDesc = "PrivateTaxi";
-			svcType = new PrivateTaxi();
 
-			svName = new YellowCab();
+		// Setting the Service for the Type of Service Requested
+
+		if (rServiceType == 1) {
+			
+			svName = new YellowCab(new PrivateTaxi());
 
 		} else {
-			serviceTypeDesc = "SharedTaxi";
-			svcType = new SharedTaxi();
-			svName = new Uber();
+			
+		
+			svName = new Uber(new SharedTaxi());
 
 		}
 		this.request = new Request();
@@ -96,7 +92,7 @@ public class ReqMgmtFacade {
 		request.setrPickUpAddr(rPickLocAddr);
 		request.setrDestAddr(rDestLoc);
 		request.setrPickupDateTime(rPickUpTime);
-		request.setrServiceTypeDesc(serviceTypeDesc);
+		//request.setrServiceTypeDesc(request.getS);
 		request.setSvcName(svName);
 		request.setrFeature(rFeature);
 		request.setrStatus("Created");
@@ -136,40 +132,35 @@ public class ReqMgmtFacade {
 
 		// Check Resource Availability and Allocate Resources
 
-		
-		
-		Trip trip= r.getSvcName().dispatchService(r);
-		
-		
+		Trip trip = r.getSvcName().dispatchService(r);
+
 		if (trip != null) {
 
-		System.out.println("Generated Trip for Customer Request");
-	//	sendNotifications(t);
-		return true;
+			System.out.println("Generated Trip for Customer Request");
+			// sendNotifications(t);
+			return true;
 
 		}
-		
-		else{
-			
+
+		else {
+
 			return false;
 		}
 
 	}
 
 	public void sendNotifications(Trip t) {
-		
-		
-		AccountManager acct=new AccountManager();
-		
-		//loop over array 
-		//acct.retrieveCustomer(t.getTripCustomer());
-		
-		//get preference
-		
-		//invoke notificatioin context
-		//NotificationManager 
-		
-		
+
+		AccountManager acct = new AccountManager();
+
+		// loop over array
+		// acct.retrieveCustomer(t.getTripCustomer());
+
+		// get preference
+
+		// invoke notificatioin context
+		// NotificationManager
+
 		// TODO implement me
 	}
 
@@ -189,7 +180,6 @@ public class ReqMgmtFacade {
 
 	}
 
-	
 	// Polling Request from PQ
 
 	public Request pollRequestFromQueue() {
