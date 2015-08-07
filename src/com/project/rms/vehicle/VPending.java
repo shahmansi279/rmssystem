@@ -16,7 +16,6 @@ public class VPending implements VehicleState
 	public void doAction(Vehicle vehicle){
 			System.out.println("Vehicle request is in pending state");
 			vehicle.setVehicleState(this);
-			
 	        if (vehicle.vHealth == 1){
 	        	VVerified vf = new VVerified();
 	        	vehicle.setVehicleState(new VVerified());

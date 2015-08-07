@@ -10,7 +10,7 @@ public abstract class Vehicle
 	public int vehicleType;
 	public VehicleState vehicleState;
 	public int vHealth;
-	public String vDriver = null;
+	public String vDriver;
 	//public String location();
 	
 	public Vehicle(){

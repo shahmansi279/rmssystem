@@ -12,7 +12,7 @@ public class VehicleClient {
 	
 	public static void main(String[] args){
 		
-
+		String vDriver;
 		System.out.println("RMS Vehicle Management");
 		System.out.println("------------------------");
 		System.out.println("1. CRUD Vehicle");
@@ -42,11 +42,12 @@ public class VehicleClient {
 				System.out.println("1. Contractor Owned");
 				System.out.println("2. Company Owned");
 				int vType = sc.nextInt();
-				//if (vType == 1){
+				if (vType == 1){
 				System.out.println("\nPlease enter name of the driver");
-				String vDriver = sc.nextLine();
-
-				//}else {String vDriver = null;}				
+				//vDriver = sc.nextLine();
+				Scanner sc1 = new Scanner(System.in);
+				vDriver = (sc1.nextLine());
+				}else {vDriver = null;}				
 				System.out.println("\nIs vehicle health good or bad");
 				System.out.println("1. Good");
 				System.out.println("2. Bad");
@@ -59,7 +60,6 @@ public class VehicleClient {
 
 			}
 			else if (s == 2){
-				System.out.println("Removing Vehicle... ");
 				System.out.println("Enter Vehicle ID");
 				Scanner scanner4 = new Scanner(System.in);
 				vId = (scanner4.nextLine());

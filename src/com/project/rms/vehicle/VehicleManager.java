@@ -24,7 +24,7 @@ public class VehicleManager
 		veh.setVehicleType(vType);
 		veh.setvHealth(vHealth);
 		veh.setvDriver(vDriver);
-		System.out.println("Vehicle Details - " + veh.getvId()+" " + veh.getvDriver());
+		System.out.println("Vehicle Details - Vehicle ID:" + veh.getvId()+" Vehicle Driver:" + veh.getvDriver());
 
 		return veh;
 		
@@ -44,7 +44,7 @@ public class VehicleManager
 	public void deleteVehicle(String vId) {
 		// TODO implement me	
 	        
-        for (int i = 0; i < VehicleClient.vehicles.size(); i++) 
+        /*for (int i = 0; i < VehicleClient.vehicles.size(); i++) 
         {
      	        
                  if (VehicleClient.vehicles.get(i).getvId().equalsIgnoreCase(vId))
@@ -54,7 +54,7 @@ public class VehicleManager
                  }
 
 
-         }
+         }*/
         
  }
 	
