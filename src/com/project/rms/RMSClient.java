@@ -24,7 +24,7 @@ public class RMSClient {
 	RequestClient reqClient;
 	TripManager tripClient;
 	VehicleClient vehClient;
-
+AccountClient acctClient;
 	ServiceClient scClient;
 
 	RMSClient() {
@@ -33,7 +33,7 @@ public class RMSClient {
 		this.tripClient = new TripManager();
 		this.scClient = new ServiceClient();
 		this.vehClient  = new VehicleClient();
-		
+		this.acctClient= new AccountClient();
 
 	}
 
@@ -109,8 +109,8 @@ public class RMSClient {
 		System.out.println("Welcome to RMS System --- Please choose your role from the Menu below");
 		System.out.println("1 Customer");
 		System.out.println("2 RMS System Admin");
-		System.out.println("3 Contractor");
-		System.out.println("4 Driver");
+		//System.out.println("3 Contractor");
+		System.out.println("3. Driver");
 
 		Scanner scan = new Scanner(System.in);
 		int choice = Integer.parseInt(scan.nextLine());
@@ -126,17 +126,17 @@ public class RMSClient {
 			showAdminMenu();
 
 			break;
-		case 3:
+		/*case 3:
 			System.out.println("Contractor");
 			showContractorMenu();
 
-			break;
-		case 4:
+			break;*/
+		/*case 4:
 
 			System.out.println("Driver");
 			showDriverMenu();
 
-			break;
+			break;*/
 
 		default:
 			System.out.println("Invalid Option .... Please Try Again");
@@ -164,9 +164,9 @@ public class RMSClient {
 		case 1:
 			System.out.println("View Notification");
 			// perform operations
-			TripNotification tn = new TripNotification();
-			System.out.println("Preparing Notification...");
-			tn.prepareNotification();
+			//TripNotification tn = new TripNotification();
+			//System.out.println("Preparing Notification...");
+			//tn.prepareNotification();
 
 			break;
 		case 2:
@@ -213,7 +213,7 @@ public class RMSClient {
 		switch (choice) {
 		case 1:
 			System.out.println("CRUD Account");
-
+           acctClient.processRequest();
 			// invoke account client
 
 			break;
@@ -229,7 +229,7 @@ public class RMSClient {
 			System.out.println("CRUD Vehicle");
 
 			// invoke vehicle manager
-			vehClient.createVehicle();
+			//vehClient.createVehicle();
 			
 
 			break;
@@ -343,6 +343,7 @@ public class RMSClient {
 
 		case 1:
 			System.out.println("Create Contractor Account");
+			
 			break;
 		case 2:
 			System.out.println("Update Contractor Account");

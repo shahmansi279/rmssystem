@@ -42,16 +42,10 @@ public class AccountClient
 	public SystemAdmin member2;
 	public ServiceProvider member3;
 	public SystemOwner member4;
-	AccountManager  mops;
-   AccountClient()
+	AccountManager  mops = new AccountManager();
+   
  
- {
-	 
-	 mops = new AccountManager();
-	 main();
-	 
- }
- public void main()
+ public void  processRequest()
  {
  
 
