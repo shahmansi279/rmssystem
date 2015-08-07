@@ -40,9 +40,8 @@ public class TripManager {
 
 		this.trip.setTripStatus("Completed");
 		this.trip.setTripCompletedTime(nowDate);
-		this.trip.setTripEndMiles(50000);
 
-		
+		this.invokePaymentManager();
 
 	}
 

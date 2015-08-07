@@ -4,10 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import com.project.rms.accounts.Member;
-import com.project.rms.service.Service;
 import com.project.rms.service.ServiceType;
 import com.project.rms.utils.GPSLocation;
-import com.project.rms.vehicle.Vehicle;
 
 /**
  * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -24,22 +22,20 @@ public class Trip {
 
 	public String tripId;
 	public ArrayList<Member> tripCustomers;
+
+	
 	public ArrayList<String> tripCustomer;
 	public Member vehicleDriver;
 	public String tripStatus;
-	public int tripMiles;
+	public String tripMiles;
 	public String tripSource;
 	public String tripDest;
 	public Date tripPickUpTime;
 	public Date tripCompletedTime;
 	public ServiceType svcType;
-	public Service service;
-	public int tripStartMiles;
-	public int tripEndMiles;
-	public Vehicle vehicle;
+
 	double tripFare;
 
-	
 	public double getTripFare() {
 		return tripFare;
 	}
@@ -50,8 +46,8 @@ public class Trip {
 
 	public Trip() {
 		super();
-
-		tripCustomer = new ArrayList<String>();
+		
+		tripCustomer= new ArrayList<String>();
 	}
 
 	public String getTripId() {
@@ -78,12 +74,12 @@ public class Trip {
 		this.tripStatus = tripStatus;
 	}
 
-	public int getTripMiles() {
+	public String getTripMiles() {
 		return tripMiles;
 	}
 
-	public void setTripMiles(int miles) {
-		this.tripMiles = miles;
+	public void setTripMiles(String tripMiles) {
+		this.tripMiles = tripMiles;
 	}
 
 	public String getTripSource() {
@@ -126,6 +122,8 @@ public class Trip {
 		this.tripCustomers = tripCustomers;
 	}
 
+	
+
 	public ArrayList<String> getTripCustomer() {
 		return tripCustomer;
 	}
@@ -137,15 +135,6 @@ public class Trip {
 	public void update() {
 		// TODO implement me
 	}
-
-	public Service getService() {
-		return service;
-	}
-
-	public void setService(Service service) {
-		this.service = service;
-	}
-
 	public ServiceType getSvcType() {
 		return svcType;
 	}
@@ -154,28 +143,8 @@ public class Trip {
 		this.svcType = svcType;
 	}
 
-	public int getTripStartMiles() {
-		return tripStartMiles;
-	}
-
-	public void setTripStartMiles(int tripStartMiles) {
-		this.tripStartMiles = tripStartMiles;
-	}
-
-	public int getTripEndMiles() {
-		return tripEndMiles;
-	}
-
-	public void setTripEndMiles(int tripEndMiles) {
-		this.tripEndMiles = tripEndMiles;
-	}
-
-	public Vehicle getVehicle() {
-		return vehicle;
-	}
-
-	public void setVehicle(Vehicle vehicle) {
-		this.vehicle = vehicle;
-	}
+	
+	
+	
 
 }

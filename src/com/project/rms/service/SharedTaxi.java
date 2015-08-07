@@ -1,8 +1,5 @@
 package com.project.rms.service;
 import java.util.Set;
-
-import com.project.rms.request.Trip;
-
 import java.util.HashSet;
 
 
@@ -33,19 +30,15 @@ public class SharedTaxi implements ServiceType
 		
 	}
 
-	
+	public void computeBaseFare(Service service) {
+		// TODO implement me	
+	}
+
 
 	@Override
-	public double calculateBaseFare(int miles) {
-		
-		System.out.println("Calculating Base Fare for Shared Taxi");
-		
-		double Fare=(miles)*2;
-		
-		
+	public double calculateBaseFare(Service service) {
 		// TODO Auto-generated method stub
-		
-		return Fare;
+		return 0;
 	}
 	
 }

@@ -21,8 +21,8 @@ public abstract class Service {
 	 * @generated
 	 * @ordered
 	 */
-	protected String serviceName;
-	protected ServiceType sType;
+
+	public ServiceType sType;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -67,26 +67,15 @@ public abstract class Service {
 	 * @ordered
 	 */
 
-	
 	public Set<ServiceRule> serviceRule;
-
-	public String getServiceName() {
-		return serviceName;
-	}
-
-	public void setServiceName(String serviceName) {
-		this.serviceName = serviceName;
-	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */
-	public Service(ServiceType serviceType) {
+	public Service() {
 		super();
-		this.serviceType = serviceType;
-	
 	}
 
 	/**
@@ -105,34 +94,22 @@ public abstract class Service {
 	 * @ordered
 	 */
 
-	public final double computeFare(Trip trip) {
+	final void computeFare(Trip trip) {
 
-		double fare;
-		int miles;
 		System.out.println("Calculating Trip Fare");
 
-		miles = computeDistance(trip);
+		computeDistance(trip);
 
-		System.out.println("Trip Miles are " + miles);
+		calculateBaseFare();
 
-		trip.setTripMiles(miles);
-
-		System.out.println("Calculating Service Base Fare");
-
-		fare=calculateBaseFare(miles);
-
-	
-
-		
-		return fare;
 		// TODO implement me
 	}
 
-	protected ServiceType getServiceType() {
+	public ServiceType getServiceType() {
 		return serviceType;
 	}
 
-	protected void setServiceType(ServiceType serviceType) {
+	public void setServiceType(ServiceType serviceType) {
 		this.serviceType = serviceType;
 	}
 
@@ -143,10 +120,10 @@ public abstract class Service {
 	 * @ordered
 	 */
 
-	abstract double calculateBaseFare(int miles);
+	abstract void calculateBaseFare();
 	// TODO implement me
 
-	abstract double calculateAdditionalCharge(double fare);
+	abstract void calculateAdditionalCharge();
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -155,12 +132,10 @@ public abstract class Service {
 	 * @ordered
 	 */
 
-	public int computeDistance(Trip trip) {
+	public void computeDistance(Trip trip) {
 		// TODO implement me
 
 		System.out.println("Calculating Trip Miles");
-
-		return trip.getTripEndMiles() - trip.getTripStartMiles();
 
 	}
 
@@ -177,7 +152,7 @@ public abstract class Service {
 	public Trip dispatchService(Request r) {
 
 		Vehicle v = fetchResource(r);
-		allocateResources(r, v);
+		allocateResources(r,v);
 		return dispatchTaxi(this.getServiceType(), r, v);
 
 	}

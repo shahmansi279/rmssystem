@@ -25,8 +25,6 @@ public class ServiceRuleManager
 	 */
 	public ServiceRuleManager(){
 		super();
-		
-	
 	}
 
 	/**
@@ -36,6 +34,9 @@ public class ServiceRuleManager
 	 * @ordered
 	 */
 	
+	public void createRule() {
+		// TODO implement me	
+	}
 	
 	/**
 	 * <!-- begin-user-doc -->
@@ -68,24 +69,6 @@ public class ServiceRuleManager
 	
 	public void deleteRule() {
 		// TODO implement me	
-	}
-
-	public void createRule(String memberId, String ruleServiceName, String ruleServiceType, String ruleCategory,String ruleCategoryValue) {
-		
-		this.serviceRule= new ServiceRule();
-		
-		this.serviceRule.setRuleServiceName(ruleServiceName);
-		this.serviceRule.setRuleCreator(memberId);
-		this.serviceRule.setRuleServiceType(ruleServiceType);
-		this.serviceRule.setRuleCategory(ruleCategory);
-		this.serviceRule.setRuleCategoryValue(ruleCategoryValue);
-		
-		// TODO Auto-generated method stub
-		
-		System.out.println("Rule successfully created with ID ");
-		
-	
-		
 	}
 	
 }

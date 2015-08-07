@@ -1,6 +1,6 @@
 package com.project.rms.service;
 
-import com.project.rms.request.Trip;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -12,9 +12,7 @@ public  interface ServiceType
 	
 	
 	
-
-
-	public double calculateBaseFare(int miles);
+	public double calculateBaseFare(Service service);
 	
 	
 }
