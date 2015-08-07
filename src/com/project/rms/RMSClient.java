@@ -5,6 +5,11 @@ import java.util.Scanner;
 
 import com.project.rms.accounts.*;
 import com.project.rms.request.*;
+import com.project.rms.service.PrivateTaxi;
+import com.project.rms.service.ServiceClient;
+import com.project.rms.service.SharedTaxi;
+import com.project.rms.service.Uber;
+import com.project.rms.service.YellowCab;
 import com.project.rms.vehicle.*;
 
 public class RMSClient {
@@ -18,12 +23,16 @@ public class RMSClient {
 	RequestClient reqClient;
 	TripManager tripClient;
 
+	ServiceClient scClient;
+
 	RMSClient() {
 
 		this.reqClient = new RequestClient();
 		this.tripClient = new TripManager();
+		this.scClient = new ServiceClient();
 
 	}
+
 
 	public static void main(String args[]) {
 
@@ -59,11 +68,21 @@ public class RMSClient {
 		t2.setTripId("00006");
 		t2.setTripSource("555 e el camino");
 		t2.setTripFare(100.00);
+		// t2.setSvcType(new PrivateTaxi());
+		t2.setService(new YellowCab(new PrivateTaxi()));
+		t2.setTripDest("9587");
+		t2.setTripStartMiles(49980);
+
 		this.tripArr.add(t2);
 		Trip t = new Trip();
 		t.setTripId("00005");
 		t.setTripSource("555 e el camino");
+		t.setTripDest("9587");
 		t.setTripFare(200.00);
+		// t.setSvcType(new SharedTaxi());
+		t.setService(new Uber(new SharedTaxi()));
+		t.setTripStartMiles(49990);
+
 		this.tripArr.add(t);
 
 		// mansi needs to poulate some request data
@@ -193,6 +212,8 @@ public class RMSClient {
 			break;
 		case 2:
 			System.out.println("CRUD Rule");
+			scClient.processRuleRequest();
+
 
 			// invoke rule manager
 
