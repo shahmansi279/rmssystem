@@ -2,6 +2,7 @@ package com.project.rms.notification;
 
 import java.util.Scanner;
 
+import com.project.rms.accounts.AccountManager;
 import com.project.rms.accounts.Member;
 import com.project.rms.accounts.SystemOwner;
 
@@ -68,7 +69,7 @@ public class NotificationManager {
 		// TODO implement me
 	}
 
-	public void sendNotification(Notification notification, Member m) {
+	public void sendNotification(Notification notification, String memberId) {
 
 		// Prepare notification message
 
@@ -76,6 +77,12 @@ public class NotificationManager {
 		NotificationContext ncxt = new NotificationContext();
 		String memberIdentification = null;
 		// Set strategy for notification mode
+		
+		
+		AccountManager am= new AccountManager();
+		Member m=am.retrieveMember(memberId);
+		m.setMemPrefnotfn("email");
+		//Retrieve Member Preferences
 
 		if ("email".equalsIgnoreCase(m.getMemPrefnotfn())) {
 

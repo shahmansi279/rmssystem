@@ -3,23 +3,24 @@ package com.project.rms.service;
 import java.util.ArrayList;
 
 import com.project.rms.accounts.AccountManager;
+import com.project.rms.accounts.Customer;
 import com.project.rms.request.Request;
 import com.project.rms.request.Trip;
 import com.project.rms.request.TripManager;
+import com.project.rms.vehicle.VAssigned;
 import com.project.rms.vehicle.Vehicle;
-
-/**
- * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
- * @generated
- */
+import com.project.rms.vehicle.VehicleManager;
+import com.project.rms.accounts.Member;
 
 public class Uber extends Service {
+
+
 
 	public Uber(ServiceType svcType) {
 
 		super(svcType);
 		this.serviceName = "Uber";
+
 
 	}
 
@@ -52,19 +53,14 @@ public class Uber extends Service {
 	@Override
 	public Trip dispatchTaxi(ServiceType svcType, Request r, Vehicle v) {
 
-		ArrayList<Request> requestArr = findSharedRideRequest(r);
-		String tripId = mergeWithSharedRequest(r, requestArr);
+		// ArrayList<Request> requestArr = findSharedRideRequest(r);
+
+		System.out.println("Dispatching Taxi for Uber Cab Service \n");
+
 		Trip t = null;
 
-		if (tripId != null) {
-			t = fetchTrip(tripId);
-			updateTrip(t, tripId, r, svcType);
-		}
-
-		else {
-			t = generateTrip(r);
-
-		}
+		t = generateTrip(r);
+		t = updateTrip(t, t.getTripId(), r, svcType, v);
 
 		// TODO Auto-generated method stub
 
@@ -88,29 +84,32 @@ public class Uber extends Service {
 		return new Trip();
 	}
 
-	private boolean updateTrip(Trip t, String tripId, Request r, ServiceType svcType) {
+	private Trip updateTrip(Trip t, String tripId, Request r, ServiceType svcType, Vehicle v) {
 
 		System.out.println("Updating Trip with ID " + tripId + " with request with ID " + r.getrId());
 
 		// accountMgr
+
 		AccountManager am = new AccountManager();
-		
-		
-	//	t.tripCustomers.add(am.retrieveCustomer(r.getMemberId()));
+		ArrayList<String> memList = new ArrayList<String>();
+
+		memList.add(r.getMemberId());
+		t.setTripCustomer(memList);
 		t.setTripSource(r.getrPickUpAddr());
 		t.setTripDest(r.getrDestAddr());
 		t.setSvcType(svcType);
 		t.setTripPickUpTime(r.getrPickupDateTime());
 		t.setTripCustomer(t.tripCustomer);
+		t.setVehicle(v);
 
-		return true;
+		return t;
 		// TODO Auto-generated method stub
 
 	}
 
 	private String mergeWithSharedRequest(Request r, ArrayList<Request> requestArr) {
 
-		return "T0001";
+		return null;
 		// TODO Auto-generated method stub
 
 	}
@@ -129,16 +128,18 @@ public class Uber extends Service {
 
 		// Retrieving Contractor Owned or Company Owned Vehicle based on Request
 
-		// String v=null;
+		VehicleManager vmgr = new VehicleManager();
 
-		// Vehicle v=vmgr.retrieveVehicle(r.getServiceType());
+		Vehicle v = vmgr.retrieveVehicle(r.getrServiceTypeDesc(), r.getrPickUpAddr());
 
-		// if(v!=null)
+		if (v != null)
 
-		System.out.println("Acquired Resources for the Request");
+		{
+			System.out.println("Acquired Resources for the Request");
 
-		// return v;
-		// TODO Auto-generated method stub
+			return v;
+		}
+
 		return null;
 	}
 
@@ -147,10 +148,10 @@ public class Uber extends Service {
 
 		// Update vehicle and allocate it to trip
 
-		// v.updateVehicleState(new )
+		v.setVehicleState(new VAssigned());
 
 		System.out.println("Allocated Vehicle for the Request");
-		// TODO Auto-generated method stub
+
 		return false;
 	}
 

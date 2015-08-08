@@ -10,16 +10,15 @@ import java.util.Scanner;
  * Date: 08/01/2015
  */
 
-
-public class AccountClient 
+public class AccountClient
 
 {
 
 	Scanner console1;
 	public long custid = 9;
 	public long sysadmid = 2;
-	public long sysownerid=2;
-	public long serviceproid=2;
+	public long sysownerid = 2;
+	public long serviceproid = 2;
 	public String custID = "1";
 	public String strmFName = null;
 	public String strmLName = null;
@@ -36,67 +35,76 @@ public class AccountClient
 	public String strmPrimeflag = null;
 	public int choice;
 	public String strmmemType = null;
-	//Aug 7 morning
+	// Aug 7 morning
 	public static List<Member> members1 = new ArrayList<Member>();
 	public Customer member1;
 	public SystemAdmin member2;
 	public ServiceProvider member3;
 	public SystemOwner member4;
-	AccountManager  mops = new AccountManager();
-   
- 
- public void  processRequest()
- {
- 
+	AccountManager mops = new AccountManager();
 
-   
-		member1= new Customer("Cust002", "Parth", "Cust2Lname", "Cust02@yahoo.com", "4085550002", "Cust2 Address1",
-				"Cust2 Address2", "Cust2 City", "Cust2 State", "90002", "Email", "Cash", "1234567890120002", "Y",
-				"PREMIER","C");
+	public AccountClient(){
 		
+		
+	}
+
+	public void processRequest() {
+
+		member1 = new Customer("Cust002", "Parth", "Cust2Lname", "Cust02@yahoo.com", "4085550002", "Cust2 Address1",
+				"Cust2 Address2", "Cust2 City", "Cust2 State", "90002", "Email", "Cash", "1234567890120002", "Y",
+				"PREMIER", "C");
+
 		members1.add(member1);
 		member1 = new Customer("Cust003", "Mansi", "Cust3Lname", "Cust03@yahoo.com", "4085550003", "Cust3 Address1",
 				"Cust3 Address2", "Cust3 City", "Cust3 State", "90003", "Email", "CreditCard", "1234567890120003", "Y",
-				"GUEST","C");
+				"GUEST", "C");
 		members1.add(member1);
-		member1= new Customer("Cust004", "Jessie", "Cust4Lname", "Cust04@yahoo.com", "4085550004", "Cust4 Address1",
-				"Cust4 Address2", "Cust4 City", "Cust4 State", "90004", "SMS", "Cash", "1234567890120004", "Y", "PREMIER","C");
+		member1 = new Customer("Cust004", "Jessie", "Cust4Lname", "Cust04@yahoo.com", "4085550004", "Cust4 Address1",
+				"Cust4 Address2", "Cust4 City", "Cust4 State", "90004", "SMS", "Cash", "1234567890120004", "Y",
+				"PREMIER", "C");
 		members1.add(member1);
 		member1 = new Customer("Cust005", "Zebra", "Cust5Lname", "Cust05@yahoo.com", "4085550005", "Cust5 Address1",
-				"Cust5 Address2", "Cust5 City", "Cust5 State", "90005", "Email", "Cash", "1234567890120005", "Y", "PREMIER","C");
+				"Cust5 Address2", "Cust5 City", "Cust5 State", "90005", "Email", "Cash", "1234567890120005", "Y",
+				"PREMIER", "C");
 		members1.add(member1);
 		member1 = new Customer("Cust006", "Amogh", "Cust6Lname", "Cust06@yahoo.com", "4085550006", "Cust6 Address1",
-				"Cust6 Address2", "Cust6 City", "Cust6 State", "90006", "Email", "Cash", "1234567890120006", "Y", "PREMIER","C");
+				"Cust6 Address2", "Cust6 City", "Cust6 State", "90006", "Email", "Cash", "1234567890120006", "Y",
+				"PREMIER", "C");
 		members1.add(member1);
-		member1= new Customer("Cust007", "Jack", "Cust7Lname", "Cust07@yahoo.com", "4085550007", "Cust7 Address1",
-				"Cust7 Address2", "Cust7 City", "Cust7 State", "90007", "Email", "Cash", "1234567890120007", "N", "GUEST","C");
+		member1 = new Customer("Cust007", "Jack", "Cust7Lname", "Cust07@yahoo.com", "4085550007", "Cust7 Address1",
+				"Cust7 Address2", "Cust7 City", "Cust7 State", "90007", "Email", "Cash", "1234567890120007", "N",
+				"GUEST", "C");
 		members1.add(member1);
 		member1 = new Customer("Cust008", "Barbara", "Cust8Lname", "Cust08@yahoo.com", "4085550008", "Cust8 Address1",
-				"Cust8 Address2", "Cust8 City", "Cust8 State", "90008", "Email", "Cash", "1234567890120008", "Y", "PREMIER","C");
+				"Cust8 Address2", "Cust8 City", "Cust8 State", "90008", "Email", "Cash", "1234567890120008", "Y",
+				"PREMIER", "C");
 		members1.add(member1);
 		member1 = new Customer("Cust009", "Robert", "Cust9Lname", "Cust09@yahoo.com", "4085550009", "Cust9 Address1",
-				"Cust9 Address2", "Cust9 City", "Cust9 State", "90009", "Email", "Cash", "1234567890120009", "Y", "PREMIER","C");
+				"Cust9 Address2", "Cust9 City", "Cust9 State", "90009", "Email", "Cash", "1234567890120009", "Y",
+				"PREMIER", "C");
 		members1.add(member1);
-		
-		
-		//Aug 6 2015 
-	    member2 = new SystemAdmin("SysAdm001", "RajSysadmin", "Natar", null, null, null, null, null, null, null, null, null, null, null,"GUEST","S");
+
+		// Aug 6 2015
+		member2 = new SystemAdmin("SysAdm001", "RajSysadmin", "Natar", null, null, null, null, null, null, null, null,
+				null, null, null, "GUEST", "S");
 		members1.add(member2);
-	    member2 = new SystemAdmin("SysAdm002", "SysFname", "Sys2Lname", "Sysadm02@yahoo.com", "4085550002", "sysadm2 Address1",
-				"sysadm2 Address2", "sysadm2 City", "sysadm2 State", "90002", "Email", "CreditCard", "1234567890120002", "Y",
-				"SysAdmin002","S");
+		member2 = new SystemAdmin("SysAdm002", "SysFname", "Sys2Lname", "Sysadm02@yahoo.com", "4085550002",
+				"sysadm2 Address1", "sysadm2 Address2", "sysadm2 City", "sysadm2 State", "90002", "Email", "CreditCard",
+				"1234567890120002", "Y", "SysAdmin002", "S");
 		members1.add(member2);
-		 member3 = new ServiceProvider("Provider001", "NTServiceprovider", "Natar", null, null, null, null, null, null, null, null, null, null, null,"GUEST","D");
-		 members1.add(member3);
-		 member3= new ServiceProvider("Provider002", "SvcProv2Fname", "SvcProv2Lname", "SvcProv2@yahoo.com", "4085550002", "Prov2 Address1",
-				"Prov2 Address2", "Prov2 City", "Prov2 State", "90002", "Email", "CreditCard", "1234567890120002", "Y",
-				"SP1","D");
+		member3 = new ServiceProvider("Provider001", "NTServiceprovider", "Natar", null, null, null, null, null, null,
+				null, null, null, null, null, "GUEST", "D");
 		members1.add(member3);
-		 member4 = new SystemOwner("SysOwn001", "Owner1Fname", "Owner1Natar", "Owner1@yahoo.com", null, null, null, null, null, null, null, null, null, null,"GUEST","O");
-			members1.add(member4);
-		member4=new SystemOwner("SysOwn002", "Owner2Fname", "Owner2Rob", "Owner2@yahoo.com", "4085550002", "Owner2 Address1",
-				"Owner2 Address2", "Owner2 City", "Owner2 State", "90002", "Email", "CreditCard", "1234567890120002", "Y",
-				"SP1","O");
+		member3 = new ServiceProvider("Provider002", "SvcProv2Fname", "SvcProv2Lname", "SvcProv2@yahoo.com",
+				"4085550002", "Prov2 Address1", "Prov2 Address2", "Prov2 City", "Prov2 State", "90002", "Email",
+				"CreditCard", "1234567890120002", "Y", "SP1", "D");
+		members1.add(member3);
+		member4 = new SystemOwner("SysOwn001", "Owner1Fname", "Owner1Natar", "Owner1@yahoo.com", null, null, null, null,
+				null, null, null, null, null, null, "GUEST", "O");
+		members1.add(member4);
+		member4 = new SystemOwner("SysOwn002", "Owner2Fname", "Owner2Rob", "Owner2@yahoo.com", "4085550002",
+				"Owner2 Address1", "Owner2 Address2", "Owner2 City", "Owner2 State", "90002", "Email", "CreditCard",
+				"1234567890120002", "Y", "SP1", "O");
 		members1.add(member4);
 
 		do {
@@ -123,25 +131,18 @@ public class AccountClient
 			{
 				collectInput();
 				addanyMember();
-			}	
-			
-				//String id = "10";
-				//Aug 6 
-				/*
-				 * else
-				 * SystemAdmin member
-				 *if role = sysadmin smem2
-				 *if role = Servieprovider use smem3 here instead of member
-				 * smem1.nMemberID = "111" + id;
-				 *  smem2.nMemberID = "555" + id;
-				 *   smem3.nMemberID = "777" + id;
-				 *   copy paste till mops.addMembers(smem1,memebers1)
-				 * 
-				 */
-				// Aug 7 replace the below lines with the method
-				
+			}
 
-		
+			// String id = "10";
+			// Aug 6
+			/*
+			 * else SystemAdmin member if role = sysadmin smem2 if role =
+			 * Servieprovider use smem3 here instead of member smem1.nMemberID =
+			 * "111" + id; smem2.nMemberID = "555" + id; smem3.nMemberID = "777"
+			 * + id; copy paste till mops.addMembers(smem1,memebers1)
+			 * 
+			 */
+			// Aug 7 replace the below lines with the method
 
 			if (choice == 2) {
 				System.out.println("Retrieving Member ");
@@ -173,7 +174,8 @@ public class AccountClient
 				// print after deletion
 				System.out.println("Members list after removing a member ");
 				for (int j = 0; j < members1.size(); j++) {
-					System.out.println("First Name = " + members1.get(j).memFname+" Member Id = "+ members1.get(j).nMemberID+" Member role= "+members1.get(j).memRole);
+					System.out.println("First Name = " + members1.get(j).memFname + " Member Id = "
+							+ members1.get(j).nMemberID + " Member role= " + members1.get(j).memRole);
 				}
 				// mops.addMembers(member);
 				// member.addMembers(member);
@@ -217,19 +219,19 @@ public class AccountClient
 		 * strmPrimeflag = null;
 		 * 
 		 */
- }
+	}
 
 	// take input from customer
 
 	// AccountManager am= new AccountManager();
 	// am.addCustomer("");
-	
-	//collectInput()
+
+	// collectInput()
 
 	public void collectInput()
-	
+
 	{
-		//Scanner console1;
+		// Scanner console1;
 		System.out.println("Adding members");
 		System.out.println("Adding Member Information");
 		System.out.println("Enter Member First Name");
@@ -274,48 +276,51 @@ public class AccountClient
 		System.out.println("Enter Member type: Customer/Sysadmin/Service Provider/Owner(C/S/D/O)");
 		console1 = new Scanner(System.in);
 		strmmemType = (console1.nextLine());
-		
-		
+
 	}
-	
-	public  void addanyMember()
-	
+
+	public void addanyMember()
+
 	{
-		
-		/*member.setnMemberID("111");
-		member.setMemFname(strmFName);
-		member.setMemLname(strmLName);
-		member.setMemEmail(strmEmail);
-		member.setMemPhone(strmPhone);
-		member.setMemAddress1(strmAddress1);
-		member.setMemAddress2(strmAddress2);
-		member.setMemCity(strmCity);
-		member.setMemState(strmState);
-		member.setMemZipcode(strmZipcode);
-		member.setMemPrefnotfn(strmPrefnotfn);
-		member.setMemPrefpmt(strmPrefpmt);
-		member.setMemCreditcard(strmCreditcard);
-		member.setMemPrimeflag(strmPrimeflag);
-		
-	    member.setMemType(strmmemType);*/
-	   /* member1 = new Customer("Cust000", "Thiagucustomer", "Natar", null, null, null, null, null, null, null, null, null, null, null,"GUEST","C");
-	    member2 = new SystemAdmin("SysAdm000", "RajSysadmin", "Natar", null, null, null, null, null, null, null, null, null, null, null,"GUEST","S");
-	    member3 = new ServiceProvider("Provider000", "NTServiceprovider", "Natar", null, null, null, null, null, null, null, null, null, null, null,"GUEST","D");
-	    member4 = new SystemOwner("SysOwn000", "", "Natar", null, null, null, null, null, null, null, null, null, null, null,"GUEST","O");*/
-	   // C/S/D/O
-		/*public long custid = 0;
-		public long sysadmid = 0;
-		public long sysownerid=0;
-		public long serviceproid=0;*/
-	    switch(strmmemType)
-	    { 
-	    
-	    case "C": 
-	    {
-	    	System.out.println("Member type = "+strmmemType);
-	    	custid++;
-	    	member1 = new Customer("null", "null", "Natar", null, null, null, null, null, null, null, null, null, null, null,"GUEST","D");
-	    	member1.setnMemberID("Cust00"+custid);
+
+		/*
+		 * member.setnMemberID("111"); member.setMemFname(strmFName);
+		 * member.setMemLname(strmLName); member.setMemEmail(strmEmail);
+		 * member.setMemPhone(strmPhone); member.setMemAddress1(strmAddress1);
+		 * member.setMemAddress2(strmAddress2); member.setMemCity(strmCity);
+		 * member.setMemState(strmState); member.setMemZipcode(strmZipcode);
+		 * member.setMemPrefnotfn(strmPrefnotfn);
+		 * member.setMemPrefpmt(strmPrefpmt);
+		 * member.setMemCreditcard(strmCreditcard);
+		 * member.setMemPrimeflag(strmPrimeflag);
+		 * 
+		 * member.setMemType(strmmemType);
+		 */
+		/*
+		 * member1 = new Customer("Cust000", "Thiagucustomer", "Natar", null,
+		 * null, null, null, null, null, null, null, null, null,
+		 * null,"GUEST","C"); member2 = new SystemAdmin("SysAdm000",
+		 * "RajSysadmin", "Natar", null, null, null, null, null, null, null,
+		 * null, null, null, null,"GUEST","S"); member3 = new
+		 * ServiceProvider("Provider000", "NTServiceprovider", "Natar", null,
+		 * null, null, null, null, null, null, null, null, null,
+		 * null,"GUEST","D"); member4 = new SystemOwner("SysOwn000", "",
+		 * "Natar", null, null, null, null, null, null, null, null, null, null,
+		 * null,"GUEST","O");
+		 */
+		// C/S/D/O
+		/*
+		 * public long custid = 0; public long sysadmid = 0; public long
+		 * sysownerid=0; public long serviceproid=0;
+		 */
+		switch (strmmemType) {
+
+		case "C": {
+			System.out.println("Member type = " + strmmemType);
+			custid++;
+			member1 = new Customer("null", "null", "Natar", null, null, null, null, null, null, null, null, null, null,
+					null, "GUEST", "D");
+			member1.setnMemberID("Cust00" + custid);
 			member1.setMemFname(strmFName);
 			member1.setMemLname(strmLName);
 			member1.setMemEmail(strmEmail);
@@ -329,18 +334,19 @@ public class AccountClient
 			member1.setMemPrefpmt(strmPrefpmt);
 			member1.setMemCreditcard(strmCreditcard);
 			member1.setMemPrimeflag(strmPrimeflag);
-		    member1.setMemType(strmmemType);
-		   mops.addMembers(member1, members1);
-		    break;
-	    } 
-		    
-	    case "S":
-	    	
-	    {
-	    	System.out.println("Member type = "+strmmemType);
-	    	sysadmid++;
-	    	member2 = new SystemAdmin("null", "null", "Natar", null, null, null, null, null, null, null, null, null, null, null,"GUEST","D");
-	    	member2.setnMemberID("SYSADM00"+sysadmid);
+			member1.setMemType(strmmemType);
+			mops.addMembers(member1, members1);
+			break;
+		}
+
+		case "S":
+
+		{
+			System.out.println("Member type = " + strmmemType);
+			sysadmid++;
+			member2 = new SystemAdmin("null", "null", "Natar", null, null, null, null, null, null, null, null, null,
+					null, null, "GUEST", "D");
+			member2.setnMemberID("SYSADM00" + sysadmid);
 			member2.setMemFname(strmFName);
 			member2.setMemLname(strmLName);
 			member2.setMemEmail(strmEmail);
@@ -354,18 +360,18 @@ public class AccountClient
 			member2.setMemPrefpmt(strmPrefpmt);
 			member2.setMemCreditcard(strmCreditcard);
 			member2.setMemPrimeflag(strmPrimeflag);
-		    member2.setMemType(strmmemType);
-		    mops.addMembers(member2, members1);
-		    break;
-		    
-	    }
-	    
-	    case "D":
-	    {
-	    	System.out.println("Member type = "+strmmemType);
-	    	serviceproid++;
-	    	member3 = new ServiceProvider("null", "null", "Natar", null, null, null, null, null, null, null, null, null, null, null,"GUEST","D");
-	    	member3.setnMemberID("Provider00"+serviceproid);
+			member2.setMemType(strmmemType);
+			mops.addMembers(member2, members1);
+			break;
+
+		}
+
+		case "D": {
+			System.out.println("Member type = " + strmmemType);
+			serviceproid++;
+			member3 = new ServiceProvider("null", "null", "Natar", null, null, null, null, null, null, null, null, null,
+					null, null, "GUEST", "D");
+			member3.setnMemberID("Provider00" + serviceproid);
 			member3.setMemFname(strmFName);
 			member3.setMemLname(strmLName);
 			member3.setMemEmail(strmEmail);
@@ -379,16 +385,16 @@ public class AccountClient
 			member3.setMemPrefpmt(strmPrefpmt);
 			member3.setMemCreditcard(strmCreditcard);
 			member3.setMemPrimeflag(strmPrimeflag);
-		    member3.setMemType(strmmemType);
-		    mops.addMembers(member3, members1);
-		    break;
-	    } 
-      case "O":
-      {
-	    	System.out.println("Member type = "+strmmemType);
-	    	sysownerid++;
-	    	member4 = new SystemOwner("null", "null", "Natar", null, null, null, null, null, null, null, null, null, null, null,"GUEST","D");
-	    	member4.setnMemberID("SysOwn00"+sysownerid);
+			member3.setMemType(strmmemType);
+			mops.addMembers(member3, members1);
+			break;
+		}
+		case "O": {
+			System.out.println("Member type = " + strmmemType);
+			sysownerid++;
+			member4 = new SystemOwner("null", "null", "Natar", null, null, null, null, null, null, null, null, null,
+					null, null, "GUEST", "D");
+			member4.setnMemberID("SysOwn00" + sysownerid);
 			member4.setMemFname(strmFName);
 			member4.setMemLname(strmLName);
 			member4.setMemEmail(strmEmail);
@@ -402,23 +408,18 @@ public class AccountClient
 			member4.setMemPrefpmt(strmPrefpmt);
 			member4.setMemCreditcard(strmCreditcard);
 			member4.setMemPrimeflag(strmPrimeflag);
-		    member4.setMemType(strmmemType);
-		    mops.addMembers(member4, members1);
-		    break;
-      }   
-		   default: 
-		   {
-			   
-			   System.out.println("Invalid option");
-			   break;
-		   }
-	    	
-      }
-	    	
-	    }
-	   
-	    
+			member4.setMemType(strmmemType);
+			mops.addMembers(member4, members1);
+			break;
+		}
+		default: {
+
+			System.out.println("Invalid option");
+			break;
+		}
+
+		}
+
 	}
-	
 
-
+}

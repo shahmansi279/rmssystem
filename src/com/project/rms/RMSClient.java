@@ -24,7 +24,7 @@ public class RMSClient {
 	RequestClient reqClient;
 	TripManager tripClient;
 	VehicleClient vehClient;
-AccountClient acctClient;
+	AccountClient acctClient;
 	ServiceClient scClient;
 
 	RMSClient() {
@@ -32,16 +32,15 @@ AccountClient acctClient;
 		this.reqClient = new RequestClient();
 		this.tripClient = new TripManager();
 		this.scClient = new ServiceClient();
-		this.vehClient  = new VehicleClient();
-		this.acctClient= new AccountClient();
+		this.vehClient = new VehicleClient();
+		this.acctClient = new AccountClient();
 
 	}
-
 
 	public static void main(String args[]) {
 
 		RMSClient rms = new RMSClient();
-		rms.populateData();
+		// rms.populateData();
 		rms.showMainMenu();
 
 	}
@@ -66,31 +65,6 @@ AccountClient acctClient;
 
 	public void populateRequestData() {
 
-		this.tripArr = new ArrayList<Trip>();
-
-		Trip t2 = new Trip();
-		t2.setTripId("00006");
-		t2.setTripSource("555 e el camino");
-		t2.setTripFare(100.00);
-		// t2.setSvcType(new PrivateTaxi());
-		t2.setService(new YellowCab(new PrivateTaxi()));
-		t2.setTripDest("9587");
-		t2.setTripStartMiles(49980);
-
-		this.tripArr.add(t2);
-		Trip t = new Trip();
-		t.setTripId("00005");
-		t.setTripSource("555 e el camino");
-		t.setTripDest("9587");
-		t.setTripFare(200.00);
-		// t.setSvcType(new SharedTaxi());
-		t.setService(new Uber(new SharedTaxi()));
-		t.setTripStartMiles(49990);
-
-		this.tripArr.add(t);
-
-		// mansi needs to poulate some request data
-
 		// TODO Auto-generated method stub
 
 	}
@@ -104,12 +78,12 @@ AccountClient acctClient;
 
 	}
 
-	private  void showMainMenu() {
+	private void showMainMenu() {
 
 		System.out.println("Welcome to RMS System --- Please choose your role from the Menu below");
 		System.out.println("1 Customer");
 		System.out.println("2 RMS System Admin");
-		//System.out.println("3 Contractor");
+
 		System.out.println("3. Driver");
 
 		Scanner scan = new Scanner(System.in);
@@ -126,17 +100,13 @@ AccountClient acctClient;
 			showAdminMenu();
 
 			break;
-		/*case 3:
-			System.out.println("Contractor");
-			showContractorMenu();
 
-			break;*/
-		/*case 4:
+		case 3:
 
 			System.out.println("Driver");
 			showDriverMenu();
 
-			break;*/
+			break;
 
 		default:
 			System.out.println("Invalid Option .... Please Try Again");
@@ -149,45 +119,30 @@ AccountClient acctClient;
 
 	}
 
-	private  void showDriverMenu() {
+	private void showDriverMenu() {
 
 		System.out.println("Choose a valid option");
-		System.out.println("1 View Notification");
-		System.out.println("2 View Account History");
-		System.out.println("3 Update Trip Status");
-		System.out.println("4 Return to Main Menu");
+
+		System.out.println("1 Update Trip Status");
+		System.out.println("2 Return to Main Menu");
 
 		Scanner scan = new Scanner(System.in);
 		int choice = Integer.parseInt(scan.nextLine());
 
 		switch (choice) {
 		case 1:
-			System.out.println("View Notification");
-			// perform operations
-			//TripNotification tn = new TripNotification();
-			//System.out.println("Preparing Notification...");
-			//tn.prepareNotification();
 
-			break;
-		case 2:
-			System.out.println("View Account History");
-			// perform operations
-
-			break;
-		case 3:
 			System.out.println("Update Trip Status");
-			this.tripClient.setTripArr(this.tripArr);
+			// this.tripClient.setTripArr(this.tripArr);
 			this.tripClient.processTripUpdateRequest();
 
 			break;
-		case 4:
+		case 2:
 			System.out.println("Return to Main Menu");
 			showMainMenu();
 
 			break;
-		case 5:
-			System.out.println("Exit");
-			break;
+
 		default:
 			System.out.println("Invalid Option .... Please Try Again");
 			showDriverMenu();
@@ -196,7 +151,7 @@ AccountClient acctClient;
 
 	}
 
-	private  void showAdminMenu() {
+	private void showAdminMenu() {
 
 		System.out.println("Choose a valid option");
 		System.out.println("1 CRUD Account");
@@ -213,7 +168,7 @@ AccountClient acctClient;
 		switch (choice) {
 		case 1:
 			System.out.println("CRUD Account");
-           acctClient.processRequest();
+			acctClient.processRequest();
 			// invoke account client
 
 			break;
@@ -221,22 +176,20 @@ AccountClient acctClient;
 			System.out.println("CRUD Rule");
 			scClient.processRuleRequest();
 
-
 			// invoke rule manager
 
 			break;
 		case 3:
 			System.out.println("CRUD Vehicle");
-
+			VehicleManager vm = new VehicleManager();
+			vm.retrieveVehicle("SharedTaxi", "555 94087");
 			// invoke vehicle manager
-			//vehClient.createVehicle();
-			
+			// vehClient.createVehicle();
 
 			break;
 		case 4:
-	
-			System.out.println("Update Trip");
-			this.tripClient.setTripArr(this.tripArr);
+
+			// this.tripClient.setTripArr(this.tripArr);
 			this.tripClient.processTripUpdateRequest();
 
 			break;
@@ -269,13 +222,12 @@ AccountClient acctClient;
 		// init()
 
 		System.out.println("Choose a valid option");
-		System.out.println("1 Create an Account");
-		System.out.println("2 Update an Account");
-		System.out.println("3 Delete an Account");
-		System.out.println("4 Request Ride");
-		System.out.println("5 Make Payment");
-		System.out.println("6 Return to Main Menu");
-		System.out.println("7 Exit");
+		System.out.println("1 CRUD Account");
+
+		System.out.println("2 Request Ride");
+
+		System.out.println("3 Return to Main Menu");
+		System.out.println("4 Exit");
 
 		Scanner scan = new Scanner(System.in);
 		int choice = Integer.parseInt(scan.nextLine());
@@ -284,33 +236,19 @@ AccountClient acctClient;
 		case 1:
 			System.out.println("Create an Account");
 
-			// call to fucn
+			acctClient.processRequest();
 
-			break;
 		case 2:
-			System.out.println("Update an Account");
-
-			// call to funcn
-			break;
-		case 3:
-			System.out.println("Delete an Account");
-			break;
-
-		case 4:
 			System.out.println("Request Ride");
 			this.reqClient.createRequest();
 
 			break;
 
-		case 5:
-			System.out.println("Make Payment");
-			break;
-
-		case 6:
+		case 3:
 			System.out.println("Return to Main Menu");
 			break;
 
-		case 7:
+		case 4:
 			System.out.println("Exit");
 			break;
 
@@ -343,7 +281,7 @@ AccountClient acctClient;
 
 		case 1:
 			System.out.println("Create Contractor Account");
-			
+
 			break;
 		case 2:
 			System.out.println("Update Contractor Account");

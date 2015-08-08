@@ -34,12 +34,9 @@ public class RequestClient {
 
 	public void createRequest() {
 
-		// Reading input from member to create request
+		// Reading input from member to create ride request
 
-		
-
-		
-		
+	
 			Scanner sc = new Scanner(System.in);
 
 	
@@ -68,8 +65,8 @@ public class RequestClient {
 
 			HashMap<String, String> features = new HashMap<String, String>();
 			features.put("Wheel Chair", "n");
-			features.put("No of Seats", "n");
-			features.put("Bike Rack", "n");
+
+			features.put("Infant Seat", "n");
 
 			Iterator it = features.entrySet().iterator();
 			
@@ -81,15 +78,12 @@ public class RequestClient {
 				// avoids a ConcurrentModificationException
 			}
 
-			System.out.println(features);
+			
 
 			
 		//Create Request
 			
 		Request r =rFacade.createRequest(memberId,pickAddr,destAddr,date,serviceType,features);
-		
-		//rFacade.requests.add(r);
-		
 		
 		
 		//UpdateRequestState
@@ -97,17 +91,12 @@ public class RequestClient {
 		r.setrState(new ProcessingState());
 		r.executeAction(rFacade);
 		
-		//
 		
-		// put request in queue and all
-		
-		
-		//request.executeAction(this);
 
 
 	}
 	
-	public void updateTripRequest(){
+	/*public void updateTripRequest(){
 		
 		Scanner sc = new Scanner(System.in);
 
@@ -125,7 +114,7 @@ public class RequestClient {
 		
 		tm.invokePaymentManager();
 	}
-	
+	*/
 	
 	
 	

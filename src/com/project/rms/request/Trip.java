@@ -50,8 +50,8 @@ public class Trip {
 
 	public Trip() {
 		super();
-
-		tripCustomer = new ArrayList<String>();
+		tripCustomer= new ArrayList<String>();
+		tripCustomers = new ArrayList<Member>();
 	}
 
 	public String getTripId() {

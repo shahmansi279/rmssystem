@@ -5,7 +5,7 @@ public class FailedState implements RequestState {
 	@Override
 	public void execute(Request r, ReqMgmtFacade rf) {
 		
-		
+		System.out.println("\nRequest State --Failed State");
 		System.out.println("Error processig request. A system admin will get in touch with you shortly");
 		
 		// TODO Auto-generated method stub

@@ -35,7 +35,8 @@ public class VehicleManager
 		v1.setVehicleType(1);
 		v1.setvHealth(1);
 		v1.setvDriver("D0001");
-		v1.setLocation("655 E EL Camino Real Sunnyvale CA 94087");
+		v1.setLocation("94086");
+		v1.setVehicleState(new VActive());
 		//v1.setMiles(50000);
 		this.vArr.add(v1);
 		
@@ -49,7 +50,8 @@ public class VehicleManager
 		v2.setVehicleType(1);
 		v2.setvHealth(1);
 		v2.setvDriver("D0003");
-		v2.setLocation("655 E EL Camino Real Sunnyvale CA 94087");
+		v2.setLocation("95112");
+		v2.setVehicleState(new VActive());
 		//v1.setMiles(50000);
 		this.vArr.add(v2);
 
@@ -61,9 +63,10 @@ public class VehicleManager
 		v3.setvYear("2013");
 		v3.setvIn("7295642138");
 		v3.setVehicleType(2);
-		v3.setvHealth(1);
+		v3.setvHealth(2);
 		v3.setvDriver(null);
-		v3.setLocation("655 E EL Camino Real Sunnyvale CA 94087");
+		v3.setLocation("94087");
+		v3.setVehicleState(new VActive());
 		//v1.setMiles(50000);
 		this.vArr.add(v3);
 		
@@ -94,29 +97,25 @@ public class VehicleManager
 		
 	}
 	
-	public Vehicle retrieveVehicle(String vehicleType) {
+	public Vehicle retrieveVehicle(String vehicleType,String location) {
 		// TODO implement me
 		for (Vehicle v : this.vArr) {
 
-			System.out.println("Vehicle " +v);
+			
 			int x = v.getVehicleType();
 			if ((x == 1)&&(vehicleType.equals("PrivateTaxi"))){
-				if((v.getLocation().contains("94087"))&&(v.getVehicleState().equals("VActive"))){
-					System.out.println("Retrieving Vehicle details" + v.getvId());
+				if((location.contains(v.getLocation()))&&(v.getVehicleState().getClass().equals(VActive.class))){
+				
 					return v;
-					/*VAssigned va = new VAssigned();
-					v.setVehicleState(new VAssigned());
-					va.doAction(v);*/
+					
 				}
 
 			}
 			else if ((x == 2)&&(vehicleType.equals("SharedTaxi"))){
-				if((v.getLocation().contains("94087"))&&(v.getVehicleState().equals("VActive"))){
-					System.out.println("Retrieving Vehicle details" + v.getvId());
+				if(location.contains(v.getLocation())&&(v.getVehicleState().getClass().equals(VActive.class))){
+					
 					return v;
-					/*VAssigned va = new VAssigned();
-					v.setVehicleState(new VAssigned());
-					va.doAction(v);*/
+					
 				}
 
 			}

@@ -1,9 +1,15 @@
 package com.project.rms.service;
 
+import java.util.ArrayList;
+
+import com.project.rms.accounts.AccountManager;
+import com.project.rms.accounts.Customer;
+import com.project.rms.accounts.Member;
 import com.project.rms.request.Request;
 import com.project.rms.request.Trip;
 import com.project.rms.request.TripManager;
 import com.project.rms.vehicle.Vehicle;
+import com.project.rms.vehicle.VehicleManager;
 
 /**
  * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -16,6 +22,7 @@ public class YellowCab extends Service {
 	public YellowCab(ServiceType svcType) {
 		super(svcType);
 		this.serviceName = "YellowCab";
+
 	}
 
 	public void setRule() {
@@ -25,17 +32,21 @@ public class YellowCab extends Service {
 	@Override
 	public Trip dispatchTaxi(ServiceType svcType, Request r, Vehicle v) {
 
-		Trip t = generateTrip(r);
+		System.out.println("Dispatching Taxi for Yellow Cab Service \n");
+
+		Trip t = null;
+
+		t = generateTrip(r);
+		t = updateTrip(t, t.getTripId(), r, svcType, v);
+
 		// TODO Auto-generated method stub
 		return t;
 	}
 
 	private Trip generateTrip(Request r) {
-		// TODO Auto-generated method stub
+
 		TripManager tm = new TripManager();
 		tm.generateTripRecord();
-
-		// TODO Auto-generated method stub
 
 		return tm.generateTripRecord();
 	}
@@ -47,18 +58,24 @@ public class YellowCab extends Service {
 		return new Trip();
 	}
 
-	private boolean updateTrip(Trip t, String tripId, Request r, ServiceType svcType) {
+	private Trip updateTrip(Trip t, String tripId, Request r, ServiceType svcType, Vehicle v) {
 
-		System.out.println("Updating Trip with ID -T1101 with request with ID 00004");
+		
 
-		t.tripCustomer.add(r.getMemberId());
+	
+		AccountManager am = new AccountManager();
+		ArrayList<String> memList = new ArrayList<String>();
+
+		memList.add(r.getMemberId());
+		t.setTripCustomer(memList);
+
 		t.setTripSource(r.getrPickUpAddr());
 		t.setTripDest(r.getrDestAddr());
 		t.setSvcType(svcType);
 		t.setTripPickUpTime(r.getrPickupDateTime());
 		t.setTripCustomer(t.tripCustomer);
 
-		return true;
+		return t;
 		// TODO Auto-generated method stub
 
 	}
@@ -71,15 +88,19 @@ public class YellowCab extends Service {
 		// Retrieving Contractor Owned or Company Owned Vehicle based on Request
 
 		// String v=null;
-		Vehicle v = null;
-		// Vehicle v=vmgr.retrieveVehicle(r.getServiceType());
+		VehicleManager vmgr = new VehicleManager();
 
-		// if(v!=null)
+		Vehicle v = vmgr.retrieveVehicle(r.getrServiceTypeDesc(), r.getrPickUpAddr());
 
-		System.out.println("Acquired Resources for the Request");
+		if (v != null)
 
-		return v;
+		{
+			System.out.println("Acquired Resources for the Request");
 
+			return v;
+		}
+
+		return null;
 		// TODO Auto-generated method stub
 
 	}

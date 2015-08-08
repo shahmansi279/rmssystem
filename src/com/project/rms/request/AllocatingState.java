@@ -11,19 +11,26 @@ public class AllocatingState implements RequestState {
 
 		// TODO Auto-generated method stub
 
-		System.out.println("Request State -- Allocating State");
+		System.out.println("Request State -- Allocating State\n");
 		if (retrieveFromQueue(r, rf)) {
 			if (processRequest(r, rf))
-				
+
 			{
 				r.setrState(new ProcessedState());
 				r.executeAction(rf);
 
+			} else {
+
+				r.setrState(new FailedState());
+				r.executeAction(rf);
+
 			}
 		}
-		
+
 		else {
+
 			r.setrState(new FailedState());
+			r.executeAction(rf);
 		}
 
 	}

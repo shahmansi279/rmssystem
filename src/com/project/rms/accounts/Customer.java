@@ -18,6 +18,8 @@ public class Customer extends Member
 	 * @generated
 	 */
 	
+	public Customer(){}
+	
 	
 	public Customer( String memId , String strmFName, String strmLName, String strmEmail, String strmPhone,
 			String strmAddress1, String strmAddress2, String strmCity, String strmState, String strmZipcode,String strmPrefnotfn

@@ -85,13 +85,16 @@ public class ReqMgmtFacade {
 
 		// Setting the Service for the Type of Service Requested
 
+		String svceType = null;
 		if (rServiceType == 1) {
 
 			svName = new YellowCab(new PrivateTaxi());
+			svceType = "PrivateTaxi";
 
 		} else {
 
 			svName = new Uber(new SharedTaxi());
+			svceType = "SharedTaxi";
 
 		}
 		this.request = new Request();
@@ -99,15 +102,13 @@ public class ReqMgmtFacade {
 		request.setrPickUpAddr(rPickLocAddr);
 		request.setrDestAddr(rDestLoc);
 		request.setrPickupDateTime(rPickUpTime);
-		// request.setrServiceTypeDesc(request.getS);
+		request.setrServiceTypeDesc(svceType);
 		request.setSvcName(svName);
 		request.setrFeature(rFeature);
 		request.setrStatus("Created");
 		request.setrState(new ProcessingState());
 		request.setrId("00004");
 
-		
-		
 		System.out.println("Request Created with ID : " + request.getrId());
 
 		return request;
@@ -152,7 +153,7 @@ public class ReqMgmtFacade {
 		}
 
 		else {
-
+			
 			return false;
 		}
 
@@ -160,23 +161,24 @@ public class ReqMgmtFacade {
 
 	public void sendNotifications(Trip t) {
 
-		AccountManager acct = new AccountManager();
+		
 
-		ArrayList<Member> tripMembers = t.getTripCustomers();
+	
 
-		for (Member m : tripMembers) {
+		
+		
+		for (String m : t.getTripCustomer()) {
 
-			// loop over array and invoke notification manager for sending notification
-
-			NotificationManager nm = new NotificationManager();
-
-			nm.sendNotification(new TripNotification(m.getMemFname()), m);
-					
+			// loop over array and invoke notification manager for sending
+			// notification
 
 			
+			NotificationManager nm = new NotificationManager();
+
+			nm.sendNotification(new TripNotification(m),m);
+
 		}
-		
-	
+
 	}
 
 	// Adding Request to PQ
@@ -217,9 +219,9 @@ public class ReqMgmtFacade {
 			Date endDate = retrieveRequestFromQueue().getrPickupDateTime();
 
 			long diff = startDate.getTime() - endDate.getTime();
-			System.out.println(diff);
+			
 			int diffHours = (int) (diff / (60 * 60 * 1000));
-			System.out.println(diffHours);
+		
 			if (endDate != null) {
 				if (diffHours <= 2 && diffHours >= 0) {
 
@@ -272,8 +274,6 @@ public class ReqMgmtFacade {
 		// TODO Auto-generated method stub
 		return this.q.retrieveRequestFromQueue();
 	}
-
-	
 
 	public Request removeRequestFromQueue() {
 		// TODO Auto-generated method stub

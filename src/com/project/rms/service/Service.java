@@ -67,7 +67,6 @@ public abstract class Service {
 	 * @ordered
 	 */
 
-	
 	public Set<ServiceRule> serviceRule;
 
 	public String getServiceName() {
@@ -86,7 +85,7 @@ public abstract class Service {
 	public Service(ServiceType serviceType) {
 		super();
 		this.serviceType = serviceType;
-	
+
 	}
 
 	protected ServiceType getServiceType() {
@@ -96,6 +95,7 @@ public abstract class Service {
 	protected void setServiceType(ServiceType serviceType) {
 		this.serviceType = serviceType;
 	}
+
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -126,16 +126,11 @@ public abstract class Service {
 
 		System.out.println("Calculating Service Base Fare");
 
-		fare=calculateBaseFare(miles);
+		fare = calculateBaseFare(miles);
 
-	
-
-		
 		return fare;
 		// TODO implement me
 	}
-
-	
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -178,8 +173,16 @@ public abstract class Service {
 	public Trip dispatchService(Request r) {
 
 		Vehicle v = fetchResource(r);
-		allocateResources(r, v);
-		return dispatchTaxi(this.getServiceType(), r, v);
+		if (v != null) {
+			allocateResources(r, v);
+			return dispatchTaxi(this.getServiceType(), r, v);
+		}
+
+		else {
+
+			System.out.println("No vehicles found for the request");
+			return null;
+		}
 
 	}
 
