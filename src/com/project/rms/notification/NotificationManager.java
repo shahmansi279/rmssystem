@@ -15,47 +15,70 @@ public class NotificationManager {
 		super();
 	}
 
-	public static void main(String[] args) {
+	public void manageNotification(){
+		// create subject 
+		  OfferNotification topic = new OfferNotification("Subject");
 
+		
 		System.out.println("Notification Management");
-		System.out.println("1. Payment Complete");
-		System.out.println("2. Trip Complete");
-		System.out.println("3. Recall Notification");
+		System.out.println("1. Post Offer Notification");
+		System.out.println("2. Register a Subscriber");
+		System.out.println("3. Unregister a Subscriber");
 
 		Scanner scanner = new Scanner(System.in);
 		int select = scanner.nextInt();
 
-		/*
-		 * if (select == 1) {
-		 * 
-		 * PaymentNotification pn = new PaymentNotification();
-		 * System.out.println("Preparing Notification...");
-		 * pn.prepareNotification(); } else if (select == 2) { TripNotification
-		 * tn = new TripNotification(); System.out.println(
-		 * "Preparing Notification..."); tn.prepareNotification(); } else if
-		 * (select == 3) {
-		 * 
-		 * // create subject RecallNotification topic = new
-		 * RecallNotification();
-		 * 
-		 * // create observers Observer obj1 = new
-		 * SubjectSubscriber("Observer1"); Observer obj2 = new
-		 * SubjectSubscriber("Observer2"); Observer obj3 = new
-		 * SubjectSubscriber("Observer3");
-		 * 
-		 * // register observers to the subject // topic.register(obj1); //
-		 * topic.register(obj2); // topic.register(obj3);
-		 * 
-		 * // attach observer to subject // obj1.setSubject(topic); //
-		 * obj2.setSubject(topic); // obj3.setSubject(topic);
-		 * 
-		 * // check if any update is available // obj1.update();
-		 * 
-		 * // now send message to subject // topic.appendMessage(); //
-		 * topic.postMessage(" :: New Message"); }
-		 */
+		  if (select == 1) {
+			  System.out.println("Enter offer message to be posted");
+			  Scanner scanner1 = new Scanner(System.in);
+			  String msg = scanner1.nextLine();
+			  
+			  
+			// create observers 
+			  Observer obj1 = new SubjectSubscriber("Observer1"); 
+			  Observer obj2 = new SubjectSubscriber("Observer2"); 
+			  Observer obj3 = new SubjectSubscriber("Observer3");
+			  
+			// register observers to the subject  
+			  topic.register(obj1); 
+			  topic.register(obj2); 
+			  topic.register(obj3);
+			  
+			// attach observer to subject  
+			  obj1.setSubject(topic); 
+			  obj2.setSubject(topic); 
+			  obj3.setSubject(topic);
+			  
+			  //obj1.update();
+			  
+			  topic.appendMessage();
+			  topic.postMessage(" New Message :: "+msg);
+			  
+			  System.out.println("Offer sent");
 
-	}
+		  }
+		  else if(select == 2){
+			  
+			  
+			  System.out.println("Enter subscriber name");
+			  Scanner scanner2 = new Scanner(System.in);
+			  String subs = scanner2.nextLine();
+			  Observer ob = new SubjectSubscriber(subs);
+			  topic.register(ob);
+			  System.out.println("Subscriber Registered");
+		  }
+		  else if(select == 3){
+			  
+			  
+			  System.out.println("Enter subscriber name");
+			  Scanner scanner2 = new Scanner(System.in);
+			  String subs = scanner2.nextLine();
+			  Observer ob = new SubjectSubscriber(subs);
+			  topic.unregister(ob);
+			  System.out.println("Subscriber Unregistered");
+		  }
+		  }
+
 
 	public void getNotificationTemplate() {
 		// TODO implement me

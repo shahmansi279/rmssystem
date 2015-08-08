@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.project.rms.accounts.*;
+import com.project.rms.notification.NotificationManager;
 import com.project.rms.notification.TripNotification;
 import com.project.rms.request.*;
 import com.project.rms.service.PrivateTaxi;
@@ -22,15 +23,16 @@ public class RMSClient {
 	ArrayList<Member> adminArr;
 	ArrayList<Trip> tripArr;
 	RequestClient reqClient;
-	TripManager tripClient;
+	TripManager tmgr;
 	VehicleClient vehClient;
 	AccountClient acctClient;
 	ServiceClient scClient;
+	NotificationManager nmgr;
 
 	RMSClient() {
 
 		this.reqClient = new RequestClient();
-		this.tripClient = new TripManager();
+		this.tmgr = new TripManager();
 		this.scClient = new ServiceClient();
 		this.vehClient = new VehicleClient();
 		this.acctClient = new AccountClient();
@@ -113,8 +115,7 @@ public class RMSClient {
 			break;
 		}
 
-		// selectSubMenu(choice);
-		// TODO Auto-generated method stub
+		
 
 	}
 
@@ -132,7 +133,7 @@ public class RMSClient {
 		case 1:
 
 			System.out.println("Update Trip Status");
-			this.tripClient.processTripUpdateRequest();
+			this.tmgr.processTripUpdateRequest();
 
 			break;
 		case 2:
@@ -156,7 +157,7 @@ public class RMSClient {
 		System.out.println("2 CRUD Rule");
 		System.out.println("3 CRUD Vehicle");
 		System.out.println("4 Update Ride");
-		System.out.println("5 Update Payment");
+		System.out.println("5 Manage Offer Notification");
 		System.out.println("6 Return to Main Menu");
 		System.out.println("7 Exit");
 
@@ -179,21 +180,19 @@ public class RMSClient {
 			break;
 		case 3:
 			System.out.println("CRUD Vehicle");
-			VehicleManager vm = new VehicleManager();
-			vm.retrieveVehicle("SharedTaxi", "555 94087");
-			
+			vehClient.manageVehicle();
 
 			break;
 		case 4:
 
 			// this.tripClient.setTripArr(this.tripArr);
-			this.tripClient.processTripUpdateRequest();
+			this.tmgr.processTripUpdateRequest();
 
 			break;
 		case 5:
-			System.out.println("Update Payment");
+			System.out.println("Manage Offer Notification");
 
-			// invoke trip client
+			nmgr.manageNotification();
 
 			break;
 
@@ -256,56 +255,6 @@ public class RMSClient {
 		}
 
 		// TODO Auto-generated method stub
-
-	}
-
-	private static void showContractorMenu() {
-
-		System.out.println("Choose a valid option");
-		System.out.println("1 Create Contractor Account");
-		System.out.println("2 Update Contractor Account");
-		System.out.println("3 Delete Contractor Account");
-		System.out.println("4 View Account History");
-		System.out.println("5 Update Trip Status");
-		System.out.println("6 View Notification");
-		System.out.println("7 Return to Main Menu");
-		System.out.println("8 Exit");
-
-		Scanner scan = new Scanner(System.in);
-		int choice = Integer.parseInt(scan.nextLine());
-
-		switch (choice) {
-
-		case 1:
-			System.out.println("Create Contractor Account");
-
-			break;
-		case 2:
-			System.out.println("Update Contractor Account");
-			break;
-		case 3:
-			System.out.println("Delete Contractor Account");
-			break;
-		case 4:
-			System.out.println("View Account History");
-			break;
-		case 5:
-			System.out.println("Update Trip Status");
-			break;
-		case 6:
-			System.out.println("View Notification");
-			break;
-		case 7:
-			System.out.println("Return to Main Menu");
-			break;
-		case 8:
-			System.out.println("Exit");
-			break;
-		default:
-			System.out.println("Invalid Option .... Please Try Again");
-			showContractorMenu();
-			break;
-		}
 
 	}
 

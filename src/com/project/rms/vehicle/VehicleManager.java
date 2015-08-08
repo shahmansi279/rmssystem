@@ -37,7 +37,7 @@ public class VehicleManager
 		v1.setvDriver("D0001");
 		v1.setLocation("94086");
 		v1.setVehicleState(new VActive());
-		//v1.setMiles(50000);
+		
 		this.vArr.add(v1);
 		
 		
@@ -52,7 +52,7 @@ public class VehicleManager
 		v2.setvDriver("D0003");
 		v2.setLocation("95112");
 		v2.setVehicleState(new VActive());
-		//v1.setMiles(50000);
+		
 		this.vArr.add(v2);
 
 		
@@ -67,11 +67,10 @@ public class VehicleManager
 		v3.setvDriver(null);
 		v3.setLocation("94087");
 		v3.setVehicleState(new VActive());
-		//v1.setMiles(50000);
+		
 		this.vArr.add(v3);
 		
-		//System.out.println("Vehicle list - "+this.getvArr());
-
+	
 
 	}
 
@@ -142,8 +141,21 @@ public class VehicleManager
 	
 
 	
-	public void updateVehicle() {
-		// TODO implement me	
+	
+	
+
+	
+	public void updateVehicle(String vId, String vDriver) {
+		
+		for (Vehicle v : this.vArr) {
+
+			if (v.getvId().equals(vId)){
+				v.setvDriver(vDriver);
+				//System.out.println("Vehicle of ID "+vId+" has been updated");
+			}
+			
+		}
+		
 	}
 	
 }
