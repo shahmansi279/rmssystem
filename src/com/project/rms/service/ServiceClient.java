@@ -46,22 +46,48 @@ public class ServiceClient {
 			System.out.println(
 					"Currently we do not support to add legal rules for the type of service configuration selected");
 		}
-		/*
-		 * HashMap<String, String> features = new HashMap<String, String>();
-		 * features.put("Wheel Chair", "n"); features.put("No of Seats", "n");
-		 * features.put("Bike Rack", "n");
-		 * 
-		 * Iterator it = features.entrySet().iterator();
-		 * 
-		 * while (it.hasNext()) { Map.Entry pair = (Map.Entry) it.next();
-		 * System.out.println("Add " + pair.getKey() + " feature ");
-		 * pair.setValue(sc.nextLine()); // // avoids a
-		 * ConcurrentModificationException }
-		 */
 
-		// System.out.println(features);
+	}
 
-		// Create Request
+	private void updateRule() {
+
+		ServiceRuleManager srm = new ServiceRuleManager();
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("\nPlease enter rule id ");
+		String ruleId = sc.nextLine();
+
+		System.out.println("\nPlease enter the new  Service Rule Cateory Value");
+		String ruleCategoryValue = sc.nextLine();
+
+		srm.updateRule(ruleId, ruleCategoryValue);
+
+	}
+
+	private void retrieveRule() {
+
+		ServiceRuleManager srm = new ServiceRuleManager();
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("\nPlease enter rule service name Uber or YellowCab");
+		String ruleServiceName = sc.nextLine();
+
+		System.out.println("\nPlease enter rule category name FareRule or LegalRule");
+		String ruleCategory = sc.nextLine();
+
+		srm.retrieveRule(ruleServiceName, ruleCategory);
+
+	}
+
+	private void deleteRule() {
+
+		ServiceRuleManager srm = new ServiceRuleManager();
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("\nPlease enter rule id that you wish to delete");
+		String ruleId = sc.nextLine();
+
+		srm.deleteRule(ruleId);
 
 	}
 
@@ -90,17 +116,17 @@ public class ServiceClient {
 			break;
 		case 2:
 			System.out.println("Retrieve Rule");
-
+			retrieveRule();
 			// call to funcn
 			break;
 		case 3:
 			System.out.println("Update Rule");
-
+			updateRule();
 			break;
 
 		case 4:
 			System.out.println("Delete Rule");
-
+			deleteRule();
 			break;
 
 		case 5:

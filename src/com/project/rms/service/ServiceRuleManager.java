@@ -3,6 +3,7 @@ package com.project.rms.service;
 import java.util.ArrayList;
 
 import com.project.rms.request.Trip;
+import com.project.rms.vehicle.Vehicle;
 
 /**
  * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -50,19 +51,7 @@ public class ServiceRuleManager {
 
 	}
 
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
+	// Retrieve Rule
 
 	public ServiceRule retrieveRule(String ruleServiceName, String ruleCategory) {
 
@@ -70,22 +59,17 @@ public class ServiceRuleManager {
 
 			if (s.getRuleServiceName().equals(ruleServiceName) && s.getRuleCategory().equals(ruleCategory)) {
 
-				System.out.println("Fetching Service Rule details" + s.getRuleCategoryValue());
+				System.out.println("Fetching Service Rule details : \n The service rule is set to " + s.getRuleCategoryValue());
 				return s;
 			}
 		}
 
-		// TODO Auto-generated method stub
+		
 		return null;
-		// TODO implement me
+		
 	}
 
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
+	// Update Rule
 
 	public void updateRule(String ruleId, String ruleCategoryValue) {
 
@@ -106,14 +90,18 @@ public class ServiceRuleManager {
 		// TODO implement me
 	}
 
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
+	// Delete Rule
 
-	public void deleteRule() {
+	public void deleteRule(String ruleId) {
+
+		for (ServiceRule s : this.serviceArr) {
+
+			if (s.getServiceRuleId().equals(ruleId)) {
+				this.serviceArr.remove(s);
+				System.out.println("Service Rule ID " + ruleId + " has been removed successfully");
+			}
+		}
+
 		// TODO implement me
 	}
 
@@ -139,9 +127,9 @@ public class ServiceRuleManager {
 		int serviceId = this.serviceArr.size();
 		String serviceRuleId = "S000" + (serviceId + 1);
 
-		 ServiceRule s= new ServiceRule();
-		 s.setServiceRuleId(serviceRuleId);
-		
+		ServiceRule s = new ServiceRule();
+		s.setServiceRuleId(serviceRuleId);
+
 		return s;
 
 	}
