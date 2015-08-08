@@ -60,7 +60,10 @@ public class VehicleClient {
 				System.out.println("Enter Service Type - PrivateTaxi or SharedTaxi");
 				Scanner scanner4 = new Scanner(System.in);
 				String vserv = (scanner4.nextLine());
-				vm.retrieveVehicle(vserv);
+				System.out.println("Enter location");
+				Scanner scanner5 = new Scanner(System.in);
+				String loc = (scanner5.nextLine());
+				vm.retrieveVehicle(vserv,loc);
 				System.out.println("Vehicle has been retrieved");
 				
 			}
