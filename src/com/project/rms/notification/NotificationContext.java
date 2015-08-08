@@ -22,8 +22,8 @@ public class NotificationContext {
 		return notification;
 	}
 
-	public void sendNotification(Notification n, String memberIdentification) {
-		this.notifierStrategy.sendNotification(n, memberIdentification);
+	public void sendNotification(Notification n) {
+		this.notifierStrategy.sendNotification(n);
 	}
 
 }

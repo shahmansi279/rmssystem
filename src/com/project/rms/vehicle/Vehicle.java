@@ -12,6 +12,7 @@ public abstract class Vehicle
 	public int vHealth;
 	public String vDriver;
 	public String location;
+	public String vehicleCost;
 	
 	public Vehicle(){
 		vehicleState = new VPending();
@@ -114,7 +115,9 @@ public abstract class Vehicle
 		// TODO implement me	
 	}
 	
-	public abstract int cost();
+	
+	
+	public abstract double cost();
 	public abstract String getFeatureDescription();
 	
 }

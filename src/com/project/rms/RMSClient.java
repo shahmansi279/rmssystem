@@ -83,7 +83,6 @@ public class RMSClient {
 		System.out.println("Welcome to RMS System --- Please choose your role from the Menu below");
 		System.out.println("1 Customer");
 		System.out.println("2 RMS System Admin");
-
 		System.out.println("3. Driver");
 
 		Scanner scan = new Scanner(System.in);
@@ -133,7 +132,6 @@ public class RMSClient {
 		case 1:
 
 			System.out.println("Update Trip Status");
-			// this.tripClient.setTripArr(this.tripArr);
 			this.tripClient.processTripUpdateRequest();
 
 			break;

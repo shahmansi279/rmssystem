@@ -2,6 +2,7 @@ package com.project.rms.request;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 import com.project.rms.accounts.Member;
 import com.project.rms.service.Service;
@@ -38,8 +39,16 @@ public class Trip {
 	public int tripEndMiles;
 	public Vehicle vehicle;
 	double tripFare;
-
+	public HashMap<String, String> rFeature;
 	
+	public HashMap<String, String> getrFeature() {
+		return rFeature;
+	}
+
+	public void setrFeature(HashMap<String, String> rFeature) {
+		this.rFeature = rFeature;
+	}
+
 	public double getTripFare() {
 		return tripFare;
 	}

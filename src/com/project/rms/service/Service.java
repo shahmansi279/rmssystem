@@ -2,10 +2,13 @@ package com.project.rms.service;
 
 import java.util.Set;
 
+import com.project.rms.accounts.AccountManager;
 import com.project.rms.request.Request;
 import com.project.rms.request.Trip;
+import com.project.rms.request.TripManager;
 import com.project.rms.vehicle.Vehicle;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 /**
@@ -112,6 +115,9 @@ public abstract class Service {
 	 * @ordered
 	 */
 
+	
+	//Template Pattern to Compute Trip fare
+	
 	public final double computeFare(Trip trip) {
 
 		double fare;
@@ -132,25 +138,6 @@ public abstract class Service {
 		// TODO implement me
 	}
 
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-
-	abstract double calculateBaseFare(int miles);
-	// TODO implement me
-
-	abstract double calculateAdditionalCharge(double fare);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-
 	public int computeDistance(Trip trip) {
 		// TODO implement me
 
@@ -160,13 +147,12 @@ public abstract class Service {
 
 	}
 
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param v
-	 * @generated
-	 * @ordered
-	 */
+	abstract double calculateBaseFare(int miles);
+	// TODO implement me
+
+	abstract double calculateAdditionalCharge(double fare);
+
+	
 
 	abstract Trip dispatchTaxi(ServiceType svcType, Request r, Vehicle v);
 
@@ -189,4 +175,51 @@ public abstract class Service {
 	abstract Vehicle fetchResource(Request r);
 
 	abstract boolean allocateResources(Request r, Vehicle v);
+	
+	protected Trip generateTrip(Request r) {
+
+		TripManager tm = new TripManager();
+		tm.generateTripRecord();
+
+		// TODO Auto-generated method stub
+
+		return tm.generateTripRecord();
+	}
+
+	protected Trip fetchTrip(String tripId) {
+
+		System.out.println("Fetching Trip Details for the Request");
+		// TODO Auto-generated method stub
+		return new Trip();
+	}
+
+	protected Trip updateTrip(Trip t, String tripId, Request r, ServiceType svcType, Vehicle v) {
+
+		System.out.println("Updating Trip with ID " + tripId + " with request with ID " + r.getrId());
+
+		// accountMgr
+
+		AccountManager am = new AccountManager();
+		ArrayList<String> memList = new ArrayList<String>();
+
+		memList.add(r.getMemberId());
+		t.setTripCustomer(memList);
+		t.setTripSource(r.getrPickUpAddr());
+		t.setTripDest(r.getrDestAddr());
+		t.setSvcType(svcType);
+		t.setTripPickUpTime(r.getrPickupDateTime());
+		t.setTripCustomer(t.tripCustomer);
+		t.setVehicle(v);
+		t.setrFeature(r.getrFeature());
+		
+		
+		
+		
+		return t;
+		// TODO Auto-generated method stub
+
+	}
+	
+	
+	
 }

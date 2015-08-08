@@ -76,22 +76,27 @@ public class NotificationManager {
 		Notification notificn = notification.prepareNotification();
 		NotificationContext ncxt = new NotificationContext();
 		String memberIdentification = null;
+		
 		// Set strategy for notification mode
 		
 		
 		AccountManager am= new AccountManager();
 		Member m=am.retrieveMember(memberId);
-		m.setMemPrefnotfn("email");
+		
 		//Retrieve Member Preferences
+		
+		String pref="email";
+		
+	
 
-		if ("email".equalsIgnoreCase(m.getMemPrefnotfn())) {
+		if ("email".equalsIgnoreCase(pref)) {
 
-			memberIdentification = m.getMemEmail();
+		
 			ncxt.setNotifierStrategy(new EmailNotifierStrategy());
 		}
 
-		else if ("sms".equalsIgnoreCase(m.getMemPrefnotfn())) {
-			memberIdentification = m.getMemPhone();
+		else if ("sms".equalsIgnoreCase(pref)) {
+		
 			ncxt.setNotifierStrategy(new SMSNotifierStrategy());
 		}
 
@@ -99,7 +104,7 @@ public class NotificationManager {
 
 		{
 
-			ncxt.sendNotification(notificn,memberIdentification);
+			ncxt.sendNotification(notificn);
 		}
 
 	}

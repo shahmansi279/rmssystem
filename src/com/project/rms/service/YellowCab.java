@@ -43,42 +43,7 @@ public class YellowCab extends Service {
 		return t;
 	}
 
-	private Trip generateTrip(Request r) {
-
-		TripManager tm = new TripManager();
-		tm.generateTripRecord();
-
-		return tm.generateTripRecord();
-	}
-
-	private Trip fetchTrip(String tripId) {
-
-		System.out.println("Fetching Trip Details for the Request");
-		// TODO Auto-generated method stub
-		return new Trip();
-	}
-
-	private Trip updateTrip(Trip t, String tripId, Request r, ServiceType svcType, Vehicle v) {
-
-		
-
 	
-		AccountManager am = new AccountManager();
-		ArrayList<String> memList = new ArrayList<String>();
-
-		memList.add(r.getMemberId());
-		t.setTripCustomer(memList);
-
-		t.setTripSource(r.getrPickUpAddr());
-		t.setTripDest(r.getrDestAddr());
-		t.setSvcType(svcType);
-		t.setTripPickUpTime(r.getrPickupDateTime());
-		t.setTripCustomer(t.tripCustomer);
-
-		return t;
-		// TODO Auto-generated method stub
-
-	}
 
 	@Override
 	Vehicle fetchResource(Request r) {

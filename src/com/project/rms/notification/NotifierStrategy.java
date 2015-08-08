@@ -5,7 +5,7 @@ public  interface NotifierStrategy
 	
 	
 
-	public void sendNotification(Notification n,String memberDetail);
+	public void sendNotification(Notification n);
 	
 	
 }

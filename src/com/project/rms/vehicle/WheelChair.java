@@ -7,9 +7,9 @@ public class WheelChair extends VehicleDecorator
 		super(vDec);
 	}
 	
-	public int cost() {
+	public double cost() {
 		// TODO implement me
-		return vDec.cost()+5;
+		return vDec.cost()+ 2;
 	}
 	
 	public String getFeatureDescription() {

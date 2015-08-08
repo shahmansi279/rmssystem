@@ -53,7 +53,7 @@ public class Uber extends Service {
 	@Override
 	public Trip dispatchTaxi(ServiceType svcType, Request r, Vehicle v) {
 
-		// ArrayList<Request> requestArr = findSharedRideRequest(r);
+		
 
 		System.out.println("Dispatching Taxi for Uber Cab Service \n");
 
@@ -67,45 +67,6 @@ public class Uber extends Service {
 		return t;
 	}
 
-	private Trip generateTrip(Request r) {
-
-		TripManager tm = new TripManager();
-		tm.generateTripRecord();
-
-		// TODO Auto-generated method stub
-
-		return tm.generateTripRecord();
-	}
-
-	private Trip fetchTrip(String tripId) {
-
-		System.out.println("Fetching Trip Details for the Request");
-		// TODO Auto-generated method stub
-		return new Trip();
-	}
-
-	private Trip updateTrip(Trip t, String tripId, Request r, ServiceType svcType, Vehicle v) {
-
-		System.out.println("Updating Trip with ID " + tripId + " with request with ID " + r.getrId());
-
-		// accountMgr
-
-		AccountManager am = new AccountManager();
-		ArrayList<String> memList = new ArrayList<String>();
-
-		memList.add(r.getMemberId());
-		t.setTripCustomer(memList);
-		t.setTripSource(r.getrPickUpAddr());
-		t.setTripDest(r.getrDestAddr());
-		t.setSvcType(svcType);
-		t.setTripPickUpTime(r.getrPickupDateTime());
-		t.setTripCustomer(t.tripCustomer);
-		t.setVehicle(v);
-
-		return t;
-		// TODO Auto-generated method stub
-
-	}
 
 	private String mergeWithSharedRequest(Request r, ArrayList<Request> requestArr) {
 
@@ -131,6 +92,7 @@ public class Uber extends Service {
 		VehicleManager vmgr = new VehicleManager();
 
 		Vehicle v = vmgr.retrieveVehicle(r.getrServiceTypeDesc(), r.getrPickUpAddr());
+		
 
 		if (v != null)
 

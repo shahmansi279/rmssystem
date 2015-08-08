@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Scanner;
 
@@ -42,6 +43,10 @@ public class TripManager {
 		// t1.setTripFare(100.00);
 		t1.setService(new YellowCab(new PrivateTaxi()));
 		t1.setTripStartMiles(49980);
+		HashMap<String, String> feature1 = new HashMap<String, String>();
+		feature1.put("Wheel Chair", "y");
+		feature1.put("Infant Seat", "n");
+		t1.setrFeature(feature1);
 		this.tripArr.add(t1);
 
 		Trip t2 = new Trip();
@@ -51,6 +56,10 @@ public class TripManager {
 		t2.setService(new YellowCab(new PrivateTaxi()));
 		t2.setTripStartMiles(35980);
 
+		HashMap<String, String> feature2 = new HashMap<String, String>();
+		feature2.put("Wheel Chair", "y");
+		feature2.put("Infant Seat", "n");
+		t2.setrFeature(feature2);
 		this.tripArr.add(t2);
 
 		Trip t3 = new Trip();
@@ -60,6 +69,10 @@ public class TripManager {
 		t3.setTripFare(200.00);
 		t3.setService(new Uber(new SharedTaxi()));
 		t3.setTripStartMiles(49990);
+		HashMap<String, String> feature3 = new HashMap<String, String>();
+		feature3.put("Wheel Chair", "y");
+		feature3.put("Infant Seat", "n");
+		t3.setrFeature(feature3);
 
 		this.tripArr.add(t3);
 

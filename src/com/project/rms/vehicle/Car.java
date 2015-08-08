@@ -20,9 +20,9 @@ public class Car extends Vehicle
 		this.location = location;
 	}
 
-	public int cost() {
+	public double cost() {
 		// TODO implement me
-		return 5;
+		return 0.2;
 	}
 	
 	public String getFeatureDescription() {
