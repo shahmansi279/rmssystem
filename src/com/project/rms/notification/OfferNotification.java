@@ -11,27 +11,28 @@ import java.util.List;
  * @generated
  */
 
-public class RecallNotification extends Notification implements Subject {
+public class OfferNotification extends Notification implements Subject {
 
 	public List<Observer> observer;
 	private String message;
 	private boolean changed;
 	private final Object MUTEX = new Object();
 
-	public RecallNotification(String message){
+	public OfferNotification(String message){
 		
 		super(message);
 		this.observer=new ArrayList<>();
 	}
+	
+	
 
 	public void appendMessage() {
 		// TODO implement me
-		System.out.println("------------------------------");
-		System.out.println("Recall Notification Available");
+		System.out.println("Offer Notification");
 	}
 
 	public void postMessage(String msg) {
-		System.out.println("Please take necessary action to repair your vehicle" + msg);
+		System.out.println(msg);
 		this.message = msg;
 		this.changed = true;
 		notifyObservers();
@@ -48,6 +49,7 @@ public class RecallNotification extends Notification implements Subject {
 		}
 
 	}
+	
 
 	@Override
 	public void unregister(Observer obj) {
