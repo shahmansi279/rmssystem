@@ -181,8 +181,7 @@ public class RMSClient {
 			System.out.println("CRUD Vehicle");
 			VehicleManager vm = new VehicleManager();
 			vm.retrieveVehicle("SharedTaxi", "555 94087");
-			// invoke vehicle manager
-			// vehClient.createVehicle();
+			
 
 			break;
 		case 4:

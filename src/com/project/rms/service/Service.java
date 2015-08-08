@@ -6,10 +6,16 @@ import com.project.rms.accounts.AccountManager;
 import com.project.rms.request.Request;
 import com.project.rms.request.Trip;
 import com.project.rms.request.TripManager;
+import com.project.rms.vehicle.Car;
+import com.project.rms.vehicle.InfantSeat;
 import com.project.rms.vehicle.Vehicle;
+import com.project.rms.vehicle.WheelChair;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
 
 /**
  * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -18,57 +24,17 @@ import java.util.HashSet;
  */
 
 public abstract class Service {
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
+
 	protected String serviceName;
 	protected ServiceType sType;
 
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-
 	public String sDescription;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
 
 	public String vendorDesc;
 
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-
 	public ServiceRule sRule;
 
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-
 	public ServiceType serviceType;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
 
 	public Set<ServiceRule> serviceRule;
 
@@ -115,9 +81,8 @@ public abstract class Service {
 	 * @ordered
 	 */
 
-	
-	//Template Pattern to Compute Trip fare
-	
+	// Template Pattern to Compute Trip fare
+
 	public final double computeFare(Trip trip) {
 
 		double fare;
@@ -126,16 +91,49 @@ public abstract class Service {
 
 		miles = computeDistance(trip);
 
+		fare = computeVehicleCost(trip.rFeature);
+
 		System.out.println("Trip Miles are " + miles);
 
 		trip.setTripMiles(miles);
 
 		System.out.println("Calculating Service Base Fare");
 
-		fare = calculateBaseFare(miles);
+		fare += calculateBaseFare(miles);
 
 		return fare;
 		// TODO implement me
+	}
+
+	public double computeVehicleCost(HashMap<String, String> rFeature) {
+
+		// Invoking Decorator Pattern
+
+		Vehicle v = new Car();
+
+		Iterator it = rFeature.entrySet().iterator();
+
+		while (it.hasNext()) {
+
+			Map.Entry pair = (Map.Entry) it.next();
+
+			if (pair.getValue().equals("y") && pair.getKey().equals("Wheel Chair")) {
+
+				v = new WheelChair(v);
+				System.out.println("Adding the Vehicle Decorator Wheel Chair Cost " + v.cost());
+
+			}
+
+			if (pair.getValue().equals("y") && pair.getKey().equals("Infant Seat")) {
+
+				v = new InfantSeat(v);
+				System.out.println("Adding the Vehicle Decorator Infant Seat Cost " + v.cost());
+
+			}
+
+		}
+		// TODO Auto-generated method stub
+		return v.cost();
 	}
 
 	public int computeDistance(Trip trip) {
@@ -151,8 +149,6 @@ public abstract class Service {
 	// TODO implement me
 
 	abstract double calculateAdditionalCharge(double fare);
-
-	
 
 	abstract Trip dispatchTaxi(ServiceType svcType, Request r, Vehicle v);
 
@@ -175,7 +171,7 @@ public abstract class Service {
 	abstract Vehicle fetchResource(Request r);
 
 	abstract boolean allocateResources(Request r, Vehicle v);
-	
+
 	protected Trip generateTrip(Request r) {
 
 		TripManager tm = new TripManager();
@@ -211,15 +207,10 @@ public abstract class Service {
 		t.setTripCustomer(t.tripCustomer);
 		t.setVehicle(v);
 		t.setrFeature(r.getrFeature());
-		
-		
-		
-		
+
 		return t;
 		// TODO Auto-generated method stub
 
 	}
-	
-	
-	
+
 }

@@ -45,7 +45,7 @@ public class TripManager {
 		t1.setTripStartMiles(49980);
 		HashMap<String, String> feature1 = new HashMap<String, String>();
 		feature1.put("Wheel Chair", "y");
-		feature1.put("Infant Seat", "n");
+		feature1.put("Infant Seat", "y");
 		t1.setrFeature(feature1);
 		this.tripArr.add(t1);
 
@@ -71,7 +71,7 @@ public class TripManager {
 		t3.setTripStartMiles(49990);
 		HashMap<String, String> feature3 = new HashMap<String, String>();
 		feature3.put("Wheel Chair", "y");
-		feature3.put("Infant Seat", "n");
+		feature3.put("Infant Seat", "y");
 		t3.setrFeature(feature3);
 
 		this.tripArr.add(t3);
